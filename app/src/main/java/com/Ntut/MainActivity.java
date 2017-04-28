@@ -34,11 +34,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                 .setInActiveColor("#FFFFFF")
                 .setBarBackgroundColor("#ECECEC");
         bottomNavigationBar
-                .addItem(new BottomNavigationItem(R.drawable.course_icon, "課程"))
-                .addItem(new BottomNavigationItem(R.drawable.calendar_icon, "行事曆"))
-                .addItem(new BottomNavigationItem(R.drawable.credit_icon, "學分"))
-                .addItem(new BottomNavigationItem(R.drawable.nportal_icon, "入口網"))
-                .addItem(new BottomNavigationItem(R.drawable.account_setting_icon, "設定"))
+                .addItem(new BottomNavigationItem(R.drawable.course_icon))
+                .addItem(new BottomNavigationItem(R.drawable.calendar_icon))
+                .addItem(new BottomNavigationItem(R.drawable.credit_icon))
+                .addItem(new BottomNavigationItem(R.drawable.nportal_icon))
+                .addItem(new BottomNavigationItem(R.drawable.other_iocn))
                 .initialise();
     }
 
