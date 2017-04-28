@@ -9,5 +9,5 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="50dp"
-        android:text="設定" />
+        android:text="其他" />
 </LinearLayout>
