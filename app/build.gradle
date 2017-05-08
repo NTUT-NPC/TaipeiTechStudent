@@ -24,15 +24,27 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.0'
+    compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.squareup.okhttp3:okhttp:3.7.0'
+    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'net.sourceforge.htmlcleaner:htmlcleaner:2.18'
+    compile 'org.jsoup:jsoup:1.9.2'
     compile 'com.ashokvarma.android:bottom-navigation-bar:1.4.1'
     compile 'com.google.firebase:firebase-core:10.0.1'
     compile 'com.google.firebase:firebase-messaging:10.0.1'
     testCompile 'junit:junit:4.12'
 }
 
-
+configurations.all {
+    resolutionStrategy.eachDependency { details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '25.3.1'
+            }
+        }
+    }
+}
 
 apply plugin: 'com.google.gms.google-services'

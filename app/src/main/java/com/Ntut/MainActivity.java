@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
@@ -21,11 +22,16 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         firebaseAnalytics = FirebaseAnalytics.getInstance(this);
-        setupNavigation();
-
+        initToolbar();
+        initNavigation();
     }
 
-    private void setupNavigation(){
+    private void initToolbar(){
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+    }
+
+    private void initNavigation(){
         bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
         bottomNavigationBar.setTabSelectedListener(this);
         bottomNavigationBar
@@ -33,9 +39,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         bottomNavigationBar.
                 setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_RIPPLE);
         bottomNavigationBar
-                .setActiveColor(R.color.colorPrimary)
-                .setInActiveColor("#FFFFFF")
-                .setBarBackgroundColor("#ECECEC");
+                .setActiveColor(R.color.colorPrimary);
         bottomNavigationBar
                 .addItem(new BottomNavigationItem(R.drawable.course_icon))
                 .addItem(new BottomNavigationItem(R.drawable.calendar_icon))
