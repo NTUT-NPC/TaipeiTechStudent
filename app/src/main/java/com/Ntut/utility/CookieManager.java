@@ -1,4 +1,4 @@
-package com.Ntut;
+package com.Ntut.utility;
 
 
 import java.util.ArrayList;
@@ -33,4 +33,9 @@ public class CookieManager implements CookieJar {
     public static void resetCookies() {
         cookies = null;
     }
+
+//    How to use:
+//    OkHttpClient.Builder mOkHttpClientBuilder = new OkHttpClient.Builder();
+//    mOkHttpClientBuilder.cookieJar(new MyCookieJar());
+//    OkHttpClient mOkHttpClient = mOkHttpClientBuilder.build();
 }

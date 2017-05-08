@@ -1,7 +1,5 @@
 package com.Ntut.model;
 
-import com.Ntut.CourseInfo;
-
 import java.util.ArrayList;
 
 /**

@@ -2,7 +2,7 @@ package com.Ntut.utility;
 
 
 
-import com.Ntut.CourseInfo;
+import com.Ntut.model.CourseInfo;
 import com.Ntut.model.Semester;
 import com.Ntut.model.StudentCourse;
 
