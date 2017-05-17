@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string-array name="type_name">
+        <item>@string/credit_authorities_common_compulsory</item>
+        <item>@string/credit_school_common_compulsory</item>
+        <item>@string/credit_common_elective</item>
+        <item>@string/credit_authorities_vocational_elective</item>
+        <item>@string/credit_school_vocational_compulsory</item>
+        <item>@string/credit_vocational_elective</item>
+        <item>@string/credit_maximum_elective</item>
+        <item>@string/credit_minimum_graduation</item>
+    </string-array>
+    <string-array name="credit_type">
+        <item>略</item>
+        <item>○</item>
+        <item>△</item>
+        <item>☆</item>
+        <item>●</item>
+        <item>▲</item>
+        <item>★</item>
+    </string-array>
+    <string-array name="time_array" translatable="false">
+        <item>08:10 &#8211; 09:00</item>
+        <item>09:10 &#8211; 10:00</item>
+        <item>10:10 &#8211; 11:00</item>
+        <item>11:10 &#8211; 12:00</item>
+        <item>13:10 &#8211; 14:00</item>
+        <item>14:10 &#8211; 15:00</item>
+        <item>15:10 &#8211; 16:00</item>
+        <item>16:10 &#8211; 17:00</item>
+        <item>17:10 &#8211; 18:00</item>
+        <item>18:30 &#8211; 19:20</item>
+        <item>19:20 &#8211; 20:10</item>
+        <item>20:20 &#8211; 21:10</item>
+        <item>21:10 &#8211; 22:00</item>
+        <item></item>
+    </string-array>
+
+</resources>

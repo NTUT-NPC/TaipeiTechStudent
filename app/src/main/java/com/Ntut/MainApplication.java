@@ -4,9 +4,15 @@ import android.app.Application;
 import android.content.SharedPreferences;
 
 import com.Ntut.model.Model;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.integration.okhttp3.OkHttpUrlLoader;
+import com.bumptech.glide.load.model.GlideUrl;
 
+import java.io.InputStream;
 import java.net.*;
 import java.util.Locale;
+
+import okhttp3.OkHttpClient;
 
 /**
  * Created by blackmaple on 2017/5/8.
@@ -24,6 +30,7 @@ public class MainApplication extends Application {
     public void onCreate() {
         super.onCreate();
         lang = Locale.getDefault().getLanguage();   //取得當前系統語言 <- 作為課表和學分語言的判斷依據
+        Glide.get(this).register(GlideUrl.class, InputStream.class, new OkHttpUrlLoader.Factory(new OkHttpClient()));
         CookieHandler.setDefault(new java.net.CookieManager(null, CookiePolicy.ACCEPT_ALL));
         singleton = this;
         Model.getInstance();

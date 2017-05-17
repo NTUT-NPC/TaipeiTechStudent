@@ -24,15 +24,25 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
+    // Glide
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+
+    // Glide's OkHttp3 Integration
+    compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
+    compile 'com.squareup.okhttp3:okhttp:3.7.0'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.squareup.okhttp3:okhttp:3.7.0'
+    compile 'com.android.support:support-v4:19.1.0'
+    compile 'com.github.Triggertrap:SeekArc:v1.1'
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'net.sourceforge.htmlcleaner:htmlcleaner:2.18'
     compile 'org.jsoup:jsoup:1.9.2'
     compile 'com.ashokvarma.android:bottom-navigation-bar:1.4.1'
     compile 'com.google.firebase:firebase-core:10.0.1'
     compile 'com.google.firebase:firebase-messaging:10.0.1'
+    compile 'com.android.support:cardview-v7:25.3.1'
+    compile 'com.google.firebase:firebase-database:10.0.1'
     testCompile 'junit:junit:4.12'
 }
 
@@ -46,5 +56,7 @@ configurations.all {
         }
     }
 }
+
+
 
 apply plugin: 'com.google.gms.google-services'

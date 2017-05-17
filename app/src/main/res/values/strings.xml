@@ -1,3 +1,43 @@
 <resources>
     <string name="app_name">TaipeiTech</string>
+
+
+
+    <!--Dialog-->
+    <string name="none_account_error">請先至帳號設定，設定校園入口網站帳號密碼！</string>
+    <string name="hint">提示</string>
+
+
+    <!--activity-->
+    <string name="activity_update">更新活動</string>
+
+
+    <!--account-->
+    <string name="id_text">學號</string>
+    <string name="password_text">密碼</string>
+    <string name="save_button">儲存</string>
+    <string name="clear_button">清除</string>
+    <string name="right_link"><u>免責聲明</u></string>
+    <string name="nportal_text"><u>校園入口網站</u></string>
+    <string name="save_success">帳號密碼已儲存！</string>
+    <string name="portal_title">校園入口網站</string>
+    <string name="right_text">免責聲明</string>
+    <string name="right">本團隊利用課餘時間提供軟體的無償維護與更新，並將盡力使其更好，但不保證運作正確性，同時不承擔任何一方的損失、賠償、補償、資安風險與衍生責任，使用時用戶須同意自行承擔一切風險。〈同意此聲明才被授權使用本軟體，如不同意請勿安裝使用，作者保留修改權利〉</string>
+    <string name="back">返回</string>
+    <string name="account_empty_error_message">請填入學號</string>
+    <string name="password_empty_error_message">請填入密碼</string>
+    <string name="account_setting">帳號管理</string>
+
+    <!--nportal-->
+    <string name="portal">入口網站</string>
+    <string name="nportal_loggingin">校園入口網站登入中~</string>
+    <string name="web_back_hint">實體返回鍵，可以回到前一瀏覽頁面！</string>
+
+    <!--alert-->
+    <string name="check_network_available">請檢查您的網路連線狀態，或再試一次！</string>
+    
+    <!--id-->
+    <item name="data_tag" type="id"/>
+    <item name="radar_chart" type="id"/>
+
 </resources>

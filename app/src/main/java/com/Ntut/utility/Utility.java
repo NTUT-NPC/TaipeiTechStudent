@@ -22,6 +22,7 @@ import com.Ntut.MainActivity;
 import com.Ntut.model.Model;
 import com.Ntut.R;
 import com.Ntut.model.StudentCourse;
+import com.Ntut.model.StudentCredit;
 import com.google.gson.Gson;
 
 import java.text.DateFormatSymbols;
@@ -84,7 +85,7 @@ public class Utility {
                 context);
         builder.setContentTitle(title)
                 .setContentText(message)
-                .setSmallIcon(R.drawable.activity_icon)
+                .setSmallIcon(R.drawable.event_icon)
                 .setLargeIcon(BitmapUtility.loadBitmap(context, R.mipmap.ic_launcher))
                 .setStyle(
                         new NotificationCompat
@@ -145,15 +146,15 @@ public class Utility {
         return student;
     }
 
-//    static StudentCredit cleanString(StudentCredit student) {
-//        Gson gson = new Gson();
-//        String json = gson.toJson(student);
-//        json = json.replace("　", "");
-//        json = json.replace("\\n", "");
-//        json = json.replace(" ", "");
-//        student = gson.fromJson(json, StudentCredit.class);
-//        return student;
-//    }
+    static StudentCredit cleanString(StudentCredit student) {
+        Gson gson = new Gson();
+        String json = gson.toJson(student);
+        json = json.replace("　", "");
+        json = json.replace("\\n", "");
+        json = json.replace(" ", "");
+        student = gson.fromJson(json, StudentCredit.class);
+        return student;
+    }
 
     static String cleanString(String s) {
         s = s.replace("　", " ");

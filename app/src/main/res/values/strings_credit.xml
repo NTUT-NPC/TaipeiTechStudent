@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="credit">學分資訊</string>
+
+    <string name="credit_essential_core">應修核心:</string>
+    <string name="credit_sum">總和：</string>
+    <string name="credit_setting_graduation">畢業學分標準設定</string>
+    <string name="credit_cancel">取消</string>
+    <string name="credit_save">儲存</string>
+    <string name="credit_choose_enter_semester">請選擇入學年度</string>
+    <string name="credit_loading_academic_system">學制清單讀取中~</string>
+    <string name="credit_loading_semester_list">入學年度清單讀取中~</string>
+    <string name="credit_loading_faculty_list">系所清單讀取中~</string>
+    <string name="credit_loading_graduation_credits">畢業學分標準讀取中~</string>
+    <string name="credit_admission_criteria_error">入學標準未完成設定！</string>
+
+
+    <string name="overview_credit">學分總覽</string>
+    <string name="overview_general">博雅總覽</string>
+    <string name="credit_general_core">實得核心:</string>
+    <string name="credit_general_elective">實得選修:</string>
+    <string name="cultural_dimension">文化向度</string>
+    <string name="historical_dimension">歷史向度</string>
+    <string name="philosophical_dimension">哲學向度</string>
+    <string name="legal_dimension">法治向度</string>
+    <string name="social_dimension">社會向度</string>
+    <string name="natural_dimension">自然向度</string>
+    <string name="social_philosophy_dimension">社哲向度</string>
+    <string name="creative_dimension">創創向度</string>
+
+    <!--dialog-->
+    <string name="credit_imformation_complete">學分資訊查詢完成</string>
+    <string name="credit_final">可以開始瀏覽學分及歷年成績！</string>
+    <string name="credit_error">查詢過程有發生錯誤，請重新查詢或自行修正！</string>
+    <string name="credit_updating">學分資料查詢中~</string>
+
+
+    <!--xml-->
+    <string name="semester">學期</string>
+    <string name="year">入學年度</string>
+    <string name="division">學制</string>
+    <string name="department">系所</string>
+    <string name="credit_type">學分類別</string>
+
+    <!-- menu -->
+    <string name="credit_query">學分資訊查詢〈需要一些時間〉</string>
+    <string name="credit_standard_credit">畢業學分標準設定</string>
+    <string name="credit_clear">清除學分資訊</string>
+    <string name="credit_clear_standard_credit">清除畢業學分標準</string>
+
+    <!--arrays-->
+    <string name="credit_authorities_common_compulsory">○部訂共同必修</string>
+    <string name="credit_school_common_compulsory">△校訂共同必修</string>
+    <string name="credit_common_elective">☆共同選修</string>
+    <string name="credit_authorities_vocational_elective">●部訂專業必修</string>
+    <string name="credit_school_vocational_compulsory">▲校訂專業必修</string>
+    <string name="credit_vocational_elective">★專業選修</string>
+    <string name="credit_maximum_elective">跨系選修上限學分</string>
+    <string name="credit_minimum_graduation">最低畢業學分</string>
+
+</resources>

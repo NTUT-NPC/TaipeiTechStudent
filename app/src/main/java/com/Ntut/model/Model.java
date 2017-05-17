@@ -3,6 +3,8 @@ package com.Ntut.model;
 import com.Ntut.MainApplication;
 import com.google.gson.Gson;
 
+import java.util.List;
+
 /**
  * Created by blackmaple on 2017/5/8.
  */
@@ -15,12 +17,14 @@ public class Model {
     private static final String STANDARD_CREDIT_NAME = "standardCredit";
     private static final String YEAR_CALENDAR_NAME = "yearCalendar";
     private static final String ACTIVITY_ARRAY_NAME = "activityArray";
+    private static final String EVENT_ARRAY_NAME = "eventArray";
     private volatile static Model instance = null;
     private StudentCourse studentCourse = null;
     private StudentCredit studentCredit = null;
     private StandardCredit standardCredit = null;
     private YearCalendar yearCalendar = null;
     private ActivityList activityArray = null;
+    private List<EventInfo> eventArray = null;
 
     private Model() {
         initialize();
@@ -47,6 +51,7 @@ public class Model {
         yearCalendar = readObjectSetting(YEAR_CALENDAR_NAME, YearCalendar.class);
         activityArray = readObjectSetting(ACTIVITY_ARRAY_NAME,
                 ActivityList.class);
+        eventArray = readObjectSetting(EVENT_ARRAY_NAME, EventList.class);
     }
 
     private <T> T readObjectSetting(String type_string, Class<T> classOfT) {
@@ -147,7 +152,7 @@ public class Model {
 
     public ActivityList getActivityArray() {
         if (activityArray != null) {
-            activityArray.checkActivity();
+//            activityArray.checkActivity();
             if (activityArray.size() == 0) {
                 setActivityArray(null);
                 saveActivityArray();
@@ -162,5 +167,17 @@ public class Model {
 
     public void saveActivityArray() {
         saveObjectSetting(ACTIVITY_ARRAY_NAME, activityArray);
+    }
+
+    public List<EventInfo> getEventArray() {
+        return eventArray;
+    }
+
+    public void setEventArray(List<EventInfo> eventArray) {
+        this.eventArray = eventArray;
+    }
+
+    public void saveEventArray(){
+        saveObjectSetting(EVENT_ARRAY_NAME, eventArray);
     }
 }
