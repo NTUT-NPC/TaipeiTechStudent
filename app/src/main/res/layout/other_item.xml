@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-
-    <ImageView
-        android:id="@+id/other_image"
-        android:layout_width="60dp"
-        android:layout_height="45dp"
-        android:layout_gravity="center"
-        android:src="@mipmap/ic_launcher_round"/>
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="0dp"
+    app:cardElevation="8dp"
+    android:layout_marginTop="15dp"
+    android:transitionName="other">
 
     <TextView
         android:id="@+id/other_text"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:textSize="16sp"
-        android:paddingLeft="5dp"
-        android:gravity="center|left"
-        android:text="123"/>
-</LinearLayout>
+        android:textSize="20sp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:gravity="center|start"
+        android:text="帳號設定"
+        android:textColor="#444444"/>
+</android.support.v7.widget.CardView>

@@ -1,7 +1,10 @@
 package com.Ntut.other;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.support.transition.Transition;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +15,7 @@ import android.widget.TextView;
 
 import com.Ntut.MainActivity;
 import com.Ntut.R;
+import com.Ntut.account.AccountActivity;
 import com.Ntut.account.AccountSettingFragment;
 import com.Ntut.credit.CreditFragment;
 import com.Ntut.model.OtherInfo;
@@ -40,7 +44,6 @@ public class OtherAdapter extends RecyclerView.Adapter<OtherAdapter.ViewHolder> 
         public ViewHolder(View itemView, ViewHolderOnClick listener){
             super(itemView);
             otherText = (TextView) itemView.findViewById(R.id.other_text);
-            imageView = (ImageView) itemView.findViewById(R.id.other_image);
             this.listener = listener;
             itemView.setOnClickListener(this);
         }
@@ -61,12 +64,18 @@ public class OtherAdapter extends RecyclerView.Adapter<OtherAdapter.ViewHolder> 
         ViewHolder viewHolder = new ViewHolder(contactView, new ViewHolder.ViewHolderOnClick() {
             @Override
             public void onClick(View v, int position) {
+                Intent intent;
+                ActivityOptionsCompat options = ActivityOptionsCompat
+                        .makeSceneTransitionAnimation((Activity) context, v, "other");
                 switch (position){
                     case 0:
-                        context.changeFragment(new CreditFragment());
+                        intent = new Intent(new Intent(context, CreditFragment.class));
+                        context.startActivity(intent, options.toBundle());
                         break;
                     case 1:
-                        context.changeFragment(new AccountSettingFragment());
+                        intent = new Intent(new Intent(context, AccountActivity.class));
+                        context.startActivity(intent, options.toBundle());
+                        break;
                 }
             }
         });
