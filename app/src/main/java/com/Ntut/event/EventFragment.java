@@ -58,7 +58,6 @@ public class EventFragment extends BaseFragment implements ValueEventListener {
 
     private void setData() {
         eventList = Model.getInstance().getEventArray();
-
         if (eventList == null) {
             eventList = new ArrayList<>();
         }
@@ -81,7 +80,6 @@ public class EventFragment extends BaseFragment implements ValueEventListener {
     public void onDataChange(DataSnapshot dataSnapshot) {
         adapter.clear();
         for (DataSnapshot ds : dataSnapshot.getChildren() ){
-            Log.e("test", ds.child("image").getValue().toString());
             EventInfo eventInfo = new EventInfo(
                     ds.child("image").getValue().toString(),
                     ds.child("title").getValue().toString(),
