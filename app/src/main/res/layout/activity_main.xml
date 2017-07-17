@@ -6,19 +6,23 @@
     android:background="#ececec"
     tools:context=".MainActivity">
 
-    <include layout="@layout/toolbar"
-        android:id="@+id/toolbar"/>
-
-    <FrameLayout
-        android:id="@+id/fragment_container"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_navigation_bar"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/toolbar">
+        android:orientation="vertical"
+        android:layout_above="@+id/bottom_navigation_bar">
 
-    </FrameLayout>
+        <include layout="@layout/toolbar"/>
 
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/toolbar">
+
+        </FrameLayout>
+    </LinearLayout>
     <com.ashokvarma.bottomnavigation.BottomNavigationBar
         android:id="@+id/bottom_navigation_bar"
         android:layout_width="match_parent"
@@ -27,6 +31,4 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:elevation="10dp"/>
-
-
 </RelativeLayout>

@@ -38,6 +38,21 @@
             android:name=".account.AccountActivity">
         </activity>
 
+        <activity
+            android:name=".credit.CreditActivity">
+        </activity>
+
+        <activity
+            android:name=".feedback.FeedbackActivity">
+        </activity>
+
+        <activity
+            android:name=".course.CourseDetailActivity">
+        </activity>
+
+        <activity
+            android:name=".etc.EtcActivity">
+        </activity>
 
         <service android:name=".firebase.FirebaseService">
             <intent-filter>

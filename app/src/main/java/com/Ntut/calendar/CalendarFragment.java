@@ -244,6 +244,6 @@ public class CalendarFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     public int getTitleStringId() {
-        return R.string.calendar;
+        return R.string.calendar_text;
     }
 }

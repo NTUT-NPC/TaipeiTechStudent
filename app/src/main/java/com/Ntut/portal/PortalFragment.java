@@ -44,7 +44,6 @@ public class PortalFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
     }
 
     @Nullable

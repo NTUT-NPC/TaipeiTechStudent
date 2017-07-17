@@ -48,7 +48,7 @@ public class CourseDetailActivity extends AppCompatActivity {
             finish();
             return;
         }
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(mToolbar);
         setActionBar();
         mProgressDialog = ProgressDialog.show(this, null, "課程資料讀取中~", true);

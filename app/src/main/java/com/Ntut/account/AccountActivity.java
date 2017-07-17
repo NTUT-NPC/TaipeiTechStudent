@@ -1,12 +1,15 @@
 package com.Ntut.account;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
@@ -18,6 +21,7 @@ import com.Ntut.R;
 import com.Ntut.model.Model;
 import com.Ntut.runnable.AccountRunnable;
 import com.Ntut.utility.NportalConnector;
+import com.Ntut.utility.Utility;
 import com.Ntut.utility.WifiUtility;
 
 /**
@@ -25,6 +29,8 @@ import com.Ntut.utility.WifiUtility;
  */
 
 public class AccountActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,6 +45,9 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
         View right_link = findViewById(R.id.right_link);
         right_link.setOnClickListener(this);
         refreshView();
+        mToolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        setSupportActionBar(mToolbar);
+        setActionBar();
     }
 
     private void refreshView() {
@@ -124,6 +133,22 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
         if (view.requestFocus()) {
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
         }
+    }
+
+    public void setActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+            actionBar.setTitle(R.string.account_setting_text);
+            actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.blue)));
+        }
+        Utility.setStatusBarColor(this, getResources().getColor(R.color.blue));
     }
 
     private void writeSettings() {

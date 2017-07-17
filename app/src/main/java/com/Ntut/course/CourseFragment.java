@@ -78,6 +78,7 @@ public class CourseFragment extends BaseFragment implements View.OnClickListener
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -388,6 +389,6 @@ public class CourseFragment extends BaseFragment implements View.OnClickListener
 
     @Override
     public int getTitleStringId() {
-        return R.string.course;
+        return R.string.course_text;
     }
 }

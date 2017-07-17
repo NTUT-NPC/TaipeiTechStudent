@@ -51,8 +51,9 @@ public class EventFragment extends BaseFragment implements ValueEventListener {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        DatabaseReference reference_contacts = FirebaseDatabase.getInstance().getReference("events");
-        reference_contacts.addValueEventListener(this);
+        final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("events");
+        databaseReference.addValueEventListener(this);
+
         setData();
     }
 
@@ -73,11 +74,12 @@ public class EventFragment extends BaseFragment implements ValueEventListener {
 
     @Override
     public int getTitleStringId() {
-        return R.string.event;
+        return R.string.activity_text;
     }
 
     @Override
     public void onDataChange(DataSnapshot dataSnapshot) {
+        Log.e("EventFragment", "adapter clear");
         adapter.clear();
         for (DataSnapshot ds : dataSnapshot.getChildren() ){
             EventInfo eventInfo = new EventInfo(

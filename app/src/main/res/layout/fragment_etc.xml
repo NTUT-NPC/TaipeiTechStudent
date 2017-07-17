@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:background="#eee">
+
+    <include layout="@layout/toolbar"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/uiLang_seekBar"
+            android:layout_marginStart="230dp"
+            android:isScrollContainer="false"
+            android:max="100"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="230dp"
+            android:layout_marginRight="20dp" />
+
+        <TextView
+            android:text="@string/etc_language_en"
+            android:layout_height="wrap_content"
+            android:id="@+id/uiE_textView"
+            android:textAlignment="center"
+            android:layout_width="30dp"
+            android:layout_alignBottom="@+id/uiLang_seekBar"
+            android:layout_alignLeft="@+id/uiLang_seekBar"
+            android:layout_alignStart="@+id/uiLang_seekBar"
+            android:layout_marginBottom="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:text="@string/etc_language_zh"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/uiE_textView"
+            android:layout_toRightOf="@+id/uiE_textView"
+            android:layout_toEndOf="@+id/uiE_textView"
+            android:id="@+id/uiC_textView"
+            android:layout_marginEnd="9dp"
+            android:layout_marginStart="9dp" />
+
+        <TextView
+            android:text="@string/etc_language_ja"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/uiC_textView"
+            android:layout_toRightOf="@+id/uiC_textView"
+            android:layout_toEndOf="@+id/uiC_textView"
+            android:id="@+id/uiJ_textView"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/uiLangHint_textView"
+            android:text="@string/etc_uilanguage_hint"
+            android:layout_below="@+id/uiLang_textView"
+            android:layout_alignLeft="@+id/uiLang_textView"
+            android:layout_alignStart="@+id/uiLang_textView"
+            android:layout_marginTop="5dp"
+            android:textColor="?android:attr/textColorHint" />
+
+        <TextView
+            android:text="@string/etc_uilanguage_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:id="@+id/uiLang_textView"
+            android:textSize="24sp"
+            android:layout_alignBaseline="@+id/uiE_textView"
+            android:layout_alignBottom="@+id/uiE_textView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="?attr/editTextColor"
+            android:layout_marginEnd="38dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="38dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/courseLang_seekBar"
+            android:layout_marginStart="230dp"
+            android:layout_marginTop="60dp"
+            android:max="100"
+            android:layout_marginEnd="20dp"
+            android:layout_marginLeft="230dp"
+            android:layout_marginRight="20dp" />
+
+        <TextView
+            android:text="@string/etc_language_en"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/courseLang_seekBar"
+            android:layout_alignLeft="@+id/courseLang_seekBar"
+            android:layout_alignStart="@+id/courseLang_seekBar"
+            android:layout_marginBottom="30dp"
+            android:id="@+id/courseE_textView"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:text="@string/etc_language_zh"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/courseC_textView"
+            android:layout_alignBottom="@+id/courseE_textView"
+            android:layout_toRightOf="@+id/courseE_textView"
+            android:layout_toEndOf="@+id/courseE_textView"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginRight="10dp" />
+
+        <TextView
+            android:text="@string/etc_courselanguage_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/courseLang_textView"
+            android:layout_alignBaseline="@+id/courseE_textView"
+            android:layout_alignBottom="@+id/courseE_textView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="38dp"
+            android:textSize="24sp"
+            android:textColor="?attr/editTextColor"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="38dp" />
+
+        <TextView
+            android:text="@string/etc_courselanguage_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/courseLangHint_textView"
+            android:layout_below="@+id/courseLang_textView"
+            android:layout_alignLeft="@+id/courseLang_textView"
+            android:layout_alignStart="@+id/courseLang_textView"
+            android:layout_marginTop="5dp"
+            android:textColor="?android:attr/textColorHint" />
+    </RelativeLayout>
+
+</LinearLayout>

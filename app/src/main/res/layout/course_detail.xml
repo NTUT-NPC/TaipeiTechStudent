@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/silver"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/silver"
+    android:orientation="vertical">
 
     <include
         layout="@layout/toolbar">
@@ -24,16 +24,16 @@
                 android:id="@+id/courseInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#eeeeee"
+                android:background="@drawable/white_block_background"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="start"
+                    android:gravity="left"
                     android:padding="5dp"
-                    android:text="課程資料"
+                    android:text="@string/course_detail"
                     android:textColor="@color/darken"
                     android:textSize="@dimen/textLarge"/>
             </LinearLayout>
@@ -43,16 +43,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="#eeeeee"
+                android:background="@drawable/white_block_background"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="start"
+                    android:gravity="left"
                     android:padding="5dp"
-                    android:text="學生名單"
+                    android:text="@string/classmates"
                     android:textColor="@color/darken"
                     android:textSize="@dimen/textLarge"/>
             </LinearLayout>

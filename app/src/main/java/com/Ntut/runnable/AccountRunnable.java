@@ -1,9 +1,11 @@
 package com.Ntut.runnable;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 
 import com.Ntut.MainActivity;
+import com.Ntut.account.AccountActivity;
 import com.Ntut.course.CourseFragment;
 
 /**
@@ -11,15 +13,16 @@ import com.Ntut.course.CourseFragment;
  */
 
 public class AccountRunnable extends BaseRunnable {
-    private final MainActivity context;
+    private final AccountActivity context;
 
     public AccountRunnable(Handler handler, Context context) {
         super(handler);
-        this.context = (MainActivity) context;
+         this.context = (AccountActivity) context;
     }
 
     @Override
     public void run() {
-        context.changeFragment(new CourseFragment());
+        Intent intent = new Intent(context, MainActivity.class);
+        context.startActivity(intent);
     }
 }

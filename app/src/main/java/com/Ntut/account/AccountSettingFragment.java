@@ -158,6 +158,6 @@ public class AccountSettingFragment extends BaseFragment implements View.OnClick
 
     @Override
     public int getTitleStringId() {
-        return R.string.account_setting;
+        return R.string.account_setting_text;
     }
 }

@@ -58,8 +58,8 @@ public class CreditStandardDialog extends AlertDialog implements
         super(context);
             setTitle(context.getString(R.string.credit_setting_graduation));
         setView(getView(standardCredit));
-        setButton(BUTTON_NEGATIVE, context.getString(R.string.credit_cancel), (DialogInterface.OnClickListener) null);
-        setButton(BUTTON_POSITIVE, context.getString(R.string.credit_save), (DialogInterface.OnClickListener) null);
+        setButton(BUTTON_NEGATIVE, context.getString(R.string.cancel), (DialogInterface.OnClickListener) null);
+        setButton(BUTTON_POSITIVE, context.getString(R.string.save), (DialogInterface.OnClickListener) null);
         setOnShowListener(this);
     }
 

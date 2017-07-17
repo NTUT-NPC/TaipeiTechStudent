@@ -14,8 +14,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/white_block_background"
         android:orientation="vertical"
-        android:padding="@dimen/settingPadding"
-        android:transitionName="other">
+        android:padding="@dimen/settingPadding">
 
         <RelativeLayout
             android:layout_width="match_parent"

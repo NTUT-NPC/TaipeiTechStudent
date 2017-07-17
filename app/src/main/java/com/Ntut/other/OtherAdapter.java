@@ -3,10 +3,8 @@ package com.Ntut.other;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.transition.Transition;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +14,9 @@ import android.widget.TextView;
 import com.Ntut.MainActivity;
 import com.Ntut.R;
 import com.Ntut.account.AccountActivity;
-import com.Ntut.account.AccountSettingFragment;
-import com.Ntut.credit.CreditFragment;
+import com.Ntut.credit.CreditActivity;
+import com.Ntut.etc.EtcActivity;
+import com.Ntut.feedback.FeedbackActivity;
 import com.Ntut.model.OtherInfo;
 
 import java.util.List;
@@ -69,11 +68,19 @@ public class OtherAdapter extends RecyclerView.Adapter<OtherAdapter.ViewHolder> 
                         .makeSceneTransitionAnimation((Activity) context, v, "other");
                 switch (position){
                     case 0:
-                        intent = new Intent(new Intent(context, CreditFragment.class));
+                        intent = new Intent(new Intent(context, CreditActivity.class));
                         context.startActivity(intent, options.toBundle());
                         break;
                     case 1:
                         intent = new Intent(new Intent(context, AccountActivity.class));
+                        context.startActivity(intent, options.toBundle());
+                        break;
+                    case 2:
+                        intent = new Intent(new Intent(context, FeedbackActivity.class));
+                        context.startActivity(intent, options.toBundle());
+                        break;
+                    case 3:
+                        intent = new Intent(new Intent(context, EtcActivity.class));
                         context.startActivity(intent, options.toBundle());
                         break;
                 }

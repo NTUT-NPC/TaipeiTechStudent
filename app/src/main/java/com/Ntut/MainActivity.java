@@ -4,6 +4,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -22,7 +23,7 @@ import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener {
+public class MainActivity extends BaseActivity implements BottomNavigationBar.OnTabSelectedListener {
 
     private BottomNavigationBar bottomNavigationBar;
     private int lastSelectedPosition;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     private PortalFragment portalFragment = new PortalFragment();
     private OtherFragment otherFragment = new OtherFragment();
     private AccountSettingFragment accountSettingFragment = new AccountSettingFragment();
+    private Boolean lockFinish = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     }
 
     private void initToolbar(){
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
     }
 
@@ -117,6 +119,30 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         changeFragment(fragment);
     }
 
+    @Override
+    public void onBackPressed() {
+        if (lockFinish) {
+            Toast.makeText(MainActivity.this, R.string.press_again_to_exit,
+                    Toast.LENGTH_SHORT).show();
+            lockFinish = false;
+            Thread thread = new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        synchronized (this) {
+                            wait(2000);
+                        }
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+                    lockFinish = true;
+                }
+            };
+            thread.start();
+        } else {
+            finish();
+        }
+    }
 
 
     public void changeFragment(BaseFragment newFragment) {

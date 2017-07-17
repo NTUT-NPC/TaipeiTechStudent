@@ -2,11 +2,13 @@ package com.Ntut.credit;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -15,7 +17,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
@@ -23,7 +24,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.Ntut.BaseFragment;
+import com.Ntut.BaseActivity;
 import com.Ntut.R;
 import com.Ntut.model.CreditInfo;
 import com.Ntut.model.GeneralCredit;
@@ -46,39 +47,35 @@ import java.util.ArrayList;
  * Created by Andy on 2017/4/28.
  */
 
-public class CreditFragment extends BaseFragment implements View.OnClickListener, CreditStandardDialog.DialogListener {
+public class CreditActivity extends BaseActivity implements View.OnClickListener, CreditStandardDialog.DialogListener {
 
-    private static View fragmentView;
     private ProgressDialog pd;
     private Thread nextThread = null;
     private LinearLayout credit;
     private CreditGroupView total_group = null;
     public static int CONTENT_ROW_HEIGHT = 100;
     private boolean isUser = false;
+    private Toolbar mToolbar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
         DisplayMetrics displaymetrics = new DisplayMetrics();
-        getActivity().getWindowManager().getDefaultDisplay()
+        getWindowManager().getDefaultDisplay()
                 .getMetrics(displaymetrics);
         CONTENT_ROW_HEIGHT = Math.round(displaymetrics.widthPixels / 8);
-        fragmentView = inflater.inflate(R.layout.fragment_credit, container, false);
-        credit = (LinearLayout) fragmentView.findViewById(R.id.credit);
-        View start_button = fragmentView.findViewById(R.id.start_button);
+        setContentView(R.layout.fragment_credit);
+        credit = (LinearLayout) findViewById(R.id.credit);
+        View start_button = findViewById(R.id.start_button);
         start_button.setOnClickListener(this);
         initView();
-        return fragmentView;
+        mToolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        setSupportActionBar(mToolbar);
+        setActionBar();
     }
 
     private void initView() {
-        View start_button = fragmentView.findViewById(R.id.start_button);
+        View start_button = findViewById(R.id.start_button);
         StudentCredit studentCredit = Model.getInstance().getStudentCredit();
         credit.removeAllViews();
         total_group = null;
@@ -110,7 +107,7 @@ public class CreditFragment extends BaseFragment implements View.OnClickListener
             total_group.setGroupPS(getString(R.string.credit) + credit_text);
             total_group.removeAllViews();
             for (int i = 1; i < 7; i++) {
-                LayoutInflater inflater = LayoutInflater.from(getActivity());
+                LayoutInflater inflater = LayoutInflater.from(this);
                 TextView text = (TextView) inflater.inflate(
                         R.layout.credit_textview, null, false);
                 text.setBackgroundResource(i % 2 == 0 ? R.color.cloud
@@ -131,10 +128,10 @@ public class CreditFragment extends BaseFragment implements View.OnClickListener
 
                         @Override
                         public void onClick(View view) {
-                            Intent intent = new Intent(getActivity(),
+                            Intent intent = new Intent(getApplicationContext(),
                                     CreditTypeListActivity.class);
                             intent.putExtra("type", (Integer) view.getTag());
-                            getActivity().startActivity(intent);
+                            startActivity(intent);
                         }
                     });
                 }
@@ -144,14 +141,14 @@ public class CreditFragment extends BaseFragment implements View.OnClickListener
     }
 
     private void createTotalGroup(StudentCredit studentCredit) {
-        total_group = new CreditGroupView(getActivity());
+        total_group = new CreditGroupView(this);
         total_group.setGroupTitle(getString(R.string.overview_credit));
         refreshTotal();
         credit.addView(total_group);
     }
 
     private void createGeneralGroup(StudentCredit studentCredit) {
-        CreditGroupView group = new CreditGroupView(getActivity());
+        CreditGroupView group = new CreditGroupView(this);
         group.setGroupTitle(getString(R.string.overview_general));
         group.setGroupPS(getString(R.string.credit_general_core) + studentCredit.getGeneralCoreCredits()
                 + "  "+getString(R.string.credit_general_elective) + studentCredit.getGeneralCommonCredits());
@@ -170,10 +167,10 @@ public class CreditFragment extends BaseFragment implements View.OnClickListener
             cores[i] = general.getHadCoreCredit();
             i++;
         }
-        int width = (int) (Utility.getScreenWidth(getActivity()) * 0.95);
+        int width = (int) (Utility.getScreenWidth(this) * 0.95);
         LinearLayout.LayoutParams chart_params = new LinearLayout.LayoutParams(width, width);
         chart_params.gravity = Gravity.CENTER_HORIZONTAL;
-        RadarChartView radar_chart = new RadarChartView(getActivity(), count,
+        RadarChartView radar_chart = new RadarChartView(this, count,
                 titles);
         radar_chart.setId(R.id.radar_chart);
         radar_chart.setDuration(700);
@@ -206,9 +203,9 @@ public class CreditFragment extends BaseFragment implements View.OnClickListener
     }
 
     private void createSemesterGroups(StudentCredit studentCredit) {
-        LayoutInflater inflater = getActivity().getLayoutInflater();
+        LayoutInflater inflater = getLayoutInflater();
         for (SemesterCredit semesterCredit : studentCredit.getSemesterCredits()) {
-            CreditGroupView group = new CreditGroupView(getActivity());
+            CreditGroupView group = new CreditGroupView(this);
             group.setGroupTitle(semesterCredit.getYear() + "-"
                     + semesterCredit.getSemester());
             ArrayList<CreditInfo> credits = semesterCredit.getCredits();
@@ -240,7 +237,7 @@ public class CreditFragment extends BaseFragment implements View.OnClickListener
                 credit.setText(String.valueOf(creditInfo.getCredit()));
                 Spinner type = (Spinner) item.findViewById(R.id.type);
                 ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(
-                        getActivity(), R.layout.credit_type_textview,
+                        this, R.layout.credit_type_textview,
                         getResources().getStringArray(R.array.credit_type));
                 dataAdapter
                         .setDropDownViewResource(R.layout.credit_type_textview);
@@ -291,7 +288,7 @@ public class CreditFragment extends BaseFragment implements View.OnClickListener
                     break;
                 case BaseRunnable.ERROR:
                     pd.dismiss();
-                    Utility.showDialog(getString(R.string.hint), (String) msg.obj, getActivity());
+                    Utility.showDialog(getString(R.string.hint), (String) msg.obj, getApplicationContext());
             }
         }
     };
@@ -307,7 +304,7 @@ public class CreditFragment extends BaseFragment implements View.OnClickListener
                     break;
                 case BaseRunnable.ERROR:
                     pd.dismiss();
-                    Utility.showDialog(getString(R.string.hint), (String) msg.obj, getActivity());
+                    Utility.showDialog(getString(R.string.hint), (String) msg.obj, getApplicationContext());
                     break;
             }
         }
@@ -327,16 +324,16 @@ public class CreditFragment extends BaseFragment implements View.OnClickListener
                         if (CreditConnector.isHaveError) {
                             Utility.showDialog(getString(R.string.credit_imformation_complete),
                                     getString(R.string.credit_final)+"\n"+getString(R.string.credit_error),
-                                    getActivity());
+                                    getApplicationContext());
                         } else {
                             Utility.showDialog(getString(R.string.credit_imformation_complete), getString(R.string.credit_final),
-                                    getActivity());
+                                    getApplicationContext());
                         }
                     }
                     break;
                 case BaseRunnable.ERROR:
                     pd.dismiss();
-                    Utility.showDialog(getString(R.string.hint), (String) msg.obj, getActivity());
+                    Utility.showDialog(getString(R.string.hint), (String) msg.obj, getApplicationContext());
                     break;
             }
         }
@@ -363,9 +360,9 @@ public class CreditFragment extends BaseFragment implements View.OnClickListener
     };
 
     private void queryCredit() {
-        if (WifiUtility.isNetworkAvailable(getActivity())) {
-            if(Utility.checkAccount(getActivity())) {
-                pd = new ProgressDialog(getActivity());
+        if (WifiUtility.isNetworkAvailable(this)) {
+            if(Utility.checkAccount(this)) {
+                pd = new ProgressDialog(this);
                 pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                 pd.setProgress(0);
                 pd.setTitle(getString(R.string.credit_updating));
@@ -375,7 +372,7 @@ public class CreditFragment extends BaseFragment implements View.OnClickListener
                 loginNportal();
             }
         } else {
-            Toast.makeText(getActivity(), R.string.check_network_available,
+            Toast.makeText(this, R.string.check_network_available,
                     Toast.LENGTH_LONG).show();
         }
     }
@@ -410,9 +407,9 @@ public class CreditFragment extends BaseFragment implements View.OnClickListener
                 queryCredit();
                 break;
             default:
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(getString(R.string.overview_general));
-                View view = new CreditGeneralView(getActivity(), Model
+                View view = new CreditGeneralView(this, Model
                         .getInstance().getStudentCredit());
                 builder.setView(view);
                 builder.setCancelable(true);
@@ -430,9 +427,27 @@ public class CreditFragment extends BaseFragment implements View.OnClickListener
         refreshTotal();
     }
 
+    public void setActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+            actionBar.setTitle(R.string.credit_text);
+            actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.blue)));
+        }
+        Utility.setStatusBarColor(this, getResources().getColor(R.color.blue));
+    }
+
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_credit, menu);
+        return true;
     }
 
     @Override
@@ -443,8 +458,8 @@ public class CreditFragment extends BaseFragment implements View.OnClickListener
                 break;
             case R.id.item_standard_credit:
                 CreditStandardDialog dialog = new CreditStandardDialog(
-                        getActivity(), Model.getInstance().getStandardCredit());
-                dialog.setDialogListener(CreditFragment.this);
+                        this, Model.getInstance().getStandardCredit());
+                dialog.setDialogListener(CreditActivity.this);
                 dialog.show();
                 break;
             case R.id.item_clear:
@@ -457,15 +472,5 @@ public class CreditFragment extends BaseFragment implements View.OnClickListener
                 break;
         }
         return true;
-    }
-
-    @Override
-    public int getTitleColorId() {
-        return R.color.dark_blue;
-    }
-
-    @Override
-    public int getTitleStringId() {
-        return R.string.credit;
     }
 }

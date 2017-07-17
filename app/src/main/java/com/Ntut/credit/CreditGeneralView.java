@@ -30,7 +30,7 @@ public class CreditGeneralView extends ScrollView {
         this.studentCredit = studentCredit;
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
                 LayoutParams.MATCH_PARENT,
-                CreditFragment.CONTENT_ROW_HEIGHT * 8);
+                CreditActivity.CONTENT_ROW_HEIGHT * 8);
         setLayoutParams(params);
         init();
     }

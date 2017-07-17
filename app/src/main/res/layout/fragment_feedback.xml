@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#bdc3c7"
+    android:weightSum="1">
+
+    <include layout="@layout/toolbar"/>
+
+    <TextView
+        android:text="@string/question_or_suggestion"
+        android:textColor="#2a2a2a"
+        android:textSize="20sp"
+        android:layout_marginTop="50px"
+        android:layout_marginLeft="50px"
+        android:layout_marginRight="50px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/shape"
+        android:lineSpacingExtra="3dp"
+        android:paddingTop="10sp"
+        android:paddingBottom="10sp"
+        android:paddingRight="10sp"
+        android:paddingLeft="10sp"
+        android:layout_marginTop="20px"
+        android:layout_marginLeft="50px"
+        android:layout_marginRight="50px"
+        android:gravity="left"
+        android:inputType="textMultiLine"
+        android:textSize="20sp"
+        android:hint="@string/feedback_hint"
+        android:id="@+id/feedback"
+        android:layout_weight="0.19"
+        android:scrollbars="vertical"
+        android:elevation="3dp" />
+
+    <TextView
+        android:text="@string/feedback_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#2a2a2a"
+        android:textSize="20sp"
+        android:layout_marginTop="50px"
+        android:layout_marginLeft="50px"
+        android:layout_marginRight="50px"
+        android:id="@+id/textView3" />
+
+    <EditText
+        android:elevation="3dp"
+        android:hint="@string/feedback_contact_hint"
+        android:background="@drawable/shape"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:paddingTop="10sp"
+        android:paddingBottom="10sp"
+        android:paddingRight="10sp"
+        android:paddingLeft="10sp"
+        android:layout_marginTop="20px"
+        android:layout_marginLeft="50px"
+        android:layout_marginRight="50px"
+        android:gravity="left"
+        android:inputType="textEmailAddress"
+        android:id="@+id/contact_imformatoin"
+        android:layout_weight="0.08" />
+
+    <Button
+        android:id="@+id/send_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50px"
+        android:layout_marginRight="50px"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/blue_background_selector"
+        android:text="@string/send"
+        android:textColor="@color/white" />
+
+    <!--<android.support.design.widget.FloatingActionButton-->
+        <!--android:id="@+id/fab"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="bottom|end"-->
+        <!--android:layout_margin="16dp"-->
+        <!--android:src="@drawable/ic_send_white_24dp"-->
+        <!--android:elevation="6dp"-->
+        <!--app:pressedTranslationZ="12dp"-->
+        <!--app:backgroundTint="@color/blue"-->
+        <!--app:rippleColor="@color/dark_blue" />-->
+
+
+</LinearLayout>

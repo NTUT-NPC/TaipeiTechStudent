@@ -40,8 +40,10 @@ public class OtherFragment extends BaseFragment {
     private void initListData() {
         otherInfoList = new ArrayList<>();
         //添加項目
-        otherInfoList.add(new OtherInfo(getString(R.string.credit)));
-        otherInfoList.add(new OtherInfo(getString(R.string.account_setting)));
+        otherInfoList.add(new OtherInfo(getString(R.string.credit_text)));
+        otherInfoList.add(new OtherInfo(getString(R.string.account_setting_text)));
+        otherInfoList.add(new OtherInfo(getString(R.string.feedback_text)));
+        otherInfoList.add(new OtherInfo(getString(R.string.etc_text)));
     }
 
     @Override
@@ -51,6 +53,6 @@ public class OtherFragment extends BaseFragment {
 
     @Override
     public int getTitleStringId() {
-        return 0;
+        return R.string.other_text;
     }
 }
