@@ -16,12 +16,12 @@
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:padding="10dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/person"/>
+            <!--<ImageView-->
+                <!--android:layout_width="40dp"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:padding="10dp"-->
+                <!--android:scaleType="centerCrop"-->
+                <!--android:src="@drawable/person"/>-->
 
             <EditText
                 android:id="@+id/sidText"
@@ -29,13 +29,14 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
+                android:layout_marginStart="10dp"
                 android:background="@color/white"
                 android:hint="學號"
                 android:imeOptions="actionSearch"
                 android:inputType="text"
                 android:padding="3dp"
                 android:singleLine="true"
-                android:textColor="@color/darken"
+                android:textColor="#6C6E70"
                 android:textSize="@dimen/textMedium"/>
 
             <com.Ntut.course.SemesterSelector

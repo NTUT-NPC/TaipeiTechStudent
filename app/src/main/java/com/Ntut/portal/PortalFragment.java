@@ -1,6 +1,7 @@
 package com.Ntut.portal;
 
 import android.app.ProgressDialog;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.CookieManager;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
@@ -21,6 +23,7 @@ import com.Ntut.R;
 import com.Ntut.model.Model;
 import com.Ntut.runnable.BaseRunnable;
 import com.Ntut.runnable.LoginNportalRunnable;
+import com.Ntut.utility.WifiUtility;
 
 import java.lang.ref.WeakReference;
 import java.net.CookieHandler;
@@ -36,6 +39,8 @@ public class PortalFragment extends BaseFragment {
     private static View fragmentView;
     private ProgressDialog mProgressDialog;
     private static final String PORTAL_URL = "https://nportal.ntut.edu.tw/";
+    static WebView webview;
+    private final static String CACHE_DIRNAME = "webview";
 
     public PortalFragment() {
 
@@ -51,12 +56,9 @@ public class PortalFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         fragmentView = inflater.inflate(R.layout.fragment_portal, container, false);
-        final WebView webview = (WebView) fragmentView.findViewById(R.id.webview);
+        webview = (WebView) fragmentView.findViewById(R.id.webview);
         webview.setWebViewClient(new WebViewClient());
-        webview.clearCache(true);
-        webview.clearHistory();
-        webview.getSettings().setJavaScriptEnabled(true);
-        webview.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+        initWebViewSettings();
         String account = Model.getInstance().getAccount();
         String password = Model.getInstance().getPassword();
         webview.setOnKeyListener(new View.OnKeyListener(){
@@ -82,6 +84,30 @@ public class PortalFragment extends BaseFragment {
         }
 
         return fragmentView;
+    }
+
+    private void initWebViewSettings() {
+        WebSettings webSetting = webview.getSettings();
+        webSetting.setJavaScriptEnabled(true);
+        webSetting.setUseWideViewPort(true);
+        webSetting.setLoadWithOverviewMode(true);
+        webSetting.setSupportZoom(true);
+        webSetting.setBuiltInZoomControls(true);
+        webSetting.setDisplayZoomControls(false);
+        webSetting.setAllowFileAccess(true);
+        webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
+        webSetting.setLoadsImagesAutomatically(true);
+        webSetting.setDefaultTextEncodingName("utf-8");
+        if (WifiUtility.isConnected(getContext())) {
+            webSetting.setCacheMode(WebSettings.LOAD_DEFAULT);
+        } else {
+            webSetting.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        }
+        webSetting.setDomStorageEnabled(true);
+        webSetting.setDatabaseEnabled(true);
+        webSetting.setAppCacheEnabled(true);
+        String cacheDirPath = getActivity().getFilesDir().getAbsolutePath() + CACHE_DIRNAME;
+        webSetting.setAppCachePath(cacheDirPath);
     }
 
     private static class LoginHandler extends Handler {
@@ -136,6 +162,26 @@ public class PortalFragment extends BaseFragment {
             mProgressDialog.dismiss();
             mProgressDialog = null;
         }
+    }
+
+    public static boolean canGoBack(){
+        return webview.canGoBack();
+    }
+
+    public static void goBack(){
+        webview.goBack();
+    }
+
+    @Override
+    public void onDestroy() {
+        if (webview != null) {
+            webview.loadDataWithBaseURL(null, "", "text/html", "utf-8", null);
+            webview.clearHistory();
+            ((ViewGroup) webview.getParent()).removeView(webview);
+            webview.destroy();
+            webview = null;
+        }
+        super.onDestroy();
     }
 
     @Override

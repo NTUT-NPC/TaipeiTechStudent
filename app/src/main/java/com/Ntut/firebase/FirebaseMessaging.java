@@ -37,6 +37,10 @@ public class FirebaseMessaging extends com.google.firebase.messaging.FirebaseMes
 
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
+        sendNotification(remoteMessage);
+    }
+
+    private void sendNotification(RemoteMessage remoteMessage) {
         final int notifyID = 1; // 通知的識別號碼
         final boolean autoCancel = true; // 點擊通知後是否要自動移除掉通知
         final int requestCode = notifyID; // PendingIntent的Request Code

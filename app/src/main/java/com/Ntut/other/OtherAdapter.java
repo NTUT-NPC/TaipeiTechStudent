@@ -29,6 +29,11 @@ public class OtherAdapter extends RecyclerView.Adapter<OtherAdapter.ViewHolder> 
 
     private List<OtherInfo> otherInfos;
     private MainActivity context;
+    private final static int CREDIT_ID = 0;
+    private final static int ACCOUNT_ID = 1;
+    private final static int FEEDBACK_ID = 2;
+    private final static int ETC_ID = 3;
+
 
     public OtherAdapter(List<OtherInfo> otherInfos, Context context){
         this.otherInfos = otherInfos;
@@ -67,19 +72,19 @@ public class OtherAdapter extends RecyclerView.Adapter<OtherAdapter.ViewHolder> 
                 ActivityOptionsCompat options = ActivityOptionsCompat
                         .makeSceneTransitionAnimation((Activity) context, v, "other");
                 switch (position){
-                    case 0:
+                    case CREDIT_ID:
                         intent = new Intent(new Intent(context, CreditActivity.class));
                         context.startActivity(intent, options.toBundle());
                         break;
-                    case 1:
+                    case ACCOUNT_ID:
                         intent = new Intent(new Intent(context, AccountActivity.class));
                         context.startActivity(intent, options.toBundle());
                         break;
-                    case 2:
+                    case FEEDBACK_ID:
                         intent = new Intent(new Intent(context, FeedbackActivity.class));
                         context.startActivity(intent, options.toBundle());
                         break;
-                    case 3:
+                    case ETC_ID:
                         intent = new Intent(new Intent(context, EtcActivity.class));
                         context.startActivity(intent, options.toBundle());
                         break;

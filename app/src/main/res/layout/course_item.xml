@@ -23,7 +23,7 @@
         android:textColor="@color/darken"
         android:ellipsize="marquee"
         android:gravity="start"
-        android:maxLines="1"
+        android:singleLine="true"
         android:textSize="@dimen/textMedium"/>
 
 </LinearLayout>

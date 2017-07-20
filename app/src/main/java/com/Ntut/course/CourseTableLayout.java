@@ -2,6 +2,7 @@ package com.Ntut.course;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -18,6 +19,7 @@ import com.Ntut.R;
 import com.Ntut.model.CourseInfo;
 import com.Ntut.model.StudentCourse;
 import com.Ntut.utility.Utility;
+import com.bumptech.glide.load.engine.Resource;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -80,14 +82,14 @@ public class CourseTableLayout extends LinearLayout {
 
     private void initCourseTable() {
         courseContainer.removeAllViews();
-        LinearLayout.LayoutParams title_row_params = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, ROW_HEIGHT / 2);
-        LinearLayout.LayoutParams row_params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+        LayoutParams title_row_params = new LayoutParams(
+                LayoutParams.MATCH_PARENT, ROW_HEIGHT / 2);
+        LayoutParams row_params = new LayoutParams(LayoutParams.MATCH_PARENT,
                 ROW_HEIGHT);
-        LinearLayout.LayoutParams cell_params = new LinearLayout.LayoutParams(0,
-                LinearLayout.LayoutParams.MATCH_PARENT, 1f);
-        LinearLayout.LayoutParams title_col_params = new LinearLayout.LayoutParams(0,
-                LinearLayout.LayoutParams.MATCH_PARENT, 0.5f);
+        LayoutParams cell_params = new LayoutParams(0,
+                LayoutParams.MATCH_PARENT, 1f);
+        LayoutParams title_col_params = new LayoutParams(0,
+                LayoutParams.MATCH_PARENT, 0.5f);
         for (int i = 0; i < TABLE_ROW; i++) {
             LinearLayout table_row = new LinearLayout(getContext());
             table_row.setOrientation(LinearLayout.HORIZONTAL);
@@ -102,6 +104,12 @@ public class CourseTableLayout extends LinearLayout {
                             Locale.US));
                 }
                 table_cell.setId(j != TABLE_COL - 1 ? i : 14);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    table_cell.setZ(20.0f);
+//                    table_cell.setBackgroundResource(R.drawable.shape);
+//                    table_cell.setElevation(20.0f);
+                    cell_params.setMargins(8, 8, 8, 8);
+                }
                 table_cell.setLayoutParams(j == 0 ? title_col_params
                         : cell_params);
                 table_row.addView(table_cell);
@@ -192,6 +200,8 @@ public class CourseTableLayout extends LinearLayout {
 
     private int[] getColorArray(int color_count) {
         int[] color_array = new int[color_count];
+        Color[] colors = new Color[5*4];
+
         int delta = 360 / color_count;
         int offset = (int) (Math.random() * 360);
         for (int i = 0; i < color_count; i++) {

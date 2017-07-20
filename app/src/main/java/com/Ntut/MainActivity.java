@@ -4,9 +4,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
@@ -52,12 +50,12 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
         changeFragment(courseFragment);
     }
 
-    private void initToolbar(){
+    private void initToolbar() {
         toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
     }
 
-    private void initNavigation(){
+    private void initNavigation() {
         bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
         bottomNavigationBar.setTabSelectedListener(this);
         bottomNavigationBar
@@ -65,7 +63,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
         bottomNavigationBar.
                 setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
         bottomNavigationBar
-                .addItem(new BottomNavigationItem(R.drawable.course_icon).setActiveColorResource(R.color.dark_green))
+                .addItem(new BottomNavigationItem(R.drawable.course_icon).setActiveColorResource(R.color.course))
                 .addItem(new BottomNavigationItem(R.drawable.calendar_icon).setActiveColorResource(R.color.orange))
                 .addItem(new BottomNavigationItem(R.drawable.event_icon).setActiveColorResource(R.color.red))
                 .addItem(new BottomNavigationItem(R.drawable.nportal_icon).setActiveColorResource(R.color.blue))
@@ -121,26 +119,31 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
 
     @Override
     public void onBackPressed() {
-        if (lockFinish) {
-            Toast.makeText(MainActivity.this, R.string.press_again_to_exit,
-                    Toast.LENGTH_SHORT).show();
-            lockFinish = false;
-            Thread thread = new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        synchronized (this) {
-                            wait(2000);
+        if (currentFragment == portalFragment && portalFragment.canGoBack()) {
+            portalFragment.goBack();
+        }
+        else {
+            if (lockFinish) {
+                Toast.makeText(MainActivity.this, R.string.press_again_to_exit,
+                        Toast.LENGTH_SHORT).show();
+                lockFinish = false;
+                Thread thread = new Thread() {
+                    @Override
+                    public void run() {
+                        try {
+                            synchronized (this) {
+                                wait(2000);
+                            }
+                        } catch (InterruptedException ex) {
+                            ex.printStackTrace();
                         }
-                    } catch (InterruptedException ex) {
-                        ex.printStackTrace();
+                        lockFinish = true;
                     }
-                    lockFinish = true;
-                }
-            };
-            thread.start();
-        } else {
-            finish();
+                };
+                thread.start();
+            } else {
+                finish();
+            }
         }
     }
 
