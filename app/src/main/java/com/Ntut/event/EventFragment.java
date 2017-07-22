@@ -79,7 +79,6 @@ public class EventFragment extends BaseFragment implements ValueEventListener {
 
     @Override
     public void onDataChange(DataSnapshot dataSnapshot) {
-        Log.e("EventFragment", "adapter clear");
         adapter.clear();
         for (DataSnapshot ds : dataSnapshot.getChildren() ){
             EventInfo eventInfo = new EventInfo(

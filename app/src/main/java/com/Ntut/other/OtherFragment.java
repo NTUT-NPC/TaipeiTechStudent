@@ -42,8 +42,12 @@ public class OtherFragment extends BaseFragment {
         //添加項目
         otherInfoList.add(new OtherInfo(getString(R.string.credit_text)));
         otherInfoList.add(new OtherInfo(getString(R.string.account_setting_text)));
+        otherInfoList.add(new OtherInfo(getString(R.string.school_map_text)));
+        otherInfoList.add(new OtherInfo(getString(R.string.club_text)));
+        otherInfoList.add(new OtherInfo(getString(R.string.store_text)));
         otherInfoList.add(new OtherInfo(getString(R.string.feedback_text)));
         otherInfoList.add(new OtherInfo(getString(R.string.etc_text)));
+        otherInfoList.add(new OtherInfo(getString(R.string.about_text)));
     }
 
     @Override

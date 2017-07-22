@@ -1,5 +1,6 @@
 package com.Ntut;
 
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
@@ -10,6 +11,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.Ntut.account.AccountActivity;
 import com.Ntut.account.AccountSettingFragment;
 import com.Ntut.calendar.CalendarFragment;
 import com.Ntut.course.CourseFragment;
@@ -99,14 +101,15 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
                 fragment = eventFragment;
                 break;
             case 3:
-                Log.e(MainApplication.readSetting("account"), MainApplication.readSetting("password"));
                 String account = Model.getInstance().getAccount();
                 String password = Model.getInstance().getPassword();
                 if (!TextUtils.isEmpty(account) && !TextUtils.isEmpty(password)) {
                     fragment = portalFragment;
                 } else {
                     Toast.makeText(getBaseContext(), R.string.none_account_error, Toast.LENGTH_LONG).show();
-                    fragment = accountSettingFragment;
+                    Intent intent = new Intent(this, AccountActivity.class);
+                    startActivity(intent);
+                    return;
                 }
 
                 break;

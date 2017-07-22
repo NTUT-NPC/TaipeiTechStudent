@@ -13,11 +13,15 @@ import android.widget.TextView;
 
 import com.Ntut.MainActivity;
 import com.Ntut.R;
+import com.Ntut.about.AboutActivity;
 import com.Ntut.account.AccountActivity;
+import com.Ntut.club.ClubActivity;
 import com.Ntut.credit.CreditActivity;
 import com.Ntut.etc.EtcActivity;
 import com.Ntut.feedback.FeedbackActivity;
+import com.Ntut.schoolmap.MapsActivity;
 import com.Ntut.model.OtherInfo;
+import com.Ntut.store.StoreActivity;
 
 import java.util.List;
 
@@ -31,8 +35,12 @@ public class OtherAdapter extends RecyclerView.Adapter<OtherAdapter.ViewHolder> 
     private MainActivity context;
     private final static int CREDIT_ID = 0;
     private final static int ACCOUNT_ID = 1;
-    private final static int FEEDBACK_ID = 2;
-    private final static int ETC_ID = 3;
+    private final static int MAP_ID = 2;
+    private final static int CLUB_ID = 3;
+    private final static int STORE_ID = 4;
+    private final static int FEEDBACK_ID = 5;
+    private final static int ETC_ID = 6;
+    private final static int ABOUT_ID = 7;
 
 
     public OtherAdapter(List<OtherInfo> otherInfos, Context context){
@@ -73,21 +81,36 @@ public class OtherAdapter extends RecyclerView.Adapter<OtherAdapter.ViewHolder> 
                         .makeSceneTransitionAnimation((Activity) context, v, "other");
                 switch (position){
                     case CREDIT_ID:
-                        intent = new Intent(new Intent(context, CreditActivity.class));
+                        intent = new Intent(context, CreditActivity.class);
                         context.startActivity(intent, options.toBundle());
                         break;
                     case ACCOUNT_ID:
-                        intent = new Intent(new Intent(context, AccountActivity.class));
+                        intent = new Intent(context, AccountActivity.class);
                         context.startActivity(intent, options.toBundle());
                         break;
+                    case MAP_ID:
+                        intent = new Intent(context, MapsActivity.class);
+                        context.startActivity(intent);
+                        break;
+                    case CLUB_ID:
+                        intent = new Intent(context, ClubActivity.class);
+                        context.startActivity(intent);
+                        break;
+                    case STORE_ID:
+                        intent = new Intent(context, StoreActivity.class);
+                        context.startActivity(intent);
+                        break;
                     case FEEDBACK_ID:
-                        intent = new Intent(new Intent(context, FeedbackActivity.class));
+                        intent = new Intent(context, FeedbackActivity.class);
                         context.startActivity(intent, options.toBundle());
                         break;
                     case ETC_ID:
-                        intent = new Intent(new Intent(context, EtcActivity.class));
+                        intent = new Intent(context, EtcActivity.class);
                         context.startActivity(intent, options.toBundle());
                         break;
+                    case ABOUT_ID:
+                        intent = new Intent(context, AboutActivity.class);
+                        context.startActivity(intent, options.toBundle());
                 }
             }
         });

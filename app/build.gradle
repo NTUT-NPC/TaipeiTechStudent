@@ -40,6 +40,8 @@ dependencies {
     compile "com.google.firebase:firebase-messaging:$firebase_version"
     compile "com.google.firebase:firebase-database:$firebase_version"
     testCompile 'junit:junit:4.12'
+    implementation 'com.google.android.gms:play-services-maps:11.0.2'
+    implementation 'com.android.support:appcompat-v7:25.4.0'
 }
 
 configurations.all {
@@ -52,6 +54,8 @@ configurations.all {
         }
     }
 }
+
+
 
 
 

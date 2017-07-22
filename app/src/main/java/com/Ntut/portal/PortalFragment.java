@@ -40,7 +40,7 @@ public class PortalFragment extends BaseFragment {
     private ProgressDialog mProgressDialog;
     private static final String PORTAL_URL = "https://nportal.ntut.edu.tw/";
     static WebView webview;
-    private final static String CACHE_DIRNAME = "webview";
+    private final static String CACHE_DIRNAME = "portal_webview";
 
     public PortalFragment() {
 
@@ -56,7 +56,7 @@ public class PortalFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         fragmentView = inflater.inflate(R.layout.fragment_portal, container, false);
-        webview = (WebView) fragmentView.findViewById(R.id.webview);
+        webview = (WebView) fragmentView.findViewById(R.id.portal_webview);
         webview.setWebViewClient(new WebViewClient());
         initWebViewSettings();
         String account = Model.getInstance().getAccount();
@@ -124,7 +124,7 @@ public class PortalFragment extends BaseFragment {
                 return;
             }
             WebView webview = (WebView) fragmentView
-                    .findViewById(R.id.webview);
+                    .findViewById(R.id.portal_webview);
             switch (msg.what) {
                 case BaseRunnable.REFRESH:
                     java.net.CookieStore rawCookieStore = ((java.net.CookieManager)

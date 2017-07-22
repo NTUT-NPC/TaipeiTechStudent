@@ -213,4 +213,7 @@
     <string name="wifi_needenable">尚未開啟Wi-Fi，請問是否要開啟？</string>
     <string name="wifi_already_connected">已連線至  ntutcc！</string>
     <string name="other_text">其他</string>
+    <string name="school_map_text">校園地圖</string>
+    <string name="store_text">特約商店</string>
+    <string name="about_text">關於</string>
 </resources>
