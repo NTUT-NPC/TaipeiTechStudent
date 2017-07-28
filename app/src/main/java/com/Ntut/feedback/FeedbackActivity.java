@@ -1,156 +1,81 @@
 package com.Ntut.feedback;
 
-import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.format.DateFormat;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
-import com.Ntut.BaseActivity;
 import com.Ntut.R;
-import com.Ntut.runnable.BaseRunnable;
 import com.Ntut.utility.Utility;
 import com.Ntut.utility.WifiUtility;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-import java.lang.ref.WeakReference;
-import java.util.Calendar;
+/**
+ * Created by Andy on 2017/7/27.
+ */
 
-public class FeedbackActivity extends BaseActivity implements
-        SwipeRefreshLayout.OnRefreshListener {
-    Button send_button;
-    EditText edt_feedback;
-    EditText edt_contact_imformation;
-    String feedback, contact_imformation;
-    private static final String NO_MESSAGE = "NO_MESSAGE";
-    private static final String NO_CONTACT_INFORMATION = "NO_CONTACT_INFORMATION";
-    private static final String OK = "OK";
+public class FeedbackActivity extends AppCompatActivity {
+
     private Toolbar mToolbar;
+    static WebView webview;
+    private final static String CACHE_DIRNAME = "feedback_webview";
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_feedback);
-        edt_feedback = (EditText) findViewById(R.id.feedback);
-        edt_contact_imformation = (EditText) findViewById(R.id.contact_imformatoin);
-        initButton();
+        setContentView(R.layout.activity_feedback);
         mToolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(mToolbar);
         setActionBar();
-    }
+        webview = (WebView) findViewById(R.id.feedback_webview);
+        webview.setWebViewClient(new WebViewClient());
+        webview.setOnKeyListener(new View.OnKeyListener(){
 
-    private void initButton(){
-        send_button = (Button) findViewById(R.id.send_button);
-        send_button.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
-                if(WifiUtility.isNetworkAvailable(getApplicationContext())){
-                    switch (setMessage()) {
-                        case NO_MESSAGE:
-                            Toast.makeText(getApplicationContext(), R.string.feedback_blank_forbid,
-                                    Toast.LENGTH_LONG).show();
-                            return;
-                        case NO_CONTACT_INFORMATION:
-                            AlertDialog.Builder alertDialog = new AlertDialog.Builder(getApplicationContext());
-                            alertDialog.setMessage(R.string.feedback_check);
-                            alertDialog.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    writeDataBase(getMessage());
-                                    initFeedback();
-                                    Utility.showDialog(getString(R.string.feedback_send_suceed),
-                                            getString(R.string.feedback_finish), getApplicationContext());
-                                }
-                            });
-                            alertDialog.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    return;
-                                }
-                            });
-                            alertDialog.show();
-                            break;
-                        case OK:
-                            writeDataBase(getMessage());
-                            initFeedback();
-                            Utility.showDialog(getString(R.string.feedback_send_suceed),
-                                    getString(R.string.feedback_finish), getApplicationContext());
-                            break;
-                    }
-                }
-                else{
-                    Toast.makeText(getApplicationContext(), R.string.check_network_available,
-                            Toast.LENGTH_LONG).show();
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_BACK
+                        && event.getAction() == MotionEvent.ACTION_UP
+                        && webview.canGoBack()) {
+                    webview.goBack();
+                    return true;
                 }
 
+                return false;
             }
+
         });
+        initWebViewSettings();
+        webview.loadUrl("https://docs.google.com/forms/d/e/1FAIpQLSdC-O3Kit2ejBG91u4KsdZUMb7Lpzln6ik1p_b_Njy3pKJOxw/viewform");
     }
 
-    private void initFeedback() {
-        edt_feedback.setText("");
-        feedback = null;
-        contact_imformation = null;
-        edt_contact_imformation.setText("");
-    }
-
-    static class FeedbackHandler extends Handler {
-        private WeakReference<FeedbackActivity> activityRef;
-
-        public FeedbackHandler(FeedbackActivity fragment) {
-            activityRef = new WeakReference<>(fragment);
+    private void initWebViewSettings() {
+        WebSettings webSetting = webview.getSettings();
+        webSetting.setJavaScriptEnabled(true);
+        webSetting.setUseWideViewPort(true);
+        webSetting.setLoadWithOverviewMode(true);
+        webSetting.setSupportZoom(true);
+        webSetting.setBuiltInZoomControls(true);
+        webSetting.setDisplayZoomControls(false);
+        webSetting.setAllowFileAccess(true);
+        webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
+        webSetting.setLoadsImagesAutomatically(true);
+        webSetting.setDefaultTextEncodingName("utf-8");
+        if (WifiUtility.isConnected(this)) {
+            webSetting.setCacheMode(WebSettings.LOAD_DEFAULT);
+        } else {
+            webSetting.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         }
-
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case BaseRunnable.ERROR:
-                    FeedbackActivity activity = activityRef.get();
-                    if (activity != null) {
-                        Utility.showDialog("提示", (String) msg.obj, activity.getApplicationContext());
-                    }
-                    break;
-            }
-        }
-    }
-
-    private String setMessage() {
-        feedback = String.valueOf(edt_feedback.getText());
-        contact_imformation = String.valueOf(edt_contact_imformation.getText());
-        if(feedback.isEmpty()){
-            return NO_MESSAGE;
-        }
-        else if (contact_imformation.isEmpty()){
-            return NO_CONTACT_INFORMATION;
-        }
-        else {
-            return OK;
-        }
-    }
-
-    private String getMessage(){
-        return (feedback+"，"+contact_imformation);
-    }
-
-    private void writeDataBase(String message){
-        // Write a message to the database
-        FirebaseApp.initializeApp(this);
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        Calendar mCal = Calendar.getInstance();
-        CharSequence s = DateFormat.format("yyyy-MM-dd kk:mm:ss", mCal.getTime());
-        DatabaseReference myRef = database.getReference((String) s);
-        myRef.setValue(message);
+        webSetting.setDomStorageEnabled(true);
+        webSetting.setDatabaseEnabled(true);
+        webSetting.setAppCacheEnabled(true);
+        String cacheDirPath = getFilesDir().getAbsolutePath() + CACHE_DIRNAME;
+        webSetting.setAppCachePath(cacheDirPath);
     }
 
     public void setActionBar() {
@@ -163,14 +88,9 @@ public class FeedbackActivity extends BaseActivity implements
                     finish();
                 }
             });
-            actionBar.setTitle(R.string.feedback_text);
-            actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.blue)));
+            actionBar.setTitle(R.string.club_text);
+            actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.purple)));
         }
-        Utility.setStatusBarColor(this, getResources().getColor(R.color.blue));
-    }
-
-    @Override
-    public void onRefresh() {
-
+        Utility.setStatusBarColor(this, getResources().getColor(R.color.purple));
     }
 }

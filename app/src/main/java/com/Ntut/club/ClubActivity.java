@@ -50,6 +50,7 @@ public class ClubActivity extends AppCompatActivity {
             }
 
         });
+        initWebViewSettings();
         webview.loadUrl("https://www.google.com.tw/search?q=android+webview&rlz=1C1CHZL_zh-TWTW722TW722&oq=android+webview&aqs=chrome..69i57j69i65j35i39l2j0l2.5582j0j7&sourceid=chrome&ie=UTF-8");
     }
 

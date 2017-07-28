@@ -50,6 +50,7 @@ public class AboutActivity extends AppCompatActivity {
             }
 
         });
+        initWebViewSettings();
         webview.loadUrl("https://www.google.com.tw/");
     }
 

@@ -51,8 +51,9 @@
         <activity android:name=".about.AboutActivity" />
         <activity android:name=".club.ClubActivity" />
         <activity
-            android:name=".schoolmap.MapsActivity"
-            android:label="@string/title_activity_maps" />
+            android:name=".schoolmap.MapsActivity"/>
+        <activity
+            android:name=".store.StoreActivity"/>
 
         <service android:name=".firebase.FirebaseService">
             <intent-filter>
@@ -76,9 +77,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".store.StoreActivity"
-            android:label="@string/title_activity_store"></activity>
+
     </application>
 
 </manifest>

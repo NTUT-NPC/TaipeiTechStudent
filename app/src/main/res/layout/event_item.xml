@@ -64,7 +64,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="地點： "
+                android:text="@string/location"
                 android:textSize="14sp"/>
 
             <TextView
