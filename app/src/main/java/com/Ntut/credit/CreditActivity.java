@@ -1,5 +1,6 @@
 package com.Ntut.credit;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -67,6 +68,7 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
         setContentView(R.layout.fragment_credit);
         credit = (LinearLayout) findViewById(R.id.credit);
         View start_button = findViewById(R.id.start_button);
+        start_button.setVisibility(View.VISIBLE);
         start_button.setOnClickListener(this);
         initView();
         mToolbar = (Toolbar) findViewById(R.id.main_toolbar);
@@ -310,6 +312,7 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
         }
     };
 
+    @SuppressLint("HandlerLeak")
     private Handler creditHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -322,12 +325,10 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
                         initView();
                         pd.dismiss();
                         if (CreditConnector.isHaveError) {
-                            Utility.showDialog(getString(R.string.credit_imformation_complete),
-                                    getString(R.string.credit_final)+"\n"+getString(R.string.credit_error),
-                                    getApplicationContext());
+                            showAlertMessage(getString(R.string.credit_imformation_complete), getString(R.string.credit_final)+"\n"+getString(R.string.credit_error));
+
                         } else {
-                            Utility.showDialog(getString(R.string.credit_imformation_complete), getString(R.string.credit_final),
-                                    getApplicationContext());
+                            showAlertMessage(getString(R.string.credit_imformation_complete), getString(R.string.credit_final));
                         }
                     }
                     break;
