@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v7.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,7 +64,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         final ImageView image = holder.image;
         event.getImage(context).fitCenter().into(image);
 
-        TextView title = holder.title;
+        final TextView title = holder.title;
         title.setText(event.getTitle());
         TextView date = holder.date;
         date.setText(event.getStartDate());
@@ -73,7 +75,9 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
             public void onClick(View v) {
                 Intent intent = new Intent(context, EventDetailActivity.class);
                 intent.putExtra("detail", event);
-                Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(context, image, "event").toBundle();
+                Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(context
+                        , new Pair<View, String>(image, "event_image")
+                        , new Pair<View, String>(title, "event_title")).toBundle();
                 context.startActivity(intent, bundle);
             }
         });

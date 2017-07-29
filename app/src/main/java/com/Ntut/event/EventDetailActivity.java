@@ -9,6 +9,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.ImageView;
 
 import com.Ntut.R;
@@ -40,5 +41,16 @@ public class EventDetailActivity extends AppCompatActivity {
         EventInfo event = getIntent().getParcelableExtra("detail");
         collapsingToolbar.setTitle(event.getTitle());
         event.getImage(getBaseContext()).fitCenter().into(eventDetailImage);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
