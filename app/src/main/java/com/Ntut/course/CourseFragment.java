@@ -384,7 +384,7 @@ public class CourseFragment extends BaseFragment implements View.OnClickListener
 
     @Override
     public int getTitleColorId() {
-        return R.color.course;
+        return R.color.Beautiful_Blue;
     }
 
     @Override
