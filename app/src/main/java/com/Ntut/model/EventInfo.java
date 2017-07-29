@@ -1,8 +1,14 @@
 package com.Ntut.model;
 
 
+import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import com.bumptech.glide.DrawableTypeRequest;
+import com.bumptech.glide.Glide;
+
+import java.util.concurrent.ExecutionException;
 
 
 /**
@@ -72,8 +78,8 @@ public class EventInfo implements Parcelable {
         this.url = url;
     }
 
-    public String getImage() {
-        return image;
+    public DrawableTypeRequest<String> getImage(Context context) {
+        return Glide.with(context).load(image);
     }
 
     public void setImage(String image) {

@@ -51,10 +51,10 @@
         <activity android:name=".etc.EtcActivity" />
         <activity android:name=".about.AboutActivity" />
         <activity android:name=".club.ClubActivity" />
-        <activity
-            android:name=".schoolmap.MapsActivity"/>
-        <activity
-            android:name=".store.StoreActivity"/>
+        <activity android:name=".schoolmap.MapsActivity"/>
+        <activity android:name=".store.StoreActivity"/>
+        <activity android:name=".event.EventDetailActivity" />
+
 
         <service android:name=".firebase.FirebaseService">
             <intent-filter>
