@@ -15,6 +15,11 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -32,6 +37,24 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mToolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(mToolbar);
         setActionBar();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference("locations");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng((Double) ds.child("latitude").getValue(), (Double) ds.child("longitude").getValue()))
+                            .title(ds.child("title").getValue().toString())
+                            .snippet(ds.child("subTitle").getValue().toString()));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
 
@@ -49,9 +72,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(25.043515, 121.535838);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("中正館"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng init = new LatLng(25.042848, 121.534447);
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(init));
 
     }
 

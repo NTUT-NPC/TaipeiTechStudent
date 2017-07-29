@@ -40,10 +40,10 @@
                 android:textSize="@dimen/textMedium"/>
 
             <com.Ntut.course.SemesterSelector
-                style="@style/Widget.AppCompat.Spinner.Underlined"
+                style="@style/Widget.AppCompat.Spinner.DropDown"
                 android:id="@+id/semester"
                 android:layout_width="110dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="0"
                 android:gravity="center"

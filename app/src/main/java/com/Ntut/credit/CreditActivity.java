@@ -156,7 +156,7 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
         //String[] titles = new String[count];
         String[] titles = {getString(R.string.cultural_dimension), getString(R.string.historical_dimension),
                 getString(R.string.philosophical_dimension), getString(R.string.legal_dimension), getString(R.string.social_dimension),
-                getString(R.string.natural_dimension), getString(R.string.social_philosophy_dimension), getString(R.string.creative_dimension)};
+                getString(R.string.natural_dimension), getString(R.string.social_philosophy_dimension), getString(R.string.creative_dimension), getString(R.string.aesthetic_dimension), getString(R.string.literary_history_dimension)};
         float[] totals = new float[count];
         float[] cores = new float[count];
         int i = 0;
