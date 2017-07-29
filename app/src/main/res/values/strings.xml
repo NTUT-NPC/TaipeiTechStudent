@@ -227,5 +227,7 @@
     <string name="about_text">關於</string>
     <string name="club_text">社團介紹</string>
     <string name="location">地點：</string>
+    <string name="aesthetic_dimension">美學向度</string>
+    <string name="literary_history_dimension">文史向度</string>
 
 </resources>

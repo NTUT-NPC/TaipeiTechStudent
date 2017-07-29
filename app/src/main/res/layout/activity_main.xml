@@ -26,7 +26,8 @@
     <com.ashokvarma.bottomnavigation.BottomNavigationBar
         android:id="@+id/bottom_navigation_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:foregroundGravity="center"
         android:layout_gravity="bottom"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"

@@ -77,16 +77,14 @@ public class OtherAdapter extends RecyclerView.Adapter<OtherAdapter.ViewHolder> 
             @Override
             public void onClick(View v, int position) {
                 Intent intent;
-                ActivityOptionsCompat options = ActivityOptionsCompat
-                        .makeSceneTransitionAnimation((Activity) context, v, "other");
                 switch (position){
                     case CREDIT_ID:
                         intent = new Intent(context, CreditActivity.class);
-                        context.startActivity(intent, options.toBundle());
+                        context.startActivity(intent);
                         break;
                     case ACCOUNT_ID:
                         intent = new Intent(context, AccountActivity.class);
-                        context.startActivity(intent, options.toBundle());
+                        context.startActivity(intent);
                         break;
                     case MAP_ID:
                         intent = new Intent(context, MapsActivity.class);
@@ -102,15 +100,15 @@ public class OtherAdapter extends RecyclerView.Adapter<OtherAdapter.ViewHolder> 
                         break;
                     case FEEDBACK_ID:
                         intent = new Intent(context, FeedbackActivity.class);
-                        context.startActivity(intent, options.toBundle());
+                        context.startActivity(intent);
                         break;
                     case ETC_ID:
                         intent = new Intent(context, EtcActivity.class);
-                        context.startActivity(intent, options.toBundle());
+                        context.startActivity(intent);
                         break;
                     case ABOUT_ID:
                         intent = new Intent(context, AboutActivity.class);
-                        context.startActivity(intent, options.toBundle());
+                        context.startActivity(intent);
                 }
             }
         });
