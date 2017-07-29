@@ -2,6 +2,8 @@ package com.Ntut.event;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,7 @@ import com.bumptech.glide.Glide;
 
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by blackmaple on 2017/5/15.
@@ -54,9 +57,11 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         final EventInfo event = eventList.get(position);
-        loadImage(holder, event.getImage());
+        final ImageView image = holder.image;
+        event.getImage(context).fitCenter().into(image);
+
         TextView title = holder.title;
         title.setText(event.getTitle());
         TextView date = holder.date;
@@ -68,7 +73,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
             public void onClick(View v) {
                 Intent intent = new Intent(context, EventDetailActivity.class);
                 intent.putExtra("detail", event);
-                context.startActivity(intent);
+                Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(context, image, "event").toBundle();
+                context.startActivity(intent, bundle);
             }
         });
     }

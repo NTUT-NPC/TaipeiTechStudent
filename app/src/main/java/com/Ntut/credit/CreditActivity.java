@@ -65,10 +65,9 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
         getWindowManager().getDefaultDisplay()
                 .getMetrics(displaymetrics);
         CONTENT_ROW_HEIGHT = Math.round(displaymetrics.widthPixels / 8);
-        setContentView(R.layout.fragment_credit);
+        setContentView(R.layout.activity_credit);
         credit = (LinearLayout) findViewById(R.id.credit);
         View start_button = findViewById(R.id.start_button);
-        start_button.setVisibility(View.VISIBLE);
         start_button.setOnClickListener(this);
         initView();
         mToolbar = (Toolbar) findViewById(R.id.main_toolbar);
