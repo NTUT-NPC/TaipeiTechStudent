@@ -1,9 +1,7 @@
 package com.Ntut.other;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,11 +13,10 @@ import com.Ntut.MainActivity;
 import com.Ntut.R;
 import com.Ntut.about.AboutActivity;
 import com.Ntut.account.AccountActivity;
-import com.Ntut.club.ClubActivity;
 import com.Ntut.credit.CreditActivity;
 import com.Ntut.etc.EtcActivity;
 import com.Ntut.feedback.FeedbackActivity;
-import com.Ntut.schoolmap.MapsActivity;
+import com.Ntut.schoolmap.MapActivity;
 import com.Ntut.model.OtherInfo;
 import com.Ntut.store.StoreActivity;
 
@@ -36,11 +33,10 @@ public class OtherAdapter extends RecyclerView.Adapter<OtherAdapter.ViewHolder> 
     private final static int CREDIT_ID = 0;
     private final static int ACCOUNT_ID = 1;
     private final static int MAP_ID = 2;
-    private final static int CLUB_ID = 3;
-    private final static int STORE_ID = 4;
-    private final static int FEEDBACK_ID = 5;
-    private final static int ETC_ID = 6;
-    private final static int ABOUT_ID = 7;
+    private final static int STORE_ID = 3;
+    private final static int FEEDBACK_ID = 4;
+    private final static int ETC_ID = 5;
+    private final static int ABOUT_ID = 6;
 
 
     public OtherAdapter(List<OtherInfo> otherInfos, Context context){
@@ -56,6 +52,7 @@ public class OtherAdapter extends RecyclerView.Adapter<OtherAdapter.ViewHolder> 
         public ViewHolder(View itemView, ViewHolderOnClick listener){
             super(itemView);
             otherText = (TextView) itemView.findViewById(R.id.other_text);
+            imageView = (ImageView) itemView.findViewById(R.id.other_image);
             this.listener = listener;
             itemView.setOnClickListener(this);
         }
@@ -87,11 +84,7 @@ public class OtherAdapter extends RecyclerView.Adapter<OtherAdapter.ViewHolder> 
                         context.startActivity(intent);
                         break;
                     case MAP_ID:
-                        intent = new Intent(context, MapsActivity.class);
-                        context.startActivity(intent);
-                        break;
-                    case CLUB_ID:
-                        intent = new Intent(context, ClubActivity.class);
+                        intent = new Intent(context, MapActivity.class);
                         context.startActivity(intent);
                         break;
                     case STORE_ID:
@@ -120,8 +113,8 @@ public class OtherAdapter extends RecyclerView.Adapter<OtherAdapter.ViewHolder> 
         OtherInfo otherInfo = this.otherInfos.get(position);
         TextView otherText = holder.otherText;
         otherText.setText(otherInfo.getTitle());
-//        ImageView imageView = holder.imageView;
-//        imageView.setImageResource(otherInfo.getIconId());
+        ImageView imageView = holder.imageView;
+        imageView.setImageResource(otherInfo.getIconId());
     }
 
     @Override

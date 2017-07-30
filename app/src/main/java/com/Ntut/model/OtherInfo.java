@@ -13,7 +13,7 @@ public class OtherInfo {
     private String title;
     private int iconId;
 
-    public OtherInfo(String title) {
+    public OtherInfo(String title, int iconId) {
         this.title = title;
         this.iconId = iconId;
     }

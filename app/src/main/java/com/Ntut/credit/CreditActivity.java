@@ -438,9 +438,9 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
                 }
             });
             actionBar.setTitle(R.string.credit_text);
-            actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.blue)));
+            actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.credit_color)));
         }
-        Utility.setStatusBarColor(this, getResources().getColor(R.color.blue));
+        Utility.setStatusBarColor(this, getResources().getColor(R.color.credit_color));
     }
 
     @Override

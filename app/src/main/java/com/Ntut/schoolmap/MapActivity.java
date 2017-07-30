@@ -21,7 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private Toolbar mToolbar;
@@ -88,8 +88,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 }
             });
             actionBar.setTitle(R.string.school_map_text);
-            actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.blue)));
+            actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.map_color)));
         }
-        Utility.setStatusBarColor(this, getResources().getColor(R.color.blue));
+        Utility.setStatusBarColor(this, getResources().getColor(R.color.map_color));
     }
 }
