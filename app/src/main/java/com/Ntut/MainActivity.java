@@ -1,20 +1,17 @@
 package com.Ntut;
 
-import android.accounts.Account;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.Ntut.account.AccountActivity;
@@ -86,7 +83,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
                 .addItem(new BottomNavigationItem(R.drawable.calendar_icon).setActiveColorResource(R.color.calendar_color))
                 .addItem(new BottomNavigationItem(R.drawable.event_icon).setActiveColorResource(R.color.event_color))
                 .addItem(new BottomNavigationItem(R.drawable.nportal_icon).setActiveColorResource(R.color.portal_color))
-                .addItem(new BottomNavigationItem(R.drawable.other_iocn).setActiveColorResource(R.color.other_color))
+                .addItem(new BottomNavigationItem(R.drawable.other_icon).setActiveColorResource(R.color.other_color))
                 .initialise();
     }
 
