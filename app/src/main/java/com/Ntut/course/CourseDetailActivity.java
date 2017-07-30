@@ -68,9 +68,9 @@ public class CourseDetailActivity extends AppCompatActivity {
                 }
             });
             actionBar.setTitle("課程資訊");
-            actionBar.setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(getBaseContext(), R.color.dark_green)));
+            actionBar.setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(getBaseContext(), R.color.course_color)));
         }
-        setStatusBarColor(ContextCompat.getColor(getBaseContext(), R.color.dark_green));
+        setStatusBarColor(ContextCompat.getColor(getBaseContext(), R.color.course_color));
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
