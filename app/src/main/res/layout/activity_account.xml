@@ -3,138 +3,152 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:clickable="true"
-              android:background="@color/white"
+              android:background="@drawable/red_house"
               android:orientation="vertical">
 
-    <include
-        layout="@layout/toolbar"/>
+    <include layout="@layout/toolbar" />
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/white_block_background"
-        android:orientation="vertical"
-        android:padding="@dimen/settingPadding">
+        android:padding="10dp">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:background="@color/half_70_white"
+            android:orientation="vertical"
+            android:padding="@dimen/settingPadding">
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/account_input_layout"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="2dp">
+                android:layout_height="0dip"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/account_edittext"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/account_input_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/id_text"
-                    android:inputType="text"
-                    android:textColor="@color/darken"
-                    android:textSize="@dimen/textMedium">
-                </EditText>
-            </android.support.design.widget.TextInputLayout>
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="2dp">
 
-            <ImageView
-                android:layout_height="wrap_content"
-                android:layout_above="@id/account_input_layout"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="40dp"
-                android:contentDescription="@string/app_name"
-                android:scaleType="fitCenter"
-                android:src="@drawable/taipei_tech_logo"
-                android:cropToPadding="false"
-                android:paddingRight="20dp"
-                android:layout_width="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp" />
-        </RelativeLayout>
+                    <EditText
+                        android:id="@+id/account_edittext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/id_text"
+                        android:inputType="text"
+                        android:textColor="@color/darken"
+                        android:textSize="@dimen/textMedium"></EditText>
+                </android.support.design.widget.TextInputLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="1"
-            android:orientation="vertical">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/account_input_layout"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="40dp"
+                    android:contentDescription="@string/app_name"
+                    android:cropToPadding="false"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/taipei_tech_logo" />
+            </RelativeLayout>
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/password_input_layout"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="2dp">
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/password_edittext"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/password_input_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/password_text"
-                    android:inputType="textPassword"
-                    android:textColor="@color/darken"
-                    android:textSize="@dimen/textMedium">
-                </EditText>
-            </android.support.design.widget.TextInputLayout>
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="2dp">
 
-            <LinearLayout
-                android:id="@+id/button_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="40dp">
+                    <EditText
+                        android:id="@+id/password_edittext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/password_text"
+                        android:inputType="textPassword"
+                        android:textColor="@color/darken"
+                        android:textSize="@dimen/textMedium"></EditText>
 
-                <Button
-                    android:id="@+id/save_button"
-                    android:layout_width="0dip"
-                    android:layout_height="@dimen/buttonHeight"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/purple_selector"
-                    android:text="@string/save_button"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/textMedium">
-                </Button>
+                </android.support.design.widget.TextInputLayout>
 
-                <Button
-                    android:id="@+id/clear_button"
-                    android:layout_width="0dip"
-                    android:layout_height="@dimen/buttonHeight"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/purple_selector"
-                    android:text="@string/clear_button"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/textMedium">
-                </Button>
-            </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/button_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="40dp">
 
-            <TextView
-                android:id="@+id/right_link"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/button_layout"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="40dp"
-                android:text="@string/right_link"
-                android:textColor="@drawable/purple_color_selector"
-                android:textSize="@dimen/textMedium" />
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
 
-            <TextView
-                android:id="@+id/nportal_link"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:text="@string/nportal_text"
-                android:textColor="@drawable/purple_color_selector"
-                android:textSize="@dimen/textMedium"
-                android:visibility="invisible" />
-        </RelativeLayout>
-    </LinearLayout>
+                        <Button
+                            android:id="@+id/save_button"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/buttonHeight"
+                            android:layout_weight="1"
+                            android:background="@color/blue"
+                            android:text="@string/save_button"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/textMedium"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginLeft="20dp">
+                        </Button>
+
+                        <Button
+                            android:id="@+id/clear_button"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/buttonHeight"
+                            android:layout_weight="1"
+                            android:background="@color/blue"
+                            android:text="@string/clear_button"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/textMedium"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginLeft="20dp">
+                        </Button>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/right_link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/right_link"
+                    android:textColor="@drawable/purple_color_selector"
+                    android:textSize="@dimen/textMedium"
+                    android:layout_above="@+id/nportal_link"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:id="@+id/nportal_link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/nportal_text"
+                    android:textColor="@drawable/purple_color_selector"
+                    android:textSize="@dimen/textMedium"
+                    android:visibility="invisible" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </FrameLayout>
 
 </LinearLayout>

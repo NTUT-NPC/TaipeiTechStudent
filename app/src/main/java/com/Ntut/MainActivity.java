@@ -1,11 +1,17 @@
 package com.Ntut;
 
+import android.accounts.Account;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
@@ -38,7 +44,26 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     private OtherFragment otherFragment = new OtherFragment();
     private AccountSettingFragment accountSettingFragment = new AccountSettingFragment();
     private Boolean lockFinish = true;
+    private SharedPreferences firstOpen;
 
+    private void showFirstopen(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("T.T.S.北科學生APP");
+        builder.setMessage(R.string.firstopen_text);
+        builder.setPositiveButton("關閉", null);
+        builder.setNegativeButton("前往帳號登錄",new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                try {
+                    switchFragment(3);
+                } catch (Exception e) {
+                    Toast.makeText(MainActivity.this, R.string.error, Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        builder.create().show();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +75,16 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
             changeFragment(accountSettingFragment);
         }
         changeFragment(courseFragment);
+        String first_func = MainApplication.readSetting("first_func");
+        firstOpen = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        if (TextUtils.isEmpty(first_func)) {
+            MainApplication.writeSetting("first_func", "0");
+            first_func = MainApplication.readSetting("first_func");
+            switchFragment(Integer.parseInt(first_func));
+            showFirstopen();
+        } else {
+            switchFragment(0);
+        }
     }
 
     private void initToolbar() {
