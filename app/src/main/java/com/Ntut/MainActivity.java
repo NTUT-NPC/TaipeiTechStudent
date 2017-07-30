@@ -59,7 +59,8 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
         if (TextUtils.isEmpty(first_func)) {
             MainApplication.writeSetting("first_func", "0");
             first_func = MainApplication.readSetting("first_func");
-            switchFragment(Integer.parseInt(first_func));
+            Intent intent = new Intent(getApplicationContext(), AccountActivity.class);
+            startActivity(intent);
             showFirstopen();
         } else {
             switchFragment(0);
