@@ -88,9 +88,9 @@ public class FeedbackActivity extends AppCompatActivity {
                     finish();
                 }
             });
-            actionBar.setTitle(R.string.club_text);
-            actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.purple)));
+            actionBar.setTitle(R.string.feedback_text);
+            actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.feedback_color)));
         }
-        Utility.setStatusBarColor(this, getResources().getColor(R.color.purple));
+        Utility.setStatusBarColor(this, getResources().getColor(R.color.feedback_color));
     }
 }

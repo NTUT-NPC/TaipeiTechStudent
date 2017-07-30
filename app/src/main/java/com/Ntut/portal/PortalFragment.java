@@ -186,7 +186,7 @@ public class PortalFragment extends BaseFragment {
 
     @Override
     public int getTitleColorId() {
-        return R.color.blue;
+        return R.color.portal_color;
     }
 
     @Override

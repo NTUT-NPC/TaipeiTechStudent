@@ -40,19 +40,18 @@ public class OtherFragment extends BaseFragment {
     private void initListData() {
         otherInfoList = new ArrayList<>();
         //添加項目
-        otherInfoList.add(new OtherInfo(getString(R.string.credit_text)));
-        otherInfoList.add(new OtherInfo(getString(R.string.account_setting_text)));
-        otherInfoList.add(new OtherInfo(getString(R.string.school_map_text)));
-        otherInfoList.add(new OtherInfo(getString(R.string.club_text)));
-        otherInfoList.add(new OtherInfo(getString(R.string.store_text)));
-        otherInfoList.add(new OtherInfo(getString(R.string.feedback_text)));
-        otherInfoList.add(new OtherInfo(getString(R.string.etc_text)));
-        otherInfoList.add(new OtherInfo(getString(R.string.about_text)));
+        otherInfoList.add(new OtherInfo(getString(R.string.credit_text), R.drawable.credit_icon));
+        otherInfoList.add(new OtherInfo(getString(R.string.account_setting_text), R.drawable.account_icon));
+        otherInfoList.add(new OtherInfo(getString(R.string.school_map_text), R.drawable.map_icon));
+        otherInfoList.add(new OtherInfo(getString(R.string.store_text), R.drawable.store_icon));
+        otherInfoList.add(new OtherInfo(getString(R.string.feedback_text), R.drawable.feedback_icon));
+        otherInfoList.add(new OtherInfo(getString(R.string.etc_text), R.drawable.setting_icon));
+        otherInfoList.add(new OtherInfo(getString(R.string.about_text), R.drawable.info_icon));
     }
 
     @Override
     public int getTitleColorId() {
-        return R.color.blue;
+        return R.color.other_color;
     }
 
     @Override

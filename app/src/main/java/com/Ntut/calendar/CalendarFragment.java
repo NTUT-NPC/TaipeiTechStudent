@@ -239,7 +239,7 @@ public class CalendarFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     public int getTitleColorId() {
-        return R.color.orange;
+        return R.color.calendar_color;
     }
 
     @Override

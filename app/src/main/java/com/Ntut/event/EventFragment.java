@@ -69,7 +69,7 @@ public class EventFragment extends BaseFragment implements ValueEventListener {
 
     @Override
     public int getTitleColorId() {
-        return R.color.red;
+        return R.color.event_color;
     }
 
     @Override

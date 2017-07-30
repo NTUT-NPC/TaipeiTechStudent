@@ -67,8 +67,8 @@ public class StoreActivity extends AppCompatActivity implements OnMapReadyCallba
                 }
             });
             actionBar.setTitle(R.string.store_text);
-            actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.blue)));
+            actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.store_color)));
         }
-        Utility.setStatusBarColor(this, getResources().getColor(R.color.blue));
+        Utility.setStatusBarColor(this, getResources().getColor(R.color.store_color));
     }
 }

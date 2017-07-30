@@ -146,9 +146,9 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
                 }
             });
             actionBar.setTitle(R.string.account_setting_text);
-            actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.blue)));
+            actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.account_color)));
         }
-        Utility.setStatusBarColor(this, getResources().getColor(R.color.blue));
+        Utility.setStatusBarColor(this, getResources().getColor(R.color.account_color));
     }
 
     private void writeSettings() {

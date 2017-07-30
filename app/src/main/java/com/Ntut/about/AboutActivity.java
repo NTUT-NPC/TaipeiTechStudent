@@ -89,8 +89,8 @@ public class AboutActivity extends AppCompatActivity {
                 }
             });
             actionBar.setTitle(R.string.about_text);
-            actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.blue)));
+            actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.about_color)));
         }
-        Utility.setStatusBarColor(this, getResources().getColor(R.color.blue));
+        Utility.setStatusBarColor(this, getResources().getColor(R.color.about_color));
     }
 }

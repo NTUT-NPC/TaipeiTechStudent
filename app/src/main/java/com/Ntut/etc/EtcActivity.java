@@ -193,9 +193,9 @@ public class EtcActivity extends BaseActivity {
                 }
             });
             actionBar.setTitle(R.string.etc_text);
-            actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.deep_darken)));
+            actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.setting_color)));
         }
-        Utility.setStatusBarColor(this, getResources().getColor(R.color.deep_darken));
+        Utility.setStatusBarColor(this, getResources().getColor(R.color.setting_color));
     }
 
     private int getCurrentCourseLang(String lang) {
