@@ -24,7 +24,7 @@ import com.Ntut.utility.WifiUtility;
 public class FeedbackActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
-    static WebView webview;
+    private WebView webview;
     private final static String CACHE_DIRNAME = "feedback_webview";
 
     @Override

@@ -65,7 +65,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
         bottomNavigationBar.
                 setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
         bottomNavigationBar
-                .addItem(new BottomNavigationItem(R.drawable.course_icon).setActiveColorResource(R.color.course))
+                .addItem(new BottomNavigationItem(R.drawable.course_icon).setActiveColorResource(R.color.beautiful_blue))
                 .addItem(new BottomNavigationItem(R.drawable.calendar_icon).setActiveColorResource(R.color.orange))
                 .addItem(new BottomNavigationItem(R.drawable.event_icon).setActiveColorResource(R.color.red))
                 .addItem(new BottomNavigationItem(R.drawable.nportal_icon).setActiveColorResource(R.color.blue))
@@ -122,10 +122,9 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
 
     @Override
     public void onBackPressed() {
-        if (currentFragment == portalFragment && portalFragment.canGoBack()) {
-            portalFragment.goBack();
-        }
-        else {
+        if (currentFragment == portalFragment && PortalFragment.canGoBack()) {
+            PortalFragment.goBack();
+        } else {
             if (lockFinish) {
                 Toast.makeText(MainActivity.this, R.string.press_again_to_exit,
                         Toast.LENGTH_SHORT).show();

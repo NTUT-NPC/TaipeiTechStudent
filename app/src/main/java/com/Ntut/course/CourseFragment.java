@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -34,7 +33,6 @@ import com.Ntut.model.CourseInfo;
 import com.Ntut.model.Model;
 import com.Ntut.model.Semester;
 import com.Ntut.model.StudentCourse;
-import com.Ntut.runnable.CourseTableSearchRunnable;
 import com.Ntut.utility.Constants;
 import com.Ntut.utility.Utility;
 import com.Ntut.utility.WifiUtility;
@@ -47,7 +45,7 @@ import java.util.Locale;
  */
 
 public class CourseFragment extends BaseFragment implements View.OnClickListener,
-        CourseTableLayout.TableInitializeListener{
+        CourseTableLayout.TableInitializeListener {
     private static String[] TIME_ARRAY;
     private ArrayList<Semester> semesters = new ArrayList<>();
     private CourseTableLayout courseTable;
@@ -57,7 +55,7 @@ public class CourseFragment extends BaseFragment implements View.OnClickListener
     private Semester mSemester;
     private SemesterSelector mSemesterSelector;
     public String selectedCourseNo = "";
-    private static View fragmentView;
+    private View fragmentView;
     private boolean needShowSemesterDialog = true;
 
     @Override
@@ -338,8 +336,7 @@ public class CourseFragment extends BaseFragment implements View.OnClickListener
         if (studentCourse != null) {
             showCourse(studentCourse);
             Toast.makeText(getActivity(), "點課程瀏覽詳細內容！", Toast.LENGTH_SHORT).show();
-        }
-        else if(studentCourse == null && !MainApplication.readSetting("account").isEmpty()){
+        } else if (studentCourse == null && !MainApplication.readSetting("account").isEmpty()) {
             needShowSemesterDialog = false;
             sidText.setText(MainApplication.readSetting("account"));
             searchLatestCourseTable(MainApplication.readSetting("account"));
@@ -384,7 +381,7 @@ public class CourseFragment extends BaseFragment implements View.OnClickListener
 
     @Override
     public int getTitleColorId() {
-        return R.color.Beautiful_Blue;
+        return R.color.beautiful_blue;
     }
 
     @Override

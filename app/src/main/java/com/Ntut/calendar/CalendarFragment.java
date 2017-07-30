@@ -35,7 +35,7 @@ import java.util.Locale;
 public class CalendarFragment extends BaseFragment implements View.OnClickListener,
         ViewPager.OnPageChangeListener {
 
-    private static View fragmentView = null;
+    private  View fragmentView = null;
     private static ProgressDialog progressDialog = null;
     private Calendar calendar = Calendar.getInstance();
     private CalendarHandler calendarHandler = new CalendarHandler(this);
