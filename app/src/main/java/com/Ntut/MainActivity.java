@@ -100,11 +100,11 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
         bottomNavigationBar.
                 setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
         bottomNavigationBar
-                .addItem(new BottomNavigationItem(R.drawable.course_icon).setActiveColorResource(R.color.beautiful_blue))
-                .addItem(new BottomNavigationItem(R.drawable.calendar_icon).setActiveColorResource(R.color.orange))
-                .addItem(new BottomNavigationItem(R.drawable.event_icon).setActiveColorResource(R.color.red))
-                .addItem(new BottomNavigationItem(R.drawable.nportal_icon).setActiveColorResource(R.color.blue))
-                .addItem(new BottomNavigationItem(R.drawable.other_iocn).setActiveColorResource(R.color.blue))
+                .addItem(new BottomNavigationItem(R.drawable.course_icon).setActiveColorResource(R.color.course_color))
+                .addItem(new BottomNavigationItem(R.drawable.calendar_icon).setActiveColorResource(R.color.calendar_color))
+                .addItem(new BottomNavigationItem(R.drawable.event_icon).setActiveColorResource(R.color.event_color))
+                .addItem(new BottomNavigationItem(R.drawable.nportal_icon).setActiveColorResource(R.color.portal_color))
+                .addItem(new BottomNavigationItem(R.drawable.other_iocn).setActiveColorResource(R.color.other_color))
                 .initialise();
     }
 
