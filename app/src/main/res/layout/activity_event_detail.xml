@@ -7,8 +7,8 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:background="@color/red">
+        android:background="@color/red"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
@@ -27,8 +27,8 @@
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
-                app:layout_collapseMode="parallax"
-                android:transitionName="event_image" />
+                android:transitionName="event_image"
+                app:layout_collapseMode="parallax" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -43,75 +43,76 @@
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_scrollFlags="scroll|enterAlways"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_scrollFlags="scroll|enterAlways">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="40dp"
             android:layout_marginBottom="40dp"
+            android:layout_marginTop="40dp"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/event_detail_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@color/primaryText"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="40dp"
                 android:layout_marginBottom="10dp"
-                android:text="日期：2017/06/19 ~ 2017/10/28"/>
+                android:layout_marginEnd="40dp"
+                android:layout_marginStart="40dp"
+                android:textColor="@color/primaryText"
+                android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/event_detail_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@color/primaryText"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="40dp"
                 android:layout_marginBottom="10dp"
-                android:text="地點：北科大"/>
+                android:layout_marginEnd="40dp"
+                android:layout_marginStart="40dp"
+                android:textColor="@color/primaryText"
+                android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/event_detail_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@color/primaryText"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="40dp"
                 android:layout_marginBottom="10dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginStart="40dp"
                 android:lineSpacingMultiplier="1.2"
-                android:text="內容：This is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?\nThis is a test but not a test, is it?"/>
+                android:textColor="@color/primaryText"
+                android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/event_detail_host"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@color/primaryText"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="40dp"
                 android:layout_marginBottom="10dp"
-                android:text="主辦方：學生議會"/>
+                android:layout_marginEnd="40dp"
+                android:layout_marginStart="40dp"
+                android:textColor="@color/primaryText"
+                android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/event_detail_url"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@color/primaryText"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="40dp"
                 android:layout_marginBottom="40dp"
-                android:text="詳細內容：https://www.google.com"/>
+                android:layout_marginEnd="40dp"
+                android:layout_marginStart="40dp"
+                android:textColor="@color/primaryText"
+                android:textSize="16sp" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@color/primaryText"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="40dp"
                 android:layout_marginBottom="10dp"
-                android:text=""/>
+                android:layout_marginEnd="40dp"
+                android:layout_marginStart="40dp"
+                android:text=""
+                android:textColor="@color/primaryText"
+                android:textSize="16sp" />
 
         </LinearLayout>
 

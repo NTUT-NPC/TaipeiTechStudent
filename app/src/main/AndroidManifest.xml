@@ -33,7 +33,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:replace="android:icon">
+        tools:replace="android:icon"
+        android:fullBackupContent="@xml/backup_descriptor">
         <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="adjustPan">
@@ -56,12 +57,14 @@
         <activity android:name=".event.EventDetailActivity" />
 
 
-        <service android:name=".firebase.FirebaseService">
+        <service android:name=".firebase.FirebaseService"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-        <service android:name=".firebase.FirebaseMessaging">
+        <service android:name=".firebase.FirebaseMessaging"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

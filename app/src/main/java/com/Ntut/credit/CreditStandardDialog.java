@@ -36,7 +36,7 @@ import static com.Ntut.MainApplication.lang;
 
 public class CreditStandardDialog extends AlertDialog implements
         View.OnClickListener, DialogInterface.OnShowListener {
-    private static View contentView;
+    private View contentView;
     private String year = null;
     private int division_index;
     private MenuSpinner year_list;

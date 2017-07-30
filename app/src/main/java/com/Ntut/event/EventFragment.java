@@ -79,7 +79,9 @@ public class EventFragment extends BaseFragment implements ValueEventListener {
 
     @Override
     public void onDataChange(DataSnapshot dataSnapshot) {
+        Log.e(getClass().getName(), "Firebase data change");
         adapter.clear();
+        Log.e(getClass().getSimpleName(), "EventAdapter clear");
         for (DataSnapshot ds : dataSnapshot.getChildren() ){
             EventInfo eventInfo = new EventInfo(
                     ds.child("image").getValue().toString(),

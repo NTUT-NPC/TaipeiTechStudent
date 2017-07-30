@@ -36,10 +36,10 @@ import java.net.URI;
 
 public class PortalFragment extends BaseFragment {
 
-    private static View fragmentView;
+    private  View fragmentView;
     private ProgressDialog mProgressDialog;
     private static final String PORTAL_URL = "https://nportal.ntut.edu.tw/";
-    static WebView webview;
+    private static WebView webview;
     private final static String CACHE_DIRNAME = "portal_webview";
 
     public PortalFragment() {
@@ -110,7 +110,7 @@ public class PortalFragment extends BaseFragment {
         webSetting.setAppCachePath(cacheDirPath);
     }
 
-    private static class LoginHandler extends Handler {
+    private class LoginHandler extends Handler {
         private WeakReference<PortalFragment> mActivityRef = null;
 
         public LoginHandler(PortalFragment activity) {

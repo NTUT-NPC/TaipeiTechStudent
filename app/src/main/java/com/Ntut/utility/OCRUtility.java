@@ -26,7 +26,7 @@ public class OCRUtility {
     public static String authOCR(byte[][] grayArray, int width, int height) {
         int start = -1;
         int end = -1;
-        String text = "";
+        StringBuilder text = new StringBuilder();
         for (int i = 0; i < width; i++) {
             Boolean isBackground = true;
             for (int j = 0; j < height; j++) {
@@ -37,17 +37,17 @@ public class OCRUtility {
                     }
                 }
             }
-            if (isBackground == true && start != -1) {
+            if (isBackground && start != -1) {
                 end = i - 1;
             }
             if (start != -1 && end != -1) {
                 String wordArray = splitWord(grayArray, start, end, height);
-                text += recognizeWord(wordArray);
+                text.append(recognizeWord(wordArray));
                 start = -1;
                 end = -1;
             }
         }
-        return text;
+        return text.toString();
     }
 
     private static final String[] LETTERS = {"a", "b", "c", "d", "e", "f",
@@ -94,7 +94,7 @@ public class OCRUtility {
                                     int height) {
         int top = -1;
         int bottom = -1;
-        String result = "";
+        StringBuilder result = new StringBuilder();
 
         for (int j = 0; j < height; j++) {
             for (int i = start; i <= end; i++) {
@@ -123,14 +123,14 @@ public class OCRUtility {
             for (int j = top; j <= bottom; j++) {
                 for (int i = start; i <= end; i++) {
                     if (grayArray[j][i] == 0) {
-                        result += "0";
+                        result.append("0");
                     } else if (grayArray[j][i] == 1) {
-                        result += "1";
+                        result.append("1");
                     }
                 }
             }
         }
-        return result;
+        return result.toString();
     }
 
 }

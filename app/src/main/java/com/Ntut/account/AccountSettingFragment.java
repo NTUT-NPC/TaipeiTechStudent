@@ -26,7 +26,7 @@ import com.Ntut.utility.WifiUtility;
  */
 
 public class AccountSettingFragment extends BaseFragment implements View.OnClickListener{
-    private static View fragmentView;
+    private  View fragmentView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

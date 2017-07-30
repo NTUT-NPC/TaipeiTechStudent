@@ -90,8 +90,8 @@ public class SlideAnimator {
     }
 
     public interface SlideAnimationListener {
-        public void onSlidedUp(View v);
+        void onSlidedUp(View v);
 
-        public void onSlidedDown(View v);
+        void onSlidedDown(View v);
     }
 }
