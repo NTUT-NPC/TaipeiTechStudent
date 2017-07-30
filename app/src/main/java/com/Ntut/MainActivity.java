@@ -46,24 +46,6 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     private Boolean lockFinish = true;
     private SharedPreferences firstOpen;
 
-    private void showFirstopen(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("T.T.S.北科學生APP");
-        builder.setMessage(R.string.firstopen_text);
-        builder.setPositiveButton("關閉", null);
-        builder.setNegativeButton("前往帳號登錄",new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                try {
-                    switchFragment(3);
-                } catch (Exception e) {
-                    Toast.makeText(MainActivity.this, R.string.error, Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-        builder.create().show();
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,6 +90,24 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
                 .initialise();
     }
 
+    private void showFirstopen() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("T.T.S.北科學生APP");
+        builder.setMessage(R.string.firstopen_text);
+        builder.setPositiveButton("關閉", null);
+        builder.setNegativeButton("前往帳號登錄", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                try {
+                    switchFragment(3);
+                } catch (Exception e) {
+                    Toast.makeText(MainActivity.this, R.string.error, Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        builder.create().show();
+    }
 
     @Override
     public void onTabSelected(int position) {
