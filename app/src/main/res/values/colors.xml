@@ -42,8 +42,8 @@
     <color name="event_color">#E74C3C</color>
     <color name="portal_color">#3498DB</color>
     <color name="other_color">#2980B9</color>
-    <color name="credit_color">#09c</color>
-    <color name="account_color">#fb9a2b</color>
+    <color name="credit_color">#fb9a2b</color>
+    <color name="account_color">#09c</color>
     <color name="map_color">#690</color>
     <color name="store_color">#c00</color>
     <color name="feedback_color">#683bb7</color>
