@@ -55,7 +55,7 @@
                     android:gravity="left"
                     android:paddingStart="15dp"
                     android:paddingEnd="15dp"
-                    android:paddingTop="15xdcdp"
+                    android:paddingTop="15dp"
                     android:paddingBottom="10dp"
                     android:text="@string/classmates"
                     android:textColor="@color/darken"
