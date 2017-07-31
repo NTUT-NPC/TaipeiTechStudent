@@ -12,7 +12,7 @@
         android:layout_marginRight="10dp"
         android:orientation="horizontal">
 
-        <owo.npc.taipeitechrefined.MenuSpinner
+        <com.Ntut.credit.MenuSpinner
             android:id="@+id/year_list"
             style="@style/Widget.AppCompat.Spinner.Underlined"
             android:layout_width="0dip"
@@ -22,7 +22,7 @@
             android:prompt="@string/year"
             android:spinnerMode="dialog"/>
 
-        <owo.npc.taipeitechrefined.MenuSpinner
+        <com.Ntut.credit.MenuSpinner
             android:id="@+id/division_list"
             style="@style/Widget.AppCompat.Spinner.Underlined"
             android:layout_width="0dip"
@@ -33,7 +33,7 @@
             android:spinnerMode="dialog"/>
     </LinearLayout>
 
-    <owo.npc.taipeitechrefined.MenuSpinner
+    <com.Ntut.credit.MenuSpinner
         android:id="@+id/department_list"
         style="@style/Widget.AppCompat.Spinner.Underlined"
         android:layout_width="match_parent"
@@ -42,7 +42,7 @@
         android:layout_marginRight="10dp"
         android:gravity="center"
         android:prompt="@string/department"
-        android:spinnerMode="dialog"/>
+        android:spinnerMode="dialog" />
 
     <ScrollView
         android:layout_width="match_parent"

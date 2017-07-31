@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/silver"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <include
@@ -32,7 +32,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left"
-                    android:padding="5dp"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:padding="10dp"
                     android:text="@string/course_detail"
                     android:textColor="@color/darken"
                     android:textSize="@dimen/textLarge"/>
@@ -51,7 +53,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left"
-                    android:padding="5dp"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:paddingTop="15xdcdp"
+                    android:paddingBottom="10dp"
                     android:text="@string/classmates"
                     android:textColor="@color/darken"
                     android:textSize="@dimen/textLarge"/>
