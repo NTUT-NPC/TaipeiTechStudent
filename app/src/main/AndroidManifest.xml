@@ -55,6 +55,7 @@
         <activity android:name=".schoolmap.MapActivity"/>
         <activity android:name=".store.StoreActivity"/>
         <activity android:name=".event.EventDetailActivity" />
+        <activity android:name=".credit.CreditTypeListActivity" />
 
 
         <service android:name=".firebase.FirebaseService"

@@ -5,10 +5,9 @@ import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.bumptech.glide.DrawableTypeRequest;
+import com.Ntut.R;
+import com.bumptech.glide.DrawableRequestBuilder;
 import com.bumptech.glide.Glide;
-
-import java.util.concurrent.ExecutionException;
 
 
 /**
@@ -78,8 +77,8 @@ public class EventInfo implements Parcelable {
         this.url = url;
     }
 
-    public DrawableTypeRequest<String> getImage(Context context) {
-        return Glide.with(context).load(image);
+    public DrawableRequestBuilder<String> getImage(Context context) {
+        return Glide.with(context).load(image).override(600, 400).centerCrop();
     }
 
     public void setImage(String image) {

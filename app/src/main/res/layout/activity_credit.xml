@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/start_query"
-            android:textColor="@drawable/blue_color_selector"
+            android:textColor="@drawable/orange_color_selector"
             android:textSize="@dimen/textLarge"/>
     </LinearLayout>
 
