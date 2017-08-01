@@ -10,7 +10,7 @@
     <color name="colorPrimary">#2196F3</color>
     <color name="colorPrimaryDark">#1976D2</color>
     <color name="colorPrimaryLight">#BBDEFB</color>
-    <color name="colorAccent">#607D8B</color>
+    <color name="colorAccent">#0091ea</color>
     <color name="primaryText">#212121</color>
     <color name="secondaryText">#757575</color>
     <color name="icons">#FFFFFF</color>
@@ -36,6 +36,9 @@
     <color name="dark_yellow">#f39c12</color>
     <color name="half_white">#60ffffff</color>
     <color name="half_black">#60000000</color>
+    <color name="super_light_grey">#FAFAFA</color>
+    <color name="light_grey">#D7D7D7</color>
+
 
     <color name="course_color">#30b8f3</color>
     <color name="calendar_color">#E67E22</color>
