@@ -68,16 +68,6 @@ public class EventFragment extends BaseFragment implements ValueEventListener {
     }
 
     @Override
-    public int getTitleColorId() {
-        return R.color.event_color;
-    }
-
-    @Override
-    public int getTitleStringId() {
-        return R.string.activity_text;
-    }
-
-    @Override
     public void onDataChange(DataSnapshot dataSnapshot) {
         Log.e(getClass().getName(), "Firebase data change");
         adapter.clear();
@@ -101,5 +91,15 @@ public class EventFragment extends BaseFragment implements ValueEventListener {
     @Override
     public void onCancelled(DatabaseError databaseError) {
 
+    }
+
+    @Override
+    public int getTitleColorId() {
+        return R.color.event_color;
+    }
+
+    @Override
+    public int getTitleStringId() {
+        return R.string.activity_text;
     }
 }

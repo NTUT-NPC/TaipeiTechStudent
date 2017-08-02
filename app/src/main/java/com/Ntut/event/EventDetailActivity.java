@@ -85,7 +85,11 @@ public class EventDetailActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    public void finishAfterTransition() {
+        super.finishAfterTransition();
+        hideElement();
+    }
 
     private void showElement() {
         location.setVisibility(View.VISIBLE);
@@ -94,6 +98,15 @@ public class EventDetailActivity extends AppCompatActivity {
         date.setVisibility(View.VISIBLE);
         content.setVisibility(View.VISIBLE);
         fab.setVisibility(View.VISIBLE);
+    }
+
+    private void hideElement() {
+        location.setVisibility(View.GONE);
+        host.setVisibility(View.GONE);
+        url.setVisibility(View.GONE);
+        date.setVisibility(View.GONE);
+        content.setVisibility(View.GONE);
+        fab.setVisibility(View.GONE);
     }
 
     private void setToolbar() {
@@ -128,4 +141,14 @@ public class EventDetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        hideElement();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }
