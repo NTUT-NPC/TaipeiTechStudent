@@ -7,6 +7,7 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.Ntut.MainActivity;
@@ -45,7 +46,11 @@ public class FirebaseMessaging extends com.google.firebase.messaging.FirebaseMes
         final boolean autoCancel = true; // 點擊通知後是否要自動移除掉通知
         final int requestCode = notifyID; // PendingIntent的Request Code
         final Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.putExtra("from", getClass().getSimpleName());
+        Log.e("123", getClass().getSimpleName());
         final int flags = PendingIntent.FLAG_CANCEL_CURRENT;
+        long[] vibrate_effect =
+                {1000, 500, 1000, 400, 1000, 300, 1000, 200, 1000, 100};
         // ONE_SHOT：PendingIntent只使用一次；
         // CANCEL_CURRENT：PendingIntent執行前會先結束掉之前的；
         // NO_CREATE：沿用先前的PendingIntent，不建立新的PendingIntent；
@@ -55,10 +60,11 @@ public class FirebaseMessaging extends com.google.firebase.messaging.FirebaseMes
 
         final NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); // 取得系統的通知服務
-        final Notification notification = new Notification.Builder(getApplicationContext())
+        final Notification notification = new NotificationCompat.Builder(getApplicationContext())
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle("消息")
                 .setContentText(remoteMessage.getNotification().getBody())
+                .setVibrate(vibrate_effect)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(autoCancel).build(); // 建立通知
         notificationManager.notify(notifyID, notification); // 發送通知
