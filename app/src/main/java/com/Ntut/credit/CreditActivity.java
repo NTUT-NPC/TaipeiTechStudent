@@ -289,7 +289,7 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
                     break;
                 case BaseRunnable.ERROR:
                     pd.dismiss();
-                    Utility.showDialog(getString(R.string.hint), (String) msg.obj, getApplicationContext());
+                    showAlertMessage(getString(R.string.hint), (String) msg.obj);
             }
         }
     };
@@ -305,7 +305,7 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
                     break;
                 case BaseRunnable.ERROR:
                     pd.dismiss();
-                    Utility.showDialog(getString(R.string.hint), (String) msg.obj, getApplicationContext());
+                    showAlertMessage(getString(R.string.hint), (String) msg.obj);
                     break;
             }
         }
