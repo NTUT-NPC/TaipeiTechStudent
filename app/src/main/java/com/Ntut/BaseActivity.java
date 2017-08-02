@@ -28,7 +28,7 @@ public class BaseActivity extends AppCompatActivity {
         builder.create().show();
     }
 
-    protected void showAlertMessage(String message, String title) {
+    protected void showAlertMessage(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setPositiveButton("返回", null);
         builder.setTitle(title);
