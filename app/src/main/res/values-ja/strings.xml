@@ -190,8 +190,4 @@
     <string name="wifi_wait">しばらくお待ちください…</string>
     <string name="wifi_already_connected">ntutcc に接続済みです</string>
 
-    <string name="firstopen_text">歡迎使用T.T.S.\n\n此軟體是北科學生會\n\n為了營造更好的校園生活所開發的\n\n\n若要使用完整功能\n\n請至帳號登錄頁面\n\n登錄校園入口網站帳號！
-        \n</string>
-    <string name="error">錯誤 請重新開啟T.T.S.</string>
-
 </resources>
