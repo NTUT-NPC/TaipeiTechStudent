@@ -200,7 +200,7 @@ public class RadarChartView extends View {
 
         totalPath.reset();
         totalPaint.setAntiAlias(true);
-        totalPaint.setColor(getResources().getColor(R.color.blue));
+        totalPaint.setColor(getResources().getColor(R.color.credit_color));
         totalPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         for (int i = 0; i < pts.length; i++) {
             // 给valuePath赋值
@@ -222,7 +222,7 @@ public class RadarChartView extends View {
 
         corePath.reset();
         corePaint.setAntiAlias(true);
-        corePaint.setColor(getResources().getColor(R.color.blue));
+        corePaint.setColor(getResources().getColor(R.color.credit_color));
         corePaint.setStyle(Paint.Style.FILL_AND_STROKE);
         for (int i = 0; i < pts.length; i++) {
             // 给valuePath赋值

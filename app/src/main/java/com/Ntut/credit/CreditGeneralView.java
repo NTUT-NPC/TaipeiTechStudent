@@ -38,12 +38,12 @@ public class CreditGeneralView extends ScrollView {
     private void init() {
         container = new LinearLayout(getContext());
         container.setOrientation(LinearLayout.VERTICAL);
-        container.setBackgroundResource(R.color.silver);
+        container.setBackgroundResource(R.color.credit_bar);
         for (GeneralCredit general : studentCredit.getGeneralCredits()) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             TextView title_text = (TextView) inflater.inflate(
                     R.layout.credit_textview, this, false);
-            title_text.setBackgroundResource(R.color.cloud);
+            title_text.setBackgroundResource(R.color.white);
             title_text.setTypeface(title_text.getTypeface(), Typeface.BOLD);
             title_text.setText(general.getTypeName());
             container.addView(title_text);

@@ -117,5 +117,13 @@
     <string name="etc_courselanguage_hint">學分計算頁面也會受到部分影響</string>
     <string name="etc_courselanguage_applied">變更已套用，請手動更新課表</string>
     <string name="portal">校園入口網站</string>
+    <string name="other_text">其他</string>
+    <string name="school_map_text">校園地圖</string>
+    <string name="store_text">特約商店</string>
+    <string name="about_text">關於</string>
+    <string name="club_text">社團介紹</string>
+    <string name="location">地點：</string>
+    <string name="aesthetic_dimension">美學向度</string>
+    <string name="literary_history_dimension">文史向度</string>
 
 </resources>
