@@ -41,7 +41,7 @@
     <color name="about_color">#33b5e5</color>
 
 
-
+    <color name="credit_background">#FFFFFF</color>
 
     <!-- T.T.S. 1.3 others color -->
 
@@ -61,6 +61,7 @@
     <color name="half_鴉青">#60424C50</color>
     <color name="half_玄青">#603D3B4F</color> -->
     <color name="half_70_white">#b3ffffff</color>
+    <color name="credit_bar">#99000000</color>
 
 
 </resources>

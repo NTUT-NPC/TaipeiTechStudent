@@ -59,8 +59,7 @@ public class CreditTypeListActivity extends AppCompatActivity {
                 if (credit.getType() == type) {
                     View item = inflater.inflate(R.layout.credit_item, null,
                             false);
-                    item.setBackgroundResource(i % 2 == 0 ? R.color.white
-                            : R.color.cloud);
+                    item.setBackgroundResource(R.color.white);
                     TextView courseNo = (TextView) item
                             .findViewById(R.id.courseNo);
                     courseNo.setText(credit.getCourseNo());
@@ -103,8 +102,8 @@ public class CreditTypeListActivity extends AppCompatActivity {
                 }
             });
             actionBar.setTitle(title);
-            actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.dark_blue)));
+            actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.credit_color)));
         }
-        Utility.setStatusBarColor(this, getResources().getColor(R.color.dark_blue));
+        Utility.setStatusBarColor(this, getResources().getColor(R.color.credit_color));
     }
 }

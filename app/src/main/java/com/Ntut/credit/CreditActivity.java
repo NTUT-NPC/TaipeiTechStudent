@@ -111,8 +111,7 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
                 LayoutInflater inflater = LayoutInflater.from(this);
                 TextView text = (TextView) inflater.inflate(
                         R.layout.credit_textview, null, false);
-                text.setBackgroundResource(i % 2 == 0 ? R.color.cloud
-                        : R.color.white);
+                text.setBackgroundResource(R.color.credit_background);
                 if (standardCredit != null) {
                     credit_text = String.valueOf(studentCredit
                             .getTypeCredits(i))
@@ -212,8 +211,7 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
             ArrayList<CreditInfo> credits = semesterCredit.getCredits();
             for (int i = 0; i < credits.size(); i++) {
                 View item = inflater.inflate(R.layout.credit_item, null, false);
-                item.setBackgroundResource(i % 2 == 0 ? R.color.white
-                        : R.color.cloud);
+                item.setBackgroundResource(R.color.white);
                 CreditInfo creditInfo = credits.get(i);
 
                 TextView coursNo = (TextView) item.findViewById(R.id.courseNo);
