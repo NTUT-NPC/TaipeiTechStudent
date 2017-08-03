@@ -24,7 +24,6 @@ public class CourseBlock extends AppCompatTextView {
         setTextSize(12);
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public void setBackgroundColor(int color) {
         StateListDrawable background_drawable = new StateListDrawable();
