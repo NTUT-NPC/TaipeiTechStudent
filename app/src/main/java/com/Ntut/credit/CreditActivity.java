@@ -326,6 +326,10 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
 
                         } else {
                             showAlertMessage(getString(R.string.credit_imformation_complete), getString(R.string.credit_final));
+                            CreditStandardDialog dialog = new CreditStandardDialog(
+                                    CreditActivity.this, Model.getInstance().getStandardCredit());
+                            dialog.setDialogListener(CreditActivity.this);
+                            dialog.show();
                         }
                     }
                     break;
