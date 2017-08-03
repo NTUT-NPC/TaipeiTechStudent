@@ -111,7 +111,7 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
                 LayoutInflater inflater = LayoutInflater.from(this);
                 TextView text = (TextView) inflater.inflate(
                         R.layout.credit_textview, null, false);
-                text.setBackgroundResource(R.color.credit_background);
+                text.setBackgroundResource(R.color.white);
                 if (standardCredit != null) {
                     credit_text = String.valueOf(studentCredit
                             .getTypeCredits(i))
