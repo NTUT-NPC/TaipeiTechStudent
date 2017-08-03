@@ -86,6 +86,12 @@ public class EventDetailActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+        showElement();
+    }
+
+    @Override
     public void finishAfterTransition() {
         super.finishAfterTransition();
         hideElement();
@@ -101,12 +107,12 @@ public class EventDetailActivity extends AppCompatActivity {
     }
 
     private void hideElement() {
-        location.setVisibility(View.GONE);
-        host.setVisibility(View.GONE);
-        url.setVisibility(View.GONE);
-        date.setVisibility(View.GONE);
-        content.setVisibility(View.GONE);
-        fab.setVisibility(View.GONE);
+        location.setVisibility(View.INVISIBLE);
+        host.setVisibility(View.INVISIBLE);
+        url.setVisibility(View.INVISIBLE);
+        date.setVisibility(View.INVISIBLE);
+        content.setVisibility(View.INVISIBLE);
+        fab.setVisibility(View.INVISIBLE);
     }
 
     private void setToolbar() {
