@@ -76,9 +76,9 @@
 
     <string name="none_account_error">請先至帳號設定，設定校園入口網站帳號密碼！</string>
     <string name="hint">提示</string>
-    <string name="credit_error">查詢過程有發生錯誤，請重新查詢或自行修正！</string>
+    <string name="credit_error">查詢過程有發生錯誤\n\n請重新查詢或自行修正！</string>
     <string name="credit_imformation_complete">學分資訊查詢完成</string>
-    <string name="credit_final">可以開始瀏覽學分及歷年成績！</string>
+    <string name="credit_final">可以開始瀏覽學分及歷年成績！\n</string>
     <string name="credit_updating">學分資料查詢中~</string>
     <string name="credit_essential_core">應修核心:</string>
     <string name="credit_setting_graduation">畢業學分標準設定</string>
