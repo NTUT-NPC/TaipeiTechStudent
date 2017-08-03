@@ -81,7 +81,7 @@ public class CreditConnector {
             int t = titles.length - nodes.length;
             int count = 0;
             StudentCredit studentCredit = new StudentCredit();
-            studentCredit = getCurrentCredit(studentCredit);
+            //studentCredit = getCurrentCredit(studentCredit);  //當前選課
             for (TagNode table : nodes) {
                 String[] temp = titles[t].getText().toString().split(" ");
                 TagNode[] rows = table.getElementsByName("tr", true);
@@ -165,7 +165,7 @@ public class CreditConnector {
         return studentCredit;
     }
 
-    private static StudentCredit getCurrentCredit(StudentCredit studentCredit) {
+    /*private static StudentCredit getCurrentCredit(StudentCredit studentCredit) {
         try {
             String result = Connector.getDataByGet(CURRENT_URI, "big5");
             if (result.contains("查無本學期選課資料")) {
@@ -196,7 +196,7 @@ public class CreditConnector {
             e.printStackTrace();
         }
         return studentCredit;
-    }
+    }*/ //當前課表
 
     private static int getCourseCount(String result) {
         TagNode tagNode;
