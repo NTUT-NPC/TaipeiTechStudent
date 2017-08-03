@@ -6,11 +6,7 @@
     <item name="password_edittext" type="id"/>
     <item name="save_button" type="id"/>
     <item name="clear_button" type="id"/>
-    <item name="refresh_button" type="id"/>
-    <item name="login_button" type="id"/>
-    <item name="wifi_listview" type="id"/>
     <item name="radar_chart" type="id"/>
-    <item name="swipe_container" type="id"/>
     <item name="course_container" type="id"/>
 
 

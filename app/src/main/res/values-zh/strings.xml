@@ -3,27 +3,15 @@
 
     <!-- Global -->
     <string name="app_name">T.T.S.</string>
-    <string name="title">Taipei Tech App</string>
-    <string name="donate_text">捐款</string>
-    <string name="play_store_text">Play商店</string>
-    <string name="play_store_not_support">無法開啟Play商店！</string>
     <string name="press_again_to_exit">再按一次將返回桌面！</string>
     <string name="web_back_hint">實體返回鍵，可以回到前一瀏覽頁面！</string>
     <string name="back">返回</string>
     <string name="start_query">開始查詢</string>
-    <string name="tool_text">選單</string>
-    <string name="menu_prompt">功能</string>
     <string name="check_network_available">請檢查您的網路連線狀態，或再試一次！</string>
-    <string name="version_text">version %s by NPC</string>
-    <string name="original_developer">based on Alen Chiou\'s</string>
-    <string name="open_drawer">打開</string>
-    <string name="close_drawer">關閉</string>
-    <string name="account_password_empty_toast_text">請先至帳號管理，設定校園入口網站帳號密碼！</string>
 
     <!-- Activity -->
     <string name="activity_text">活動報報</string>
     <string name="share_using">分享此活動</string>
-    <string name="activity_update">更新活動</string>
 
     <!-- Calendar -->
     <string name="calendar_text">行事曆</string>
@@ -34,36 +22,11 @@
     <!-- Course -->
     <string name="course_text">課表查詢</string>
     <string name="id_text">學號</string>
-    <string name="search_text">查詢</string>
-    <string name="course_detail_title">課程詳細資訊</string>
     <string name="course_detail">課程資料</string>
     <string name="classmates">學生名單</string>
-    <string name="course_offline_save">將目前課表設為離線瀏覽</string>
-    <string name="course_offline_clear">清除離線瀏覽課表</string>
-    <string name="mon">一</string>
-    <string name="tue">二</string>
-    <string name="wed">三</string>
-    <string name="thu">四</string>
-    <string name="fri">五</string>
-    <string name="sat">六</string>
-    <string name="sun">日</string>
-    <string name="first">1</string>
-    <string name="second">2</string>
-    <string name="third">3</string>
-    <string name="fourth">4</string>
-    <string name="fifth">5</string>
-    <string name="sixth">6</string>
-    <string name="seventh">7</string>
-    <string name="eighth">8</string>
-    <string name="ninth">9</string>
-    <string name="tenth">A</string>
-    <string name="eleventh">B</string>
-    <string name="twelfth">C</string>
-    <string name="thirteenth">D</string>
 
     <!-- Credit -->
     <string name="credit_text">學分計算</string>
-    <string name="semester">學期</string>
     <string name="year">入學年度</string>
     <string name="division">學制</string>
     <string name="department">系所</string>
@@ -91,17 +54,9 @@
     <string name="creative_dimension">創創向度</string>
 
     <!-- Wifi -->
-    <string name="wifi_text">ntutcc 登入</string>
-    <string name="current_wifi">目前偵測到的Wifi</string>
-    <string name="login">認證登入</string>
-    <string name="scan">重新掃描</string>
 
     <!-- Feedback -->
     <string name="feedback_text">意見回饋</string>
-    <string name="question_or_suggestion">問題或建議</string>
-    <string name="feedback_hint">感謝您的提問與建議\n我們的進步離不開您的回饋</string>
-    <string name="feedback_contact">聯繫方式</string>
-    <string name="feedback_contact_hint">請輸入您的聯絡信箱</string>
 
     <!-- Setting -->
     <string name="account_setting_text">帳號管理</string>
@@ -144,53 +99,14 @@
     <string name="credit_vocational_elective">★專業選修</string>
     <string name="credit_maximum_elective">跨系選修上限學分</string>
     <string name="credit_minimum_graduation">最低畢業學分</string>
-    <string name="credit_class_rank">班級排名</string>
-    <string name="credit_group_rank">分組排名</string>
-    <string name="credit_department_rank">系(科)所排名</string>
 
-    <string name="Exception_loginNportal">請先至帳號設定，設定校園入口網站帳號密碼！</string>
-    <string name="feedback_send_suceed">傳送成功</string>
-    <string name="feedback_finish">感謝您的提問與建議，我們將盡快解決您的問題</string>
-    <string name="feedback_blank_forbid">請勿傳送空白回饋</string>
-    <string name="Su">日</string>
-    <string name="Mo">一</string>
-    <string name="Tu">二</string>
-    <string name="We">三</string>
-    <string name="Sa">六</string>
-    <string name="Th">四</string>
-    <string name="Fr">五</string>
-    <string name="ok">確定</string>
-    <string name="feedback_check">您的聯絡方式為空，我們將以匿名方式為您送出，並且將無法給予您適當的回覆，您確定要送出嗎？</string>
     <string name="activity_detail">活動內容</string>
     <string name="activity_date">時間：</string>
     <string name="activity_enddate">結束時間：</string>
     <string name="activity_startdate">開始時間：</string>
-    <string name="activity_noevent">活動更新完成，目前無任何活動資訊！</string>
-    <string name="activity_updated">活動更新完成，可以開始瀏覽活動！</string>
     <string name="calendar_updated">行事曆更新完成，可以開始瀏覽行事曆！</string>
     <string name="calendar_update_first">請先更新行事曆！</string>
-    <string name="course_nocourse">目前無任何課表，無法設為離線瀏覽！</string>
-    <string name="course_offline_cleared">已取消離線瀏覽！</string>
-    <string name="course_click_for_detail">點課程瀏覽詳細內容！</string>
-    <string name="course_offline_saved">目前課表已設為離線瀏覽！</string>
-    <string name="course_courseid">課號：</string>
-    <string name="course_classtime">時間：</string>
-    <string name="course_classplace">地點：</string>
-    <string name="course_classteacher">授課老師：</string>
-    <string name="course_classdetail">詳細內容</string>
-    <string name="course_no_studentid_typed">未輸入學號，請輸入再查詢！</string>
-    <string name="course_classmeeting">班會課無法查詢瀏覽詳細資訊！</string>
-    <string name="course_nosemester">此學生無任何學期課表！</string>
-    <string name="wifi_ntutcc_only">僅提供ntutcc認證登入！</string>
-    <string name="wifi_permission_error">未取得權限，無法提供此功能</string>
-    <string name="wifi_autoconnect_disabled">Ntutcc自動連線已關閉！</string>
-    <string name="course_loading">課程資料讀取中~</string>
-    <string name="course_semester">學期</string>
-    <string name="course_login_portal">登入校園入口網站中…</string>
-    <string name="course_load_semester">學期清單查詢中…</string>
-    <string name="course_load_course">課表查詢中…</string>
     <string name="calendar_loading">行事曆資料讀取中~</string>
-    <string name="send">送出</string>
     <string name="etc_text">設定</string>
     <string name="etc_language_en">EN</string>
     <string name="etc_language_ja">日</string>
@@ -201,16 +117,5 @@
     <string name="etc_courselanguage_hint">學分計算頁面也會受到部分影響</string>
     <string name="etc_courselanguage_applied">變更已套用，請手動更新課表</string>
     <string name="portal">校園入口網站</string>
-    <string name="account_check">請先至帳號管理，設定校園入口網站帳號密碼！</string>
-    <string name="wifi_message">認證成功，ntutcc已可以上網！</string>
-    <string name="wifi_title">Ntutcc自動登入</string>
-    <string name="wifi_scan">Wi-fi 掃描中〜</string>
-    <string name="wifi_wait">請稍後…</string>
-    <string name="wifi_none">未偵測到 ntutcc！</string>
-    <string name="wifi_login">ntutcc 自動登入</string>
-    <string name="wifi_try">嘗試連線到 ntutcc！</string>
-    <string name="wifi_enable">開啟</string>
-    <string name="wifi_needenable">尚未開啟Wi-Fi，請問是否要開啟？</string>
-    <string name="wifi_already_connected">已連線至  ntutcc！</string>
 
 </resources>
