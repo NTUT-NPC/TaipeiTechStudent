@@ -3,33 +3,19 @@
 
     <!-- Global -->
     <string name="app_name">T.T.S.</string>
-    <string name="title">Taipei Tech App</string>
-    <string name="donate_text">Donate</string>
-    <string name="play_store_text">Play store</string>
-    <string name="play_store_not_support">Cannot open play store！</string>
     <string name="press_again_to_exit">Press again to exit</string>
     <string name="web_back_hint">To back to the previous page, press the back button.</string>
     <string name="back">Back</string>
     <string name="start_query">Refresh</string>
-    <string name="tool_text">Menu</string>
-    <string name="menu_prompt">function</string>
     <string name="check_network_available">Please check your network status and try again.</string>
-    <string name="version_text">version %s by NPC</string>
-    <string name="original_developer">based on Alen Chiou\'s</string>
-    <string name="open_drawer">Open</string>
-    <string name="close_drawer">Close</string>
-    <string name="account_password_empty_toast_text">Please set account at \"Account\" first!</string>
 
     <!-- Activity -->
     <string name="activity_text">Event</string>
     <string name="share_using">Share</string>
-    <string name="activity_update">Update</string>
     <string name="activity_detail">Event detail</string>
     <string name="activity_date">Date：</string>
     <string name="activity_startdate">Start date：</string>
     <string name="activity_enddate">End date：</string>
-    <string name="activity_updated">Data updated.</string>
-    <string name="activity_noevent">Data updated, and no event information now.</string>
 
     <!-- Calendar -->
     <string name="calendar_text">Calendar</string>
@@ -43,71 +29,15 @@
     <!-- Course -->
     <string name="course_text">Course</string>
     <string name="id_text">Student ID</string>
-    <string name="search_text">Search</string>
-    <string name="course_semester">Semester</string>
-    <string name="course_loading">Loading…</string>
-    <string name="course_load_course">Loading courses…</string>
-    <string name="course_load_semester">Loading semester…</string>
-    <string name="course_login_portal">Loging in NTUT portal…</string>
-    <string name="course_click_for_detail">Click course block for detail.</string>
-    <string name="course_no_studentid_typed">Type student id first!</string>
-    <string name="course_nocourse">No course displayed now, cannot set as offline data.</string>
-    <string name="course_nosemester">No Course</string>
 
-    <string name="course_offline_save">Save course as offline data</string>
-    <string name="course_offline_clear">Clear offline course data</string>
-    <string name="course_offline_cleared">Offline data cleared.</string>
-    <string name="course_offline_saved">Offline date saved.</string>
-    <string name="course_classmeeting">Cannot provide detail about class meeting.</string>
-
-    <string name="course_detail_title">Course Detail</string>
     <string name="course_detail">Course Detail</string>
-    <string name="course_classdetail">Detail (Chinese only)</string>
-    <string name="course_courseid">Course ID：</string>
-    <string name="course_classplace">Place：</string>
-    <string name="course_classteacher">Teacher：</string>
-    <string name="course_classtime">Time：</string>
     <string name="classmates">Classmates</string>
-
-    <string name="mon">Mon</string>
-    <string name="tue">Tue</string>
-    <string name="wed">Wed</string>
-    <string name="thu">Thu</string>
-    <string name="fri">Fri</string>
-    <string name="sat">Sat</string>
-    <string name="sun">Sun</string>
-
-    <string name="Su">Su</string>
-    <string name="Mo">Mo</string>
-    <string name="Tu">Tu</string>
-    <string name="We">We</string>
-    <string name="Th">Th</string>
-    <string name="Fr">Fr</string>
-    <string name="Sa">Sa</string>
-
-    <string name="first">1</string>
-    <string name="second">2</string>
-    <string name="third">3</string>
-    <string name="fourth">4</string>
-    <string name="fifth">5</string>
-    <string name="sixth">6</string>
-    <string name="seventh">7</string>
-    <string name="eighth">8</string>
-    <string name="ninth">9</string>
-    <string name="tenth">A</string>
-    <string name="eleventh">B</string>
-    <string name="twelfth">C</string>
-    <string name="thirteenth">D</string>
 
     <!-- Credit -->
     <string name="credit_text">Credit</string>
-    <string name="semester">Semester</string>
     <string name="year">Admission Year</string>
     <string name="division">Division</string>
     <string name="department">Department</string>
-    <string name="credit_class_rank">Class rank</string>
-    <string name="credit_group_rank">Group rank</string>
-    <string name="credit_department_rank">Department rank</string>
     <string name="credit_type">Type</string>
     <string name="credit_authorities_common_compulsory">○Dept. Common Required</string>
     <string name="credit_school_common_compulsory">△University Common Required</string>
@@ -156,24 +86,9 @@
     <string name="creative_dimension">Creativity</string>
 
     <!-- Wifi -->
-    <string name="wifi_text">Connect to ntutcc</string>
-    <string name="current_wifi">Current detected hotspots</string>
-    <string name="login">Login</string>
-    <string name="scan">Rescan</string>
-    <string name="wifi_autoconnect_disabled">Auto connection disabled.</string>
-    <string name="wifi_ntutcc_only">Provide ntutcc login ONLY</string>
-    <string name="wifi_permission_error">No permission granted, cannot provide the function.</string>
 
     <!-- Feedback -->
     <string name="feedback_text">Feedback</string>
-    <string name="question_or_suggestion">Problems and Suggestions</string>
-    <string name="feedback_hint">Sincerely thanks for contacting us. \nYour advice is the greatest push for our progress.</string>
-    <string name="feedback_contact">Your Email</string>
-    <string name="feedback_contact_hint">Please leave your email here.</string>
-    <string name="feedback_send_suceed">Sent successfully</string>
-    <string name="feedback_blank_forbid">Do not send empty feedback</string>
-    <string name="feedback_finish">Sincerely thanks for contacting us and we\'ll get back to you as fast as possible.</string>
-    <string name="feedback_check">"You're not fill in the contact information, we'll send it as anonymous and couldn't respond you properly. Are you sure? "</string>
 
     <!-- ETC -->
     <string name="etc_text">Settings</string>
@@ -206,21 +121,7 @@
 
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
-    <string name="ok">OK</string>
-    <string name="Exception_loginNportal">Please set account at \"Account\" first!</string>
-    <string name="send">Send</string>
     <string name="portal">Taipei Tech Portal</string>
-    <string name="account_check">Please set account at \"Account\" first!</string>
-    <string name="wifi_title">Ntutcc</string>
-    <string name="wifi_message">Connect to ntutcc successfully!</string>
-    <string name="wifi_needenable">Wi-fi is disabled, would you want to enable?</string>
-    <string name="wifi_enable">Enable</string>
-    <string name="wifi_login">ntutcc autoconnection</string>
-    <string name="wifi_try">Connecting to ntutcc</string>
-    <string name="wifi_none">Cannot find ntutcc</string>
-    <string name="wifi_scan">Scanning wifi…</string>
-    <string name="wifi_wait">Please wait…</string>
-    <string name="wifi_already_connected">ntutcc is already connected</string>
     <string name="other_text">其他</string>
     <string name="school_map_text">校園地圖</string>
     <string name="store_text">特約商店</string>
@@ -230,9 +131,5 @@
     <string name="aesthetic_dimension">美學向度</string>
     <string name="literary_history_dimension">文史向度</string>
 
-
-    <string name="firstopen_text">歡迎使用T.T.S.\n\n此軟體是北科學生會\n\n為了營造更好的校園生活所開發的\n\n\n若要使用完整功能\n\n請至帳號登錄頁面\n\n登錄校園入口網站帳號！
-        \n</string>
-    <string name="error">錯誤 請重新開啟T.T.S.</string>
 
 </resources>

@@ -9,35 +9,22 @@
 
     <color name="colorPrimary">#2196F3</color>
     <color name="colorPrimaryDark">#1976D2</color>
-    <color name="colorPrimaryLight">#BBDEFB</color>
     <color name="colorAccent">#0091ea</color>
     <color name="primaryText">#212121</color>
-    <color name="secondaryText">#757575</color>
-    <color name="icons">#FFFFFF</color>
-    <color name="divider">#BDBDBD</color>
 
     <color name="white">#FFFFFF</color>
     <color name="darken">#333333</color>
     <color name="deep_darken">#222222</color>
-    <color name="cloud">#F6F6F6</color>
+    <color name="cloud">#f9f9f9</color>
     <color name="silver">#BDC3C7</color>
     <color name="red">#E74C3C</color>
     <color name="dark_red">#C0392B</color>
     <color name="blue">#3498DB</color>
     <color name="dark_blue">#2980B9</color>
-    <color name="purple">#9B59B6</color>
     <color name="dark_purple">#8e44ad</color>
-    <color name="lime">#cddc39</color>
-    <color name="green">#2ECC71</color>
-    <color name="dark_green">#27AE60</color>
     <color name="orange">#E67E22</color>
     <color name="dark_orange">#D35400</color>
-    <color name="yellow">#f1c40f</color>
     <color name="dark_yellow">#f39c12</color>
-    <color name="half_white">#60ffffff</color>
-    <color name="half_black">#60000000</color>
-    <color name="super_light_grey">#FAFAFA</color>
-    <color name="light_grey">#D7D7D7</color>
 
 
     <color name="course_color">#03a9f4</color>
@@ -58,19 +45,6 @@
 
     <!-- T.T.S. 1.3 others color -->
 
-    <color name="transparent">#00000000</color>
-    <color name="tool_press">#2a2a2a</color>
-    <color name="new_yellow">#fff902</color>
-
-    <color name="my_primary">#ED1C24</color>
-    <color name="my_primary_dark">#CC0000</color>
-    <color name="my_primary_light">#B3E5FC</color>
-    <color name="my_accent">#FF5722</color>
-    <color name="my_primary_text">#ffffff</color>
-    <color name="my_secondary_text">#ffffff</color>
-
-    <color name="teewhite">#F3F9F1</color>
-    <color name="beautiful_blue">#30b8f3</color>
     <!-- <color name="玄色">#622A1D</color>
     <color name="琥珀">#CA6924</color>
     <color name="鴉青">#424C50</color>
@@ -86,37 +60,7 @@
     <color name="half_琥珀">#60CA6924</color>
     <color name="half_鴉青">#60424C50</color>
     <color name="half_玄青">#603D3B4F</color> -->
-    <color name="half_dark_green">#6027AE60</color>
-    <color name="half_50_dark_green">#9927AE60</color>
-    <color name="half_green">#602ECC71</color>
-    <color name="half_60_green">#992ECC71</color>
-    <color name="half_70_green">#B32ECC71</color>
-    <color name="half_silver">#b3c3c7cd</color>
-    <color name="half_50_silver">#80c3c7cd</color>
-    <color name="half_60_silver">#99c3c7cd</color>
-    <color name="half_cloud">#60ECF0F1</color>
-    <color name="half_50_cloud">#80ECF0F1</color>
-    <color name="half_60_cloud">#99ECF0F1</color>
-    <color name="half_70_cloud">#b3ECF0F1</color>
-    <color name="half_80_cloud">#cdECF0F1</color>
-    <color name="half_90_cloud">#e6ECF0F1</color>
-    <color name="half_10_white">#1Affffff</color>
-    <color name="half_20_white">#33ffffff</color>
-    <color name="half_30_white">#4dffffff</color>
-    <color name="half_50_white">#80ffffff</color>
-    <color name="half_60_white">#99ffffff</color>
     <color name="half_70_white">#b3ffffff</color>
-    <color name="half_80_white">#cdffffff</color>
-    <color name="half_90_white">#e6ffffff</color>
-    <color name="half_10_black">#1A000000</color>
-    <color name="half_20_black">#33000000</color>
-    <color name="half_30_black">#4D000000</color>
-    <color name="half_50_black">#80000000</color>
-    <color name="half_60_black">#99000000</color>
-    <color name="half_70_black">#b3000000</color>
-    <color name="indigo">#6600FF</color>
-
-
 
 
 </resources>

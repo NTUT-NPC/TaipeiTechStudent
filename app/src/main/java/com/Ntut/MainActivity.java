@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
@@ -12,6 +14,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.Ntut.account.AccountActivity;
@@ -26,10 +30,11 @@ import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
+import java.util.Locale;
+
 public class MainActivity extends BaseActivity implements BottomNavigationBar.OnTabSelectedListener {
 
     private BottomNavigationBar bottomNavigationBar;
-    private int lastSelectedPosition;
     private BaseFragment currentFragment;
     private FirebaseAnalytics firebaseAnalytics;
     private BaseFragment fragment;
@@ -41,29 +46,29 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     private OtherFragment otherFragment = new OtherFragment();
     private AccountSettingFragment accountSettingFragment = new AccountSettingFragment();
     private Boolean lockFinish = true;
-    private SharedPreferences firstOpen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        setContentView(R.layout.activity_main);
         initToolbar();
         initNavigation();
+        switchLanguage(MainApplication.readSetting("uiLang"));
         if (MainApplication.readSetting("account") == null || MainApplication.readSetting("password") == null) {
             changeFragment(accountSettingFragment);
         }
-        changeFragment(courseFragment);
         String first_func = MainApplication.readSetting("first_func");
-        firstOpen = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
-        if (TextUtils.isEmpty(first_func)) {
+        SharedPreferences firstOpen = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        if ("FirebaseMessaging".equals(getIntent().getStringExtra("from"))) {
+            Log.e(getClass().getSimpleName(), "succeed");
+            bottomNavigationBar.selectTab(2);
+        } else if (TextUtils.isEmpty(first_func)) {
             MainApplication.writeSetting("first_func", "0");
-            first_func = MainApplication.readSetting("first_func");
             Intent intent = new Intent(getApplicationContext(), AccountActivity.class);
             startActivity(intent);
-            showFirstopen();
         } else {
-            switchFragment(0);
+            changeFragment(courseFragment);
         }
     }
 
@@ -88,28 +93,8 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
                 .initialise();
     }
 
-    private void showFirstopen() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("T.T.S.北科學生APP");
-        builder.setMessage(R.string.firstopen_text);
-        builder.setPositiveButton("關閉", null);
-        builder.setNegativeButton("前往帳號登錄", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                try {
-                    switchFragment(3);
-                } catch (Exception e) {
-                    Toast.makeText(MainActivity.this, R.string.error, Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-        builder.create().show();
-    }
-
     @Override
     public void onTabSelected(int position) {
-        lastSelectedPosition = position;
         switchFragment(position);
     }
 
@@ -204,5 +189,28 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
             actionBar.setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(getBaseContext(), currentFragment.getTitleColorId())));
         }
         getWindow().setStatusBarColor(ContextCompat.getColor(getBaseContext(), currentFragment.getTitleColorId()));
+    }
+
+    //  與 EtcFragment 的方法相似，因 getResources() 問題在此複製一份使用
+    protected void switchLanguage(String lang) {
+        Resources resources = getResources();
+        Configuration configuration = resources.getConfiguration();
+        DisplayMetrics displayMetrics = resources.getDisplayMetrics();
+        switch (lang) {
+            case "zh":
+                configuration.locale = Locale.TAIWAN;
+                break;
+            case "ja":
+                configuration.locale = Locale.JAPAN;
+                break;
+            default:
+                configuration.locale = Locale.ENGLISH;
+                break;
+        }
+
+        resources.updateConfiguration(configuration, displayMetrics);
+        /*  避免重複寫入
+        MainApplication.writeSetting("uiLang", lang);
+        //*/
     }
 }

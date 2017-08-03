@@ -104,8 +104,8 @@ public class CourseTableLayout extends LinearLayout {
                             Locale.US));
                 }
                 table_cell.setId(j != TABLE_COL - 1 ? i : 14);
-//                table_cell.setZ(5.0f);
-                cell_params.setMargins(0, 0, 0, 0);
+                table_cell.setZ(5.0f);
+                cell_params.setMargins(5, 5, 5, 5);
 //                    table_cell.setBackgroundResource(R.drawable.shape);
 //                    table_cell.setElevation(20.0f);
                 table_cell.setLayoutParams(j == 0 ? title_col_params
