@@ -29,3 +29,7 @@
 -keepclassmembers class com.yourcompany.models.** {
   *;
 }
+-ignorewarnings
+-keep class * {
+    public private *;
+}
