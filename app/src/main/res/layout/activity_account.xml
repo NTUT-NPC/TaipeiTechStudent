@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:clickable="true"
-              android:background="@drawable/red_house"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:background="@drawable/red_house"
+    android:orientation="vertical">
 
     <include layout="@layout/toolbar" />
 
@@ -86,8 +86,9 @@
                 </android.support.design.widget.TextInputLayout>
 
                 <LinearLayout
+                    android:id="@+id/button_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="40dp">
 
@@ -98,32 +99,32 @@
                         android:layout_weight="1">
 
                         <Button
-                            android:id="@+id/save_button"
+                            android:id="@id/save_button"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/buttonHeight"
-                            android:backgroundTint="@color/blue"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
                             android:text="@string/save_button"
                             android:textColor="@color/white"
                             android:textSize="@dimen/textMedium"
-                            android:padding="0dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginLeft="10dp">
-                        </Button>
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="20dp"
+                            android:background="@drawable/button_shape"/>
 
                         <Button
-                            android:id="@+id/clear_button"
+                            android:id="@id/clear_button"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/buttonHeight"
-                            android:backgroundTint="@color/blue"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_weight="1"
                             android:text="@string/clear_button"
                             android:textColor="@color/white"
                             android:textSize="@dimen/textMedium"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginLeft="10dp">
-                        </Button>
+                            android:background="@drawable/button_shape" />
                     </LinearLayout>
+
                 </LinearLayout>
 
                 <TextView
