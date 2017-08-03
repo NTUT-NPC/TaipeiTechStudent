@@ -64,6 +64,10 @@ public class EtcActivity extends BaseActivity {
         courseC_textView = (TextView) findViewById(R.id.courseC_textView);
         uiLang_seekBar = (SeekBar) findViewById(R.id.uiLang_seekBar);
         courseLang_seekBar = (SeekBar) findViewById(R.id.courseLang_seekBar);
+        initView();
+    }
+
+    private void initView() {
         uiLang_textView.setText(R.string.etc_uilanguage_text);
         uiLangHint_textView.setText(R.string.etc_uilanguage_hint);
         uiE_textView.setText(R.string.etc_language_en);
@@ -75,7 +79,6 @@ public class EtcActivity extends BaseActivity {
         courseC_textView.setText(R.string.etc_language_zh);
         uiLang_seekBar.setProgress(getCurrentUILang(MainApplication.readSetting("uiLang")));
         courseLang_seekBar.setProgress(getCurrentCourseLang(lang));
-
         uiLang_seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
