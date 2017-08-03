@@ -51,7 +51,7 @@ public class AboutActivity extends AppCompatActivity {
 
         });
         initWebViewSettings();
-        webview.loadUrl("www.ntut.edu.tw/~ntutsu/tts/about.html");
+        webview.loadUrl("http://www.ntut.edu.tw/~ntutsu/tts/2.0/about.html");
     }
 
     private void initWebViewSettings() {
