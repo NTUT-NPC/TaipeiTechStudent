@@ -2,7 +2,7 @@
 <resources>
 
     <!-- T.T.S. 2.0 New color -->
-
+    <color name="transparent">#00000000</color>
 
 
     <!-- Taipei Tech Refined 1.0 others color -->
