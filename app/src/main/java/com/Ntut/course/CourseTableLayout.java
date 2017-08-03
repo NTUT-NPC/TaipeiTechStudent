@@ -104,12 +104,10 @@ public class CourseTableLayout extends LinearLayout {
                             Locale.US));
                 }
                 table_cell.setId(j != TABLE_COL - 1 ? i : 14);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    table_cell.setZ(20.0f);
+//                table_cell.setZ(5.0f);
+                cell_params.setMargins(0, 0, 0, 0);
 //                    table_cell.setBackgroundResource(R.drawable.shape);
 //                    table_cell.setElevation(20.0f);
-                    cell_params.setMargins(8, 8, 8, 8);
-                }
                 table_cell.setLayoutParams(j == 0 ? title_col_params
                         : cell_params);
                 table_row.addView(table_cell);
@@ -200,8 +198,6 @@ public class CourseTableLayout extends LinearLayout {
 
     private int[] getColorArray(int color_count) {
         int[] color_array = new int[color_count];
-        Color[] colors = new Color[5*4];
-
         int delta = 360 / color_count;
         int offset = (int) (Math.random() * 360);
         for (int i = 0; i < color_count; i++) {
