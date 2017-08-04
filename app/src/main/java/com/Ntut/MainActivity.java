@@ -51,6 +51,11 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        if (MainApplication.readSetting("uiLang").isEmpty() || MainApplication.readSetting("courseLang").isEmpty()) {
+            MainApplication.writeSetting("uiLang", Locale.getDefault().getLanguage());
+            MainApplication.writeSetting("courseLang", Locale.getDefault().getLanguage());
+        }
+        switchLanguage(MainApplication.readSetting("uiLang"));
         setContentView(R.layout.activity_main);
         initToolbar();
         initNavigation();
