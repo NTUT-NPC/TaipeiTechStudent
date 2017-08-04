@@ -69,6 +69,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
             Log.e(getClass().getSimpleName(), "succeed");
             bottomNavigationBar.selectTab(2);
         } else if (TextUtils.isEmpty(first_func)) {
+            changeFragment(courseFragment);
             MainApplication.writeSetting("first_func", "0");
             Intent intent = new Intent(getApplicationContext(), AccountActivity.class);
             startActivity(intent);
