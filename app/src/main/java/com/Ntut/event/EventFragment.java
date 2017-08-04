@@ -2,22 +2,19 @@ package com.Ntut.event;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.Ntut.BaseFragment;
 import com.Ntut.R;
 import com.Ntut.model.EventInfo;
 
 import com.Ntut.model.Model;
-import com.Ntut.utility.WifiUtility;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,12 +29,14 @@ import java.util.List;
  * Created by blackmaple on 2017/5/10.
  */
 
-public class EventFragment extends BaseFragment implements ValueEventListener {
+public class EventFragment extends BaseFragment implements ValueEventListener, View.OnClickListener {
 
     private View fragmentView;
     private RecyclerView recyclerView;
     private static List<EventInfo> eventList;
     private EventAdapter adapter;
+    private View start_button;
+
 
     @Nullable
     @Override
@@ -45,6 +44,8 @@ public class EventFragment extends BaseFragment implements ValueEventListener {
         fragmentView = inflater.inflate(R.layout.fragment_event, container, false);
         recyclerView = (RecyclerView) fragmentView.findViewById(R.id.event_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        start_button = fragmentView.findViewById(R.id.start_button);
+        start_button.setOnClickListener(this);
         return fragmentView;
     }
 
@@ -61,9 +62,11 @@ public class EventFragment extends BaseFragment implements ValueEventListener {
         eventList = Model.getInstance().getEventArray();
         if (eventList == null) {
             eventList = new ArrayList<>();
+            start_button.setVisibility(View.VISIBLE);
+        } else {
+            start_button.setVisibility(View.GONE);
         }
         adapter = new EventAdapter(eventList, context);
-
         recyclerView.setAdapter(adapter);
     }
 
@@ -91,6 +94,20 @@ public class EventFragment extends BaseFragment implements ValueEventListener {
     @Override
     public void onCancelled(DatabaseError databaseError) {
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.start_button:
+                if (adapter.getItemCount() > 0) {
+                    View start_button = fragmentView.findViewById(R.id.start_button);
+                    start_button.setVisibility(View.GONE);
+                } else {
+                    showAlertMessage(getString(R.string.check_network_available));
+                }
+                break;
+        }
     }
 
     @Override
