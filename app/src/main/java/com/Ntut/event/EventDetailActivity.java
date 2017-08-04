@@ -59,7 +59,7 @@ public class EventDetailActivity extends AppCompatActivity {
         transition.addListener(new Transition.TransitionListener() {
             @Override
             public void onTransitionStart(Transition transition) {
-
+                hideElement();
             }
 
             @Override
@@ -69,21 +69,22 @@ public class EventDetailActivity extends AppCompatActivity {
 
             @Override
             public void onTransitionCancel(Transition transition) {
-
+                showElement();
             }
 
             @Override
             public void onTransitionPause(Transition transition) {
-
+                hideElement();
             }
 
             @Override
             public void onTransitionResume(Transition transition) {
-
+                showElement();
             }
         });
 
     }
+
 
     @Override
     protected void onRestart() {
@@ -150,7 +151,6 @@ public class EventDetailActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        hideElement();
     }
 
     @Override
