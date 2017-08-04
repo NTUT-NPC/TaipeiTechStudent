@@ -7,7 +7,7 @@ android {
         applicationId "com.Ntut"
         minSdkVersion 21
         targetSdkVersion 25
-        versionCode 11
+        versionCode 13
         versionName "2.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
