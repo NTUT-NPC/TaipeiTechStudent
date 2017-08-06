@@ -36,6 +36,17 @@
         android:theme="@style/AppTheme"
         tools:replace="android:icon"
         android:fullBackupContent="@xml/backup_descriptor">
+        <receiver
+            android:name="com.Ntut.CourseWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="owo.npc.taipeitechrefined.action.COURSEWIDGET_UPDATE"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/coursewidget_provider"/>
+        </receiver>
         <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="adjustPan">
