@@ -62,7 +62,8 @@
                 android:layout_marginStart="40dp"
                 android:textColor="@color/primaryText"
                 android:textStyle="bold"
-                android:textSize="22sp"
+                android:textSize="@dimen/textLarge"
+                android:textIsSelectable="true"
                 android:transitionName="event_title"/>
 
             <TextView
@@ -73,7 +74,8 @@
                 android:layout_marginEnd="40dp"
                 android:layout_marginStart="40dp"
                 android:textColor="@color/primaryText"
-                android:textSize="16sp"
+                android:textSize="@dimen/textMedium"
+                android:textIsSelectable="true"
                 android:visibility="invisible"/>
 
             <TextView
@@ -84,7 +86,8 @@
                 android:layout_marginEnd="40dp"
                 android:layout_marginStart="40dp"
                 android:textColor="@color/primaryText"
-                android:textSize="16sp"
+                android:textSize="@dimen/textMedium"
+                android:textIsSelectable="true"
                 android:visibility="invisible"/>
 
             <TextView
@@ -96,7 +99,8 @@
                 android:layout_marginStart="40dp"
                 android:lineSpacingMultiplier="1.2"
                 android:textColor="@color/primaryText"
-                android:textSize="16sp"
+                android:textSize="@dimen/textMedium"
+                android:textIsSelectable="true"
                 android:visibility="invisible"/>
 
             <TextView
@@ -107,7 +111,8 @@
                 android:layout_marginEnd="40dp"
                 android:layout_marginStart="40dp"
                 android:textColor="@color/primaryText"
-                android:textSize="16sp"
+                android:textSize="@dimen/textMedium"
+                android:textIsSelectable="true"
                 android:visibility="invisible"/>
 
             <TextView
@@ -118,8 +123,9 @@
                 android:layout_marginEnd="40dp"
                 android:layout_marginStart="40dp"
                 android:textColor="@color/primaryText"
-                android:textSize="16sp"
+                android:textSize="@dimen/textMedium"
                 android:autoLink="web"
+                android:textIsSelectable="true"
                 android:visibility="invisible"/>
 
             <TextView
@@ -131,6 +137,7 @@
                 android:text=""
                 android:textColor="@color/primaryText"
                 android:textSize="16sp"
+                android:textIsSelectable="true"
                 android:visibility="invisible"/>
 
         </LinearLayout>
