@@ -37,7 +37,7 @@
                 android:layout_marginTop="20dp"
                 android:maxLines="1"
                 android:textColor="@color/darken"
-                android:textSize="22sp"
+                android:textSize="@dimen/textLarge"
                 android:textStyle="bold"
                 android:transitionName="event_title" />
 
@@ -51,14 +51,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="日期： "
-                    android:textSize="14sp" />
+                    android:text="@string/date"
+                    android:textSize="@dimen/textSmall" />
 
                 <TextView
                     android:id="@+id/event_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/textSmall" />
 
             </LinearLayout>
 
