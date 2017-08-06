@@ -116,6 +116,28 @@
     <string name="account_empty_error_message">Student id is empty</string>
     <string name="password_empty_error_message">Password is empty</string>
 
+    <!--Widget-->
+    <string name="mon">Mon</string>
+    <string name="tue">Tue</string>
+    <string name="wed">Wed</string>
+    <string name="thu">Thu</string>
+    <string name="fri">Fri</string>
+    <string name="sat">Sat</string>
+    <string name="sun">Sun</string>
+    <string name="first">1</string>
+    <string name="second">2</string>
+    <string name="third">3</string>
+    <string name="fourth">4</string>
+    <string name="fifth">5</string>
+    <string name="sixth">6</string>
+    <string name="seventh">7</string>
+    <string name="eighth">8</string>
+    <string name="ninth">9</string>
+    <string name="tenth">A</string>
+    <string name="eleventh">B</string>
+    <string name="twelfth">C</string>
+    <string name="thirteenth">D</string>
+
     <string name="none_account_error">Please set account at \\\"Account\\\" first.</string>
     <string name="hint">Hint</string>
 
@@ -130,6 +152,7 @@
     <string name="location">location：</string>
     <string name="aesthetic_dimension">"Aesthetics "</string>
     <string name="literary_history_dimension">"LIT History "</string>
+    <string name="date">Date：</string>
 
 
 </resources>

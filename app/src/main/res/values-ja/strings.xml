@@ -102,5 +102,29 @@
     <string name="location">地點：</string>
     <string name="aesthetic_dimension">美學向度</string>
     <string name="literary_history_dimension">文史向度</string>
+    <string name="date">日期：</string>
+
+
+    <!--Widget-->
+    <string name="first">1</string>
+    <string name="second">2</string>
+    <string name="third">3</string>
+    <string name="fourth">4</string>
+    <string name="fifth">5</string>
+    <string name="sixth">6</string>
+    <string name="seventh">7</string>
+    <string name="eighth">8</string>
+    <string name="ninth">9</string>
+    <string name="tenth">A</string>
+    <string name="eleventh">B</string>
+    <string name="twelfth">C</string>
+    <string name="thirteenth">D</string>
+    <string name="mon">月</string>
+    <string name="tue">火</string>
+    <string name="wed">水</string>
+    <string name="thu">木</string>
+    <string name="fri">金</string>
+    <string name="sat">土</string>
+    <string name="sun">日</string>
 
 </resources>
