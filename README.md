@@ -1,5 +1,5 @@
 # TaipeiTechStudent
-這是給臺北科技大學學生專用的 Android App
+An App for Taipei Tech students
 ## Features
 1. Search Taipei Tech Student's Course
 2. Display Taipei Tech Calendar
