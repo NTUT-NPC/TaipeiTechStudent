@@ -21,4 +21,4 @@ An App for Taipei Tech students
 - [Long-Jun](https://github.com/Long-Jun)
 - [神崎秀吉](https://github.com/kamisakihideyoshi)
 ## Lincense
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/yaoandy107/TaipeiTechStudent/blob/master/LICENSE) file for details
+This project is licensed under the Apache 2.0 License - see the [LICENSE.md](https://github.com/yaoandy107/TaipeiTechStudent/blob/master/LICENSE) file for details
