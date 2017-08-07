@@ -1,6 +1,23 @@
 # TaipeiTechStudent
-[![License](https://github.com/yaoandy107/TaipeiTechStudent/blob/master/LICENSE)
 這是給臺北科技大學學生專用的 Android App
+## Features
+1. Search Taipei Tech Student's Course
+2. Display Taipei Tech Calendar
+3. Display Taipei Tech Notice
+4. Browse Taipei Tech Portal
+5. Display Taipei Tech Student's Credit
+6. Display Taipei Tech Map
+7. Display Taipei Tech Authorized Store Map
+8. Support Chinese, English and Japanese UI
+9. Support Chinese and English Course Searching
+## Change log
+### v2.0
+- First release version
+### v2.1
+- Add course widget
+## Requirements
+- Android Studio 3
+- Android 5.0+
 ## Contributor
 [Wei-Cheng Yao](https://github.com/yaoandy107)
 [Long-Jun](https://github.com/Long-Jun)
