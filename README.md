@@ -20,7 +20,10 @@ An App for Taipei Tech students
 - Android 5.0+
 ## Contributor
 [Wei-Cheng Yao](https://github.com/yaoandy107)
+
 [Long-Jun](https://github.com/Long-Jun)
+
 [神崎秀吉](https://github.com/kamisakihideyoshi)
+
 ## Lincense
 [Apache 2.0](https://github.com/yaoandy107/TaipeiTechStudent/blob/master/LICENSE)
