@@ -11,8 +11,6 @@ An App for Taipei Tech students
 8. Support Chinese, English and Japanese UI
 9. Support Chinese and English Course Searching
 ## Change log
-### v2.0
-- First release version
 ### v2.1
 - Add course widget
 ## Requirements
