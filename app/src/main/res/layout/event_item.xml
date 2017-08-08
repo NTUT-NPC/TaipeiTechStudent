@@ -51,7 +51,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/date"
+                    android:text="@string/event_date"
                     android:textSize="@dimen/textSmall" />
 
                 <TextView
@@ -73,7 +73,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/location"
+                    android:text="@string/event_location"
                     android:textSize="14sp" />
 
                 <TextView
