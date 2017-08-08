@@ -2,9 +2,7 @@ package com.Ntut.event;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
@@ -18,8 +16,6 @@ import android.widget.TextView;
 
 import com.Ntut.R;
 import com.Ntut.model.EventInfo;
-
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Andy on 2017/7/23.
@@ -130,11 +126,11 @@ public class EventDetailActivity extends AppCompatActivity {
         collapsingToolbar.setTitle(titleText);
         event.getImage(getBaseContext()).into(eventDetailImage);
         title.setText(titleText);
-        location.setText("地點：" + event.getLocation());
-        host.setText("主辦單位：" + event.getHost());
-        url.setText("詳細內容：" + event.getUrl());
-        date.setText("日期：" + event.getStartDate() + " ~ " + event.getEndDate());
-        content.setText("內容：" + event.getContent());
+        location.setText(R.string.event_location + event.getLocation());
+        host.setText(getString(R.string.event_host) + event.getHost());
+        url.setText(getString(R.string.event_url) + event.getUrl());
+        date.setText(R.string.event_date + event.getStartDate() + " ~ " + event.getEndDate());
+        content.setText(getString(R.string.event_detail) + event.getContent());
     }
 
     @Override

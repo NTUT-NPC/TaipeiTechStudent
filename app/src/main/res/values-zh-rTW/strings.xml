@@ -10,7 +10,7 @@
     <string name="check_network_available">請檢查您的網路連線狀態，或再試一次！</string>
 
     <!-- Activity -->
-    <string name="activity_text">活動報報</string>
+    <string name="event_text">活動報報</string>
     <string name="share_using">分享此活動</string>
 
     <!-- Calendar -->
@@ -111,7 +111,6 @@
     <string name="credit_minimum_graduation">最低畢業學分</string>
 
     <string name="activity_detail">活動內容</string>
-    <string name="activity_date">時間：</string>
     <string name="activity_enddate">結束時間：</string>
     <string name="activity_startdate">開始時間：</string>
     <string name="calendar_updated">行事曆更新完成，可以開始瀏覽行事曆！</string>
@@ -132,10 +131,13 @@
     <string name="store_text">特約商店</string>
     <string name="about_text">關於</string>
     <string name="club_text">社團介紹</string>
-    <string name="location">地點：</string>
+    <string name="event_location">地點：</string>
     <string name="aesthetic_dimension">美學向度</string>
     <string name="literary_history_dimension">文史向度</string>
-    <string name="date">日期：</string>
+    <string name="event_detail">內容：</string>
+    <string name="event_host">主辦單位：</string>
+    <string name="event_url">詳細內容：</string>
+    <string name="event_date">日期：</string>
 
 
 </resources>

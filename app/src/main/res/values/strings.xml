@@ -10,12 +10,14 @@
     <string name="check_network_available">Please check your network status and try again.</string>
 
     <!-- Activity -->
-    <string name="activity_text">Event</string>
+    <string name="event_text">Event</string>
     <string name="share_using">Share</string>
     <string name="activity_detail">Event detail</string>
-    <string name="activity_date">Date：</string>
-    <string name="activity_startdate">Start date：</string>
-    <string name="activity_enddate">End date：</string>
+    <string name="event_date">date：</string>
+    <string name="event_location">location：</string>
+    <string name="event_detail">detail：</string>
+    <string name="event_host">host：</string>
+    <string name="event_url">link：</string>
 
     <!-- Calendar -->
     <string name="calendar_text">Calendar</string>
@@ -149,10 +151,10 @@
     <string name="store_text">Store</string>
     <string name="about_text">About</string>
     <string name="club_text">Club</string>
-    <string name="location">location：</string>
     <string name="aesthetic_dimension">"Aesthetics "</string>
     <string name="literary_history_dimension">"LIT History "</string>
-    <string name="date">Date：</string>
+
+
 
 
 </resources>

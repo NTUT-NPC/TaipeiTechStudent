@@ -117,6 +117,6 @@ public class EventFragment extends BaseFragment implements ValueEventListener, V
 
     @Override
     public int getTitleStringId() {
-        return R.string.activity_text;
+        return R.string.event_text;
     }
 }

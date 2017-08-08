@@ -74,7 +74,7 @@ public class CalendarListAdapter extends ArrayAdapter<CalendarInfo> implements
         if (selectedEvent.getStartDate().compareTo(selectedEvent.getEndDate()) == 0) {
             message = String.format(
                     Locale.TAIWAN,
-                    "%s\n\n" + getContext().getString(R.string.activity_date) + "%s",
+                    "%s\n\n" + getContext().getString(R.string.event_date) + "%s",
                     selectedEvent.getEvent(),
                     Utility.getDateString("yyyy/MM/dd (E)",
                             selectedEvent.getStartDate(), getContext()));
