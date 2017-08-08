@@ -20,7 +20,7 @@
     <string name="year">入学年度</string>
     <string name="account_empty_error_message">学籍番号を入力してください</string>
     <string name="activity_date">時間：</string>
-    <string name="activity_detail">活動詳細</string>
+    <string name="activity_detail">イベント詳細</string>
     <string name="activity_startdate">開始時間：</string>
     <string name="add_to_calendar">アプリに追加</string>
     <string name="back">戻る</string>
@@ -79,7 +79,7 @@
     <string name="credit_setting_graduation">最低修得単位を設定</string>
     <string name="credit_standard_credit">最低修得単位を設定</string>
     <string name="none_account_error">先にアカウント設定を完了してください</string>
-    <string name="web_back_hint">To back to the previous page, press the back button.</string>
+    <string name="web_back_hint">前のページに戻りたいときは、バックボタンを押してください</string>
     <string name="credit_final">歴年の成績と修得単位を調べましょう！</string>
     <string name="overview_general">教養科目</string>
     <string name="credit_maximum_elective">他学科単位修得上限</string>
@@ -94,11 +94,11 @@
     <string name="etc_courselanguage_applied">変更しました、コースデータを更新してください</string>
     <string name="etc_language_en">EN</string>
     <string name="portal">ポータルサイト</string>
-    <string name="other_text">其他</string>
+    <string name="other_text">その他</string>
     <string name="school_map_text">校園地圖</string>
     <string name="store_text">特約商店</string>
-    <string name="about_text">關於</string>
-    <string name="club_text">社團介紹</string>
+    <string name="about_text">T.T.S. について</string>
+    <string name="club_text">クラブ紹介</string>
     <string name="location">地點：</string>
     <string name="aesthetic_dimension">美學向度</string>
     <string name="literary_history_dimension">文史向度</string>
@@ -106,19 +106,6 @@
 
 
     <!--Widget-->
-    <string name="first">1</string>
-    <string name="second">2</string>
-    <string name="third">3</string>
-    <string name="fourth">4</string>
-    <string name="fifth">5</string>
-    <string name="sixth">6</string>
-    <string name="seventh">7</string>
-    <string name="eighth">8</string>
-    <string name="ninth">9</string>
-    <string name="tenth">A</string>
-    <string name="eleventh">B</string>
-    <string name="twelfth">C</string>
-    <string name="thirteenth">D</string>
     <string name="mon">月</string>
     <string name="tue">火</string>
     <string name="wed">水</string>
