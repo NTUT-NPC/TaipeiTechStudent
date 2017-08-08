@@ -3,7 +3,7 @@
     <string name="app_name">T.T.S.</string>
     <string name="account_setting_text">アカウント管理</string>
     <string name="activity_enddate">終了時間：</string>
-    <string name="activity_text">イベント</string>
+    <string name="event_text">イベント</string>
     <string name="calendar_text">カレンダー</string>
     <string name="cancel">キャンセル</string>
     <string name="clear_button">クリア</string>
@@ -19,7 +19,6 @@
     <string name="share_using">シェア</string>
     <string name="year">入学年度</string>
     <string name="account_empty_error_message">学籍番号を入力してください</string>
-    <string name="activity_date">時間：</string>
     <string name="activity_detail">イベント詳細</string>
     <string name="activity_startdate">開始時間：</string>
     <string name="add_to_calendar">アプリに追加</string>
@@ -99,10 +98,9 @@
     <string name="store_text">特約商店</string>
     <string name="about_text">T.T.S. について</string>
     <string name="club_text">クラブ紹介</string>
-    <string name="location">地點：</string>
+    <string name="event_location">地點：</string>
     <string name="aesthetic_dimension">美學向度</string>
     <string name="literary_history_dimension">文史向度</string>
-    <string name="date">日期：</string>
 
 
     <!--Widget-->
@@ -113,5 +111,11 @@
     <string name="fri">金</string>
     <string name="sat">土</string>
     <string name="sun">日</string>
+
+
+    <string name="event_detail">內容：</string>
+    <string name="event_host">主辦單位：</string>
+    <string name="event_url">詳細內容：</string>
+    <string name="event_date">日期：</string>
 
 </resources>
