@@ -30,4 +30,4 @@ README: [English](https://github.com/yaoandy107/TaipeiTechStudent/blob/master/RE
 - [Long-Jun](https://github.com/Long-Jun)
 - [神崎秀吉](https://github.com/kamisakihideyoshi)
 ## 授權
-這專案使用 Apache 2.0 授權 - 詳細內容請參見 [LICENSE](https://github.com/yaoandy107/TaipeiTechStudent/blob/master/LICENSE)
+這項專案使用 Apache 2.0 授權 - 詳情請參閱 [LICENSE](https://github.com/yaoandy107/TaipeiTechStudent/blob/master/LICENSE)
