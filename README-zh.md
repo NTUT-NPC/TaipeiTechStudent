@@ -11,7 +11,7 @@ README: [English](https://github.com/yaoandy107/TaipeiTechStudent/blob/master/RE
 6. 提供北科詳細校園地圖
 7. 提供特約商店資訊地圖
 8. 介面支援中文、英文、日文顯示
-9. 課表資訊支援中文及英文顯自
+9. 課表資訊支援中文及英文顯示
 10. 全域推播
 ## 更新日誌
 ### v2.1
