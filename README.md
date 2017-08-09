@@ -4,23 +4,23 @@ README: [English](https://github.com/yaoandy107/TaipeiTechStudent/blob/master/RE
 An App for Taipei Tech students
 ## Features
 1. Search Taipei Tech student's curriculum
-2. Display Taipei Tech calendar
-3. Display Taipei Tech event
+2. Provide the academic calendar
+3. Information about Taipei Tech-related events 
 4. Browse Taipei Tech portal
-5. Display Taipei Tech student's credit
-6. Display Taipei Tech map
-7. Display Taipei Tech authorized store map
+5. Information about each semester’s total credits
+6. Offer Campus map
+7. Offer the map to the authorized stores 
 8. Support Chinese, English and Japanese UI
-9. Support Chinese and English course searching
+9. Enable to search the courses in Chinese or English
 10. Push Notification
 ## Change log
 ### v2.1
-- Add course widget
+- Add the course widget
 ## Todo-list
 - New calendar UI
 - Customize the notification
 - More custom options in setting page
-- Enable to add customized course in curriculum
+- Enable to create your personal timetables
 - Optimize event page
 ## Requirements
 - Android Studio 3
