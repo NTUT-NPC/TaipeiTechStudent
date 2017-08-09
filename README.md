@@ -1,4 +1,6 @@
 # TaipeiTechStudent
+README: [English](https://github.com/yaoandy107/TaipeiTechStudent/blob/master/README.md) | [中文](https://github.com/yaoandy107/TaipeiTechStudent/blob/master/README-zh.md)
+
 An App for Taipei Tech students
 ## Features
 1. Search Taipei Tech student's curriculum
