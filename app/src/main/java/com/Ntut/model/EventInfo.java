@@ -78,7 +78,7 @@ public class EventInfo implements Parcelable {
     }
 
     public DrawableRequestBuilder<String> getImage(Context context) {
-        return Glide.with(context).load(image).override(600, 400).centerCrop();
+        return Glide.with(context).load(image).placeholder(R.drawable.placeholder).override(600, 400).centerCrop();
     }
 
     public void setImage(String image) {
