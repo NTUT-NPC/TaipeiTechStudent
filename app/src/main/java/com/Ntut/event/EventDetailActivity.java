@@ -1,5 +1,6 @@
 package com.Ntut.event;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -9,6 +10,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.transition.Transition;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -26,7 +28,7 @@ public class EventDetailActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private CollapsingToolbarLayout collapsingToolbar;
     private ImageView eventDetailImage;
-    private FloatingActionButton fab;
+//    private FloatingActionButton fab;
     private TextView title;
     private TextView location;
     private TextView host;
@@ -37,10 +39,11 @@ public class EventDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e(getPackageName(), "onCreate");
         setContentView(R.layout.activity_event_detail);
         collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         eventDetailImage = (ImageView) findViewById(R.id.event_detail_image);
-        fab = (FloatingActionButton) findViewById(R.id.event_fab);
+//        fab = (FloatingActionButton) findViewById(R.id.event_fab);
         title = (TextView) findViewById(R.id.event_detail_title);
         location = (TextView) findViewById(R.id.event_detail_location);
         host = (TextView) findViewById(R.id.event_detail_host);
@@ -55,27 +58,33 @@ public class EventDetailActivity extends AppCompatActivity {
         transition.addListener(new Transition.TransitionListener() {
             @Override
             public void onTransitionStart(Transition transition) {
-                hideElement();
+                Log.e(getPackageName(), "onTransitionStart");
+
+
             }
 
             @Override
             public void onTransitionEnd(Transition transition) {
-                showElement();
+                Log.e(getPackageName(), "onTransitionEnd");
+
             }
 
             @Override
             public void onTransitionCancel(Transition transition) {
-                showElement();
+                Log.e(getPackageName(), "onTransitionCancel");
+
             }
 
             @Override
             public void onTransitionPause(Transition transition) {
-                hideElement();
+                Log.e(getPackageName(), "onTransitionPause");
+
             }
 
             @Override
             public void onTransitionResume(Transition transition) {
-                showElement();
+                Log.e(getPackageName(), "onTransitionResume");
+
             }
         });
 
@@ -83,33 +92,60 @@ public class EventDetailActivity extends AppCompatActivity {
 
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e(getPackageName(), "onResume");
+
+    }
+
+    @Override
     protected void onRestart() {
         super.onRestart();
-        showElement();
+        Log.e(getPackageName(), "onRestart");
+//        showElement();
+
     }
 
     @Override
     public void finishAfterTransition() {
         super.finishAfterTransition();
-        hideElement();
+        Log.e(getPackageName(), "finishAfterTransition");
+
+
+
     }
 
     private void showElement() {
+        Log.e(getPackageName(), "showElement");
+
         location.setVisibility(View.VISIBLE);
         host.setVisibility(View.VISIBLE);
         url.setVisibility(View.VISIBLE);
         date.setVisibility(View.VISIBLE);
         content.setVisibility(View.VISIBLE);
-        fab.setVisibility(View.VISIBLE);
+//        fab.setVisibility(View.VISIBLE);
     }
 
     private void hideElement() {
+        Log.e(getPackageName(), "hideElement");
+
         location.setVisibility(View.INVISIBLE);
         host.setVisibility(View.INVISIBLE);
         url.setVisibility(View.INVISIBLE);
         date.setVisibility(View.INVISIBLE);
         content.setVisibility(View.INVISIBLE);
-        fab.setVisibility(View.INVISIBLE);
+//        fab.setVisibility(View.INVISIBLE);
+    }
+
+    private void deleteElement() {
+        Log.e(getPackageName(), "deleteElement");
+
+        location.setVisibility(View.GONE);
+        host.setVisibility(View.GONE);
+        url.setVisibility(View.GONE);
+        date.setVisibility(View.GONE);
+        content.setVisibility(View.GONE);
+//        fab.setVisibility(View.GONE);
     }
 
     private void setToolbar() {
@@ -117,7 +153,9 @@ public class EventDetailActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         getWindow().setStatusBarColor(ContextCompat.getColor(getBaseContext(), R.color.red));
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     private void setData() {
@@ -126,11 +164,11 @@ public class EventDetailActivity extends AppCompatActivity {
         collapsingToolbar.setTitle(titleText);
         event.getImage(getBaseContext()).into(eventDetailImage);
         title.setText(titleText);
-        location.setText(R.string.event_location + event.getLocation());
-        host.setText(getString(R.string.event_host) + event.getHost());
-        url.setText(getString(R.string.event_url) + event.getUrl());
-        date.setText(R.string.event_date + event.getStartDate() + " ~ " + event.getEndDate());
-        content.setText(getString(R.string.event_detail) + event.getContent());
+        location.setText(String.format("%s%s", getString(R.string.event_location), event.getLocation()));
+        host.setText(String.format("%s%s", getString(R.string.event_host), event.getHost()));
+        url.setText(String.format("%s%s", getString(R.string.event_url), event.getUrl()));
+        date.setText(String.format("%s%s ~ %s", getString(R.string.event_date), event.getStartDate(), event.getEndDate()));
+        content.setText(String.format("%s%s", getString(R.string.event_detail), event.getContent()));
     }
 
     @Override
@@ -144,13 +182,19 @@ public class EventDetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+
     @Override
     protected void onPause() {
         super.onPause();
+        Log.e(getPackageName(), "onPause");
+        hideElement();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Log.e(getPackageName(), "onDestroy");
+
     }
 }

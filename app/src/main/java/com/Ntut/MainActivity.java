@@ -26,6 +26,8 @@ import com.Ntut.event.EventFragment;
 import com.Ntut.model.Model;
 import com.Ntut.other.OtherFragment;
 import com.Ntut.portal.PortalFragment;
+import com.Ntut.utility.Utility;
+import com.Ntut.utility.WifiUtility;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -128,7 +130,11 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
                 String account = Model.getInstance().getAccount();
                 String password = Model.getInstance().getPassword();
                 if (!TextUtils.isEmpty(account) && !TextUtils.isEmpty(password)) {
-                    fragment = portalFragment;
+                    if (WifiUtility.isNetworkAvailable(this)) {
+                        fragment = portalFragment;
+                    } else {
+                        showAlertMessage(getString(R.string.check_network_available));
+                    }
                 } else {
                     Toast.makeText(getBaseContext(), R.string.none_account_error, Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(this, AccountActivity.class);

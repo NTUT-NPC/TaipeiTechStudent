@@ -32,18 +32,18 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
     private MainActivity context;
     private List<EventInfo> eventList;
 
-    public EventAdapter(List<EventInfo> eventList, Context context) {
+    EventAdapter(List<EventInfo> eventList, Context context) {
         this.context = (MainActivity) context;
         this.eventList = eventList;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView image;
-        public TextView title;
-        public TextView date;
-        public TextView location;
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView image;
+        TextView title;
+        TextView date;
+        TextView location;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             image = (ImageView) itemView.findViewById(R.id.event_image);
             title = (TextView) itemView.findViewById(R.id.event_title);
@@ -55,8 +55,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View contactView = LayoutInflater.from(context).inflate(R.layout.event_item, parent, false);
-        ViewHolder viewHolder = new ViewHolder(contactView);
-        return viewHolder;
+        return new ViewHolder(contactView);
     }
 
     @Override
@@ -92,12 +91,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         eventList.add(eventInfo);
     }
 
-    public void saveData() {
+    void saveData() {
         Model.getInstance().setEventArray(eventList);
         Model.getInstance().saveEventArray();
     }
 
-    public void clear() {
+    void clear() {
         eventList.clear();
     }
 }
