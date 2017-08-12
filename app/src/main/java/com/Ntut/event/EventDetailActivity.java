@@ -2,6 +2,7 @@ package com.Ntut.event;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -52,42 +53,18 @@ public class EventDetailActivity extends AppCompatActivity {
         content = (TextView) findViewById(R.id.event_detail_content);
         setToolbar();
         setData();
+        hideElement();
+        Handler handler = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                showElement();
+            }
+        };
+        handler.postDelayed(runnable, 400);
         Transition transition = getWindow().getSharedElementEnterTransition();
         transition.addTarget("event_image");
         transition.addTarget("event_title");
-        transition.addListener(new Transition.TransitionListener() {
-            @Override
-            public void onTransitionStart(Transition transition) {
-                Log.e(getPackageName(), "onTransitionStart");
-
-
-            }
-
-            @Override
-            public void onTransitionEnd(Transition transition) {
-                Log.e(getPackageName(), "onTransitionEnd");
-
-            }
-
-            @Override
-            public void onTransitionCancel(Transition transition) {
-                Log.e(getPackageName(), "onTransitionCancel");
-
-            }
-
-            @Override
-            public void onTransitionPause(Transition transition) {
-                Log.e(getPackageName(), "onTransitionPause");
-
-            }
-
-            @Override
-            public void onTransitionResume(Transition transition) {
-                Log.e(getPackageName(), "onTransitionResume");
-
-            }
-        });
-
     }
 
 
@@ -110,7 +87,7 @@ public class EventDetailActivity extends AppCompatActivity {
     public void finishAfterTransition() {
         super.finishAfterTransition();
         Log.e(getPackageName(), "finishAfterTransition");
-
+        hideElement();
 
 
     }
