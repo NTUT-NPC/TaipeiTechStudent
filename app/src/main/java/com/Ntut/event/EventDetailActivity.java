@@ -54,14 +54,6 @@ public class EventDetailActivity extends AppCompatActivity {
         setToolbar();
         setData();
         hideElement();
-        Handler handler = new Handler();
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                showElement();
-            }
-        };
-        handler.postDelayed(runnable, 400);
         Transition transition = getWindow().getSharedElementEnterTransition();
         transition.addTarget("event_image");
         transition.addTarget("event_title");
@@ -72,15 +64,21 @@ public class EventDetailActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.e(getPackageName(), "onResume");
-
+        Handler handler = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                showElement();
+            }
+        };
+        handler.postDelayed(runnable, 400);
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
         Log.e(getPackageName(), "onRestart");
-//        showElement();
-
+        showElement();
     }
 
     @Override
