@@ -14,6 +14,8 @@
     <string name="share_using">Share</string>
     <string name="activity_detail">Event detail</string>
     <string name="event_date">date：</string>
+    <string name="activity_startdate">Start date：</string>
+    <string name="activity_enddate">End date：</string>
     <string name="event_location">location：</string>
     <string name="event_detail">detail：</string>
     <string name="event_host">host：</string>
