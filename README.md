@@ -1,4 +1,6 @@
 # TaipeiTechStudent
+README: [English](https://github.com/yaoandy107/TaipeiTechStudent/blob/master/README.md) | [中文](https://github.com/yaoandy107/TaipeiTechStudent/blob/master/README-zh.md)
+
 An App for Taipei Tech students
 ## Features
 1. Search Taipei Tech student's curriculum
@@ -27,5 +29,5 @@ An App for Taipei Tech students
 - [Wei-Cheng Yao](https://github.com/yaoandy107)
 - [Long-Jun](https://github.com/Long-Jun)
 - [神崎秀吉](https://github.com/kamisakihideyoshi)
-## Lincense
+## License
 This project is licensed under the Apache 2.0 License - see the [LICENSE](https://github.com/yaoandy107/TaipeiTechStudent/blob/master/LICENSE) file for details
