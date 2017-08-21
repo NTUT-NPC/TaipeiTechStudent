@@ -23,11 +23,11 @@ android {
 }
 
 dependencies {
-    implementation 'com.google.firebase:firebase-database:11.0.2'
-    implementation 'com.google.firebase:firebase-crash:11.0.2'
-    implementation 'com.google.firebase:firebase-core:11.0.2'
-    implementation 'com.google.firebase:firebase-messaging:11.0.2'
-    implementation 'com.google.firebase:firebase-appindexing:11.0.2'
+    implementation 'com.google.firebase:firebase-database:11.2.0'
+    implementation 'com.google.firebase:firebase-crash:11.2.0'
+    implementation 'com.google.firebase:firebase-core:11.2.0'
+    implementation 'com.google.firebase:firebase-messaging:11.2.0'
+    implementation 'com.google.firebase:firebase-appindexing:11.2.0'
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -35,9 +35,9 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
     compile 'com.squareup.okhttp3:okhttp:3.7.0'
-    compile "com.android.support:appcompat-v7:$support_version"
-    compile "com.android.support:cardview-v7:$support_version"
-    compile "com.android.support:support-v4:$support_version"
+    compile "com.android.support:appcompat-v7:25.4.0"
+    compile "com.android.support:cardview-v7:25.4.0"
+    compile "com.android.support:support-v4:25.4.0"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile "com.android.support:recyclerview-v7:25.4.0"
     compile 'com.github.Triggertrap:SeekArc:v1.1'
@@ -45,11 +45,11 @@ dependencies {
     compile 'net.sourceforge.htmlcleaner:htmlcleaner:2.18'
     compile 'org.jsoup:jsoup:1.9.2'
     compile 'com.ashokvarma.android:bottom-navigation-bar:1.4.1'
-    compile "com.google.firebase:firebase-core:$firebase_version"
-    compile "com.google.firebase:firebase-messaging:$firebase_version"
-    compile "com.google.firebase:firebase-database:$firebase_version"
+    compile "com.google.firebase:firebase-core:11.2.0"
+    compile "com.google.firebase:firebase-messaging:11.2.0"
+    compile "com.google.firebase:firebase-database:11.2.0"
     testCompile 'junit:junit:4.12'
-    implementation 'com.google.android.gms:play-services-maps:11.0.2'
+    implementation 'com.google.android.gms:play-services-maps:11.2.0'
     implementation 'com.android.support:appcompat-v7:25.4.0'
 }
 
