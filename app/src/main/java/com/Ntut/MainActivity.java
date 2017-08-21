@@ -1,12 +1,15 @@
 package com.Ntut;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
@@ -16,6 +19,8 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.Ntut.account.AccountActivity;
@@ -69,14 +74,15 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
         SharedPreferences firstOpen = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         if ("FirebaseMessaging".equals(getIntent().getStringExtra("from"))) {
             Log.e(getClass().getSimpleName(), "succeed");
-            bottomNavigationBar.selectTab(2);
+//            bottomNavigationBar.selectTab(2);
+            onTabSelected(2);
         } else if (TextUtils.isEmpty(first_func)) {
-            changeFragment(courseFragment);
+            onTabSelected(0);
             MainApplication.writeSetting("first_func", "0");
             Intent intent = new Intent(getApplicationContext(), AccountActivity.class);
             startActivity(intent);
         } else {
-            changeFragment(courseFragment);
+            onTabSelected(0);
         }
     }
 
@@ -200,7 +206,21 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
             actionBar.setTitle(currentFragment.getTitleStringId());
             actionBar.setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(getBaseContext(), currentFragment.getTitleColorId())));
         }
-        getWindow().setStatusBarColor(ContextCompat.getColor(getBaseContext(), currentFragment.getTitleColorId()));
+        setStatusBarColor(getResources().getColor(currentFragment.getTitleColorId()));
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void setStatusBarColor(int color) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            if (color == Color.BLACK
+                    && window.getNavigationBarColor() == Color.BLACK) {
+                window.clearFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            } else {
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            }
+            window.setStatusBarColor(color);
+        }
     }
 
     //  與 EtcFragment 的方法相似，因 getResources() 問題在此複製一份使用
