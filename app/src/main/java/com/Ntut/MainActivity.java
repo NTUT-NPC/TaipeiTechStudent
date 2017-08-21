@@ -74,10 +74,8 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
         SharedPreferences firstOpen = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         if ("FirebaseMessaging".equals(getIntent().getStringExtra("from"))) {
             Log.e(getClass().getSimpleName(), "succeed");
-//            bottomNavigationBar.selectTab(2);
             onTabSelected(2);
         } else if (TextUtils.isEmpty(first_func)) {
-            onTabSelected(0);
             MainApplication.writeSetting("first_func", "0");
             Intent intent = new Intent(getApplicationContext(), AccountActivity.class);
             startActivity(intent);
