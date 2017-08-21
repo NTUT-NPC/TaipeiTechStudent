@@ -1,6 +1,7 @@
 package com.Ntut.event;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -54,9 +55,12 @@ public class EventDetailActivity extends AppCompatActivity {
         setToolbar();
         setData();
         hideElement();
-        Transition transition = getWindow().getSharedElementEnterTransition();
-        transition.addTarget("event_image");
-        transition.addTarget("event_title");
+        Transition transition = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            transition = getWindow().getSharedElementEnterTransition();
+            transition.addTarget("event_image");
+            transition.addTarget("event_title");
+        }
     }
 
 
@@ -127,7 +131,9 @@ public class EventDetailActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
-        getWindow().setStatusBarColor(ContextCompat.getColor(getBaseContext(), R.color.red));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(ContextCompat.getColor(getBaseContext(), R.color.red));
+        }
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
