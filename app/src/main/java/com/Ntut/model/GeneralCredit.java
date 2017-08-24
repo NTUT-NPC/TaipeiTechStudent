@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class GeneralCredit {
     private String typeName = null;// 向度
     private int mustCoreCredit = 0;
-    private ArrayList<GeneralCreditInfo> generals = new ArrayList<GeneralCreditInfo>();
+    private ArrayList<GeneralCreditInfo> generals = new ArrayList<>();
 
     public String getTypeName() {
         return typeName;

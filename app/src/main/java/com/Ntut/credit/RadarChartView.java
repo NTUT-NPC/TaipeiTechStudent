@@ -22,19 +22,14 @@ public class RadarChartView extends View {
     private int count;
     private float angle;
     private final float angle_offset = 90;
-    private final int point_radius = 5; // 頂點半徑
-    private final int valueRulingCount = 3; // 等分
-    private int radius;
     private int centerX;
     private int centerY;
     private String[] titles = null;
-    private int margin_dp = 25;
     private Point[] pts; // 维度端点
     private Path totalPath;
     private Path corePath;
     private float[] totalValues = null; // 各维度分值
     private float[] coreValues = null; // 各维度分值
-    private int maxValue = 6;
     private Point[] total_pts; // 维度端点
     private Point[] core_pts; // 维度端点
     private Paint paint;
@@ -147,10 +142,11 @@ public class RadarChartView extends View {
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        int margin_dp = 25;
         int margin = (int) TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_DIP, margin_dp, getResources()
                         .getDisplayMetrics());
-        radius = Math.min(h, w) / 2 - margin;
+        int radius = Math.min(h, w) / 2 - margin;
         centerX = w / 2;
         centerY = h / 2;
 
@@ -178,6 +174,7 @@ public class RadarChartView extends View {
         for (int i = 0; i < count; i++) {
             int end = i + 1 == count ? 0 : i + 1;
 
+            int valueRulingCount = 3;
             for (int j = 1; j <= valueRulingCount; j++) {
                 canvas.drawLine(
                         centerX + (pts[i].x - centerX) / valueRulingCount * j,
@@ -191,6 +188,7 @@ public class RadarChartView extends View {
         }
 
         // 畫各向度總和
+        int maxValue = 6;
         for (int i = 0; i < count; i++) {
             total_pts[i].x = (int) (centerX + (pts[i].x - centerX)
                     * totalValues[i] * total_anim_percentage / maxValue);
@@ -237,6 +235,7 @@ public class RadarChartView extends View {
         // 畫頂點
 
         for (int i = 0; i < pts.length; i++) {
+            int point_radius = 5;
             canvas.drawCircle(total_pts[i].x, total_pts[i].y, point_radius,
                     paint);
             canvas.drawCircle(core_pts[i].x, core_pts[i].y, point_radius, paint);

@@ -6,14 +6,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 
 /**
@@ -22,7 +18,6 @@ import android.view.inputmethod.InputMethodManager;
 
 public abstract class BaseFragment extends Fragment {
 
-    private Animation.AnimationListener mAnimationListener;
     private View rootView;
     protected Context context;
     private Boolean hasInitData = false;
@@ -63,7 +58,7 @@ public abstract class BaseFragment extends Fragment {
 
 
     public void setAnimationListener(Animation.AnimationListener listener) {
-        mAnimationListener = listener;
+        Animation.AnimationListener mAnimationListener = listener;
     }
 
     public abstract int getTitleColorId();

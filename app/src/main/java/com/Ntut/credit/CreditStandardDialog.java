@@ -45,9 +45,9 @@ public class CreditStandardDialog extends AlertDialog implements
     private ArrayAdapter<String> division_adapter;
     private MenuSpinner department_list;
     private ArrayAdapter<String> department_adapter;
-    private ArrayList<String> years = new ArrayList<String>();
-    private ArrayList<String> divisions = new ArrayList<String>();
-    private ArrayList<String> departments = new ArrayList<String>();
+    private ArrayList<String> years = new ArrayList<>();
+    private ArrayList<String> divisions = new ArrayList<>();
+    private ArrayList<String> departments = new ArrayList<>();
     private Boolean isUser = false;
     private StandardCredit standardCredit = null;
     private Boolean isCorrect = false;
@@ -254,7 +254,7 @@ public class CreditStandardDialog extends AlertDialog implements
             return null;
         }
         ArrayList<?> list = (ArrayList<?>) object;
-        ArrayList<String> temp = new ArrayList<String>();
+        ArrayList<String> temp = new ArrayList<>();
         for (Object ob : list) {
             if (ob instanceof String) {
                 temp.add((String) ob);
