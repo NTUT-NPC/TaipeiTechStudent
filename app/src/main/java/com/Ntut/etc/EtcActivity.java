@@ -47,7 +47,7 @@ public class EtcActivity extends BaseActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_etc);
+        setContentView(R.layout.activity_etc);
         mToolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(mToolbar);
         setActionBar();
