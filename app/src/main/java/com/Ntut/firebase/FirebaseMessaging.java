@@ -3,17 +3,18 @@ package com.Ntut.firebase;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.Ntut.MainActivity;
 import com.Ntut.R;
-import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import static android.content.ContentValues.TAG;
 
@@ -42,9 +43,12 @@ public class FirebaseMessaging extends com.google.firebase.messaging.FirebaseMes
     }
 
     private void sendNotification(RemoteMessage remoteMessage) {
-        final int notifyID = 1; // 通知的識別號碼
+        Map<String, String> data = remoteMessage.getData();
+        String message = data.get("message");
+        String id = data.get("id");
+        String title = data.get("title");
+        int notifyID = Integer.parseInt(id); // 通知的識別號碼
         final boolean autoCancel = true; // 點擊通知後是否要自動移除掉通知
-        final int requestCode = notifyID; // PendingIntent的Request Code
         final Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.putExtra("from", getClass().getSimpleName());
         Log.e("123", getClass().getSimpleName());
@@ -56,14 +60,13 @@ public class FirebaseMessaging extends com.google.firebase.messaging.FirebaseMes
         // NO_CREATE：沿用先前的PendingIntent，不建立新的PendingIntent；
         // UPDATE_CURRENT：更新先前PendingIntent所帶的額外資料，並繼續沿用
         final PendingIntent pendingIntent = PendingIntent
-                .getActivity(getApplicationContext(), requestCode, intent, flags); // 取得PendingIntent
-
+                .getActivity(getApplicationContext(), notifyID, intent, flags); // 取得PendingIntent
         final NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); // 取得系統的通知服務
         final Notification notification = new NotificationCompat.Builder(getApplicationContext())
                 .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("消息")
-                .setContentText(remoteMessage.getNotification().getBody())
+                .setContentTitle(title)
+                .setContentText(message)
                 .setVibrate(vibrate_effect)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(autoCancel).build(); // 建立通知
