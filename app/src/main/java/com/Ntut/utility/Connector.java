@@ -3,7 +3,6 @@ package com.Ntut.utility;
 import android.content.Context;
 import android.net.Uri;
 import android.text.TextUtils;
-import android.webkit.*;
 import android.webkit.CookieManager;
 
 import java.io.BufferedReader;

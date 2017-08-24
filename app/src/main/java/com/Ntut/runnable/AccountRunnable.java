@@ -6,7 +6,6 @@ import android.os.Handler;
 
 import com.Ntut.MainActivity;
 import com.Ntut.account.AccountActivity;
-import com.Ntut.course.CourseFragment;
 
 /**
  * Created by blackmaple on 2017/5/13.

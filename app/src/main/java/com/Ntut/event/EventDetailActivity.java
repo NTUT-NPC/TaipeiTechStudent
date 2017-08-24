@@ -1,12 +1,10 @@
 package com.Ntut.event;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -27,7 +25,6 @@ import com.Ntut.model.EventInfo;
 
 public class EventDetailActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
     private CollapsingToolbarLayout collapsingToolbar;
     private ImageView eventDetailImage;
 //    private FloatingActionButton fab;
@@ -128,7 +125,7 @@ public class EventDetailActivity extends AppCompatActivity {
     }
 
     private void setToolbar() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

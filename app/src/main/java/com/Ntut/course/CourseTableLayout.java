@@ -19,7 +19,6 @@ import com.Ntut.R;
 import com.Ntut.model.CourseInfo;
 import com.Ntut.model.StudentCourse;
 import com.Ntut.utility.Utility;
-import com.bumptech.glide.load.engine.Resource;
 
 import java.util.ArrayList;
 import java.util.Locale;

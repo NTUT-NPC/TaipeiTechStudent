@@ -23,7 +23,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,7 +33,6 @@ public class EventFragment extends BaseFragment implements ValueEventListener, V
 
     private View fragmentView;
     private RecyclerView recyclerView;
-    private static List<EventInfo> eventList;
     private EventAdapter adapter;
     private View start_button;
 
@@ -59,7 +57,7 @@ public class EventFragment extends BaseFragment implements ValueEventListener, V
     }
 
     private void setData() {
-        eventList = Model.getInstance().getEventArray();
+        List<EventInfo> eventList = Model.getInstance().getEventArray();
         if (eventList == null) {
             eventList = new EventList();
         }

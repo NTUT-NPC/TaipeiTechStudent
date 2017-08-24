@@ -9,11 +9,9 @@ import android.os.Handler;
 
 public class EventRunnable extends BaseRunnable {
 
-    private Context context;
-
     public EventRunnable(Handler handler, Context context) {
         super(handler);
-        this.context = context;
+        Context context1 = context;
     }
 
     @Override

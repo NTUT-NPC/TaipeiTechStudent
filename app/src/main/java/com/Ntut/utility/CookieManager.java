@@ -26,7 +26,7 @@ public class CookieManager implements CookieJar {
         if (null != cookies) {
             return cookies;
         } else {
-            return new ArrayList<Cookie>();
+            return new ArrayList<>();
         }
     }
 

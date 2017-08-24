@@ -38,7 +38,7 @@ public class YearCalendar {
     }
 
     public ArrayList<CalendarInfo> searchEventList(String keyword) {
-        ArrayList<CalendarInfo> resultList = new ArrayList<CalendarInfo>();
+        ArrayList<CalendarInfo> resultList = new ArrayList<>();
         if (eventList != null && keyword != null) {
             for (CalendarInfo calendarInfo : eventList) {
                 if (calendarInfo.getEvent().contains(keyword)) {
@@ -50,7 +50,7 @@ public class YearCalendar {
     }
 
     public ArrayList<CalendarInfo> getMonthEventList(String year, String month) {
-        ArrayList<CalendarInfo> resultList = new ArrayList<CalendarInfo>();
+        ArrayList<CalendarInfo> resultList = new ArrayList<>();
         if (eventList != null && month != null) {
             for (CalendarInfo calendarInfo : eventList) {
                 if (Utility.getMonth(calendarInfo.getStartDate()).equals(month)
@@ -77,7 +77,7 @@ public class YearCalendar {
     }
 
     public ArrayList<String> findEvents(Date date) {
-        ArrayList<String> resultList = new ArrayList<String>();
+        ArrayList<String> resultList = new ArrayList<>();
         if (eventList != null && date != null) {
             for (CalendarInfo calendarInfo : eventList) {
                 if (calendarInfo.getStartDate().equals(date)) {

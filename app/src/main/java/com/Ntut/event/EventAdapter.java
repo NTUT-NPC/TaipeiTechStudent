@@ -17,11 +17,9 @@ import com.Ntut.MainActivity;
 import com.Ntut.R;
 import com.Ntut.model.EventInfo;
 import com.Ntut.model.Model;
-import com.bumptech.glide.Glide;
 
 
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by blackmaple on 2017/5/15.

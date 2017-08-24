@@ -6,7 +6,6 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.ScanResult;
-import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 
@@ -88,7 +87,7 @@ public class WifiUtility {
     }
 
     public static ArrayList<String> getAvailableAPList(Context context) {
-        ArrayList<String> apList = new ArrayList<String>();
+        ArrayList<String> apList = new ArrayList<>();
         try {
             isNtutccAround = false;
             WifiManager wifiManager = (WifiManager) context
