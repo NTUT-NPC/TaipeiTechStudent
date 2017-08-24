@@ -30,6 +30,8 @@ import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
+import static com.Ntut.MainApplication.lang;
+
 import java.util.Locale;
 
 public class MainActivity extends BaseActivity implements BottomNavigationBar.OnTabSelectedListener {
@@ -64,6 +66,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
             changeFragment(accountSettingFragment);
         }
         String first_func = MainApplication.readSetting("first_func");
+        lang = MainApplication.readSetting("courseLang");
         SharedPreferences firstOpen = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         if ("FirebaseMessaging".equals(getIntent().getStringExtra("from"))) {
             Log.e(getClass().getSimpleName(), "succeed");
