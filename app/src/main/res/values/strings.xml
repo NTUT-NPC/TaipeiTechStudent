@@ -155,8 +155,7 @@
     <string name="club_text">Club</string>
     <string name="aesthetic_dimension">"Aesthetics "</string>
     <string name="literary_history_dimension">"LIT History "</string>
-
-
+    <string name="choose_location">Choose locations</string>
 
 
 </resources>

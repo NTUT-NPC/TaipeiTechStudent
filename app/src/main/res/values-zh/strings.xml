@@ -138,6 +138,7 @@
     <string name="event_detail">內容：</string>
     <string name="event_host">主辦單位：</string>
     <string name="event_url">詳細內容：</string>
+    <string name="choose_location">選擇地點</string>
 
 
 </resources>
