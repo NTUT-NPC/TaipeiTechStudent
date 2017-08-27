@@ -3,7 +3,6 @@ package com.Ntut.course.task;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 
-import com.Ntut.R;
 import com.Ntut.course.CourseFragment;
 import com.Ntut.model.Model;
 import com.Ntut.utility.NportalConnector;

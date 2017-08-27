@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 
 public class SemesterCredit {
-    private ArrayList<CreditInfo> credits = new ArrayList<CreditInfo>();
+    private ArrayList<CreditInfo> credits = new ArrayList<>();
     private String year = null;
     private String sem = null;
     private String score = null;

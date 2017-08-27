@@ -21,15 +21,13 @@ import java.util.List;
 
 public class OtherFragment extends BaseFragment {
 
-    private View fragmentView;
-    private RecyclerView recyclerView;
     private List<OtherInfo> otherInfoList;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        fragmentView = inflater.inflate(R.layout.fragment_other, container, false);
-        recyclerView = (RecyclerView) fragmentView.findViewById(R.id.other_list);
+        View fragmentView = inflater.inflate(R.layout.fragment_other, container, false);
+        RecyclerView recyclerView = (RecyclerView) fragmentView.findViewById(R.id.other_list);
         initListData();
         OtherAdapter adapter = new OtherAdapter(otherInfoList, getContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

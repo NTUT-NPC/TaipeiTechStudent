@@ -22,7 +22,6 @@ public class MonthPickerDialog extends AlertDialog implements SeekArc.OnSeekArcC
     private TextView month_text;
     private final static int[] months = {5, 6, 7, 8, 9, 10, 11, 0, 1, 2, 3, 4};
     private int startYear;
-    private SeekArc monthSeekArc;
 
     public MonthPickerDialog(Context context, Calendar calendar, int start_year) {
         super(context);
@@ -50,7 +49,7 @@ public class MonthPickerDialog extends AlertDialog implements SeekArc.OnSeekArcC
                 R.layout.month_picker_dialog, null);
         setView(content);
         month_text = (TextView) content.findViewById(R.id.month_text);
-        monthSeekArc = (SeekArc) content.findViewById(R.id.month_seekarc);
+        SeekArc monthSeekArc = (SeekArc) content.findViewById(R.id.month_seekarc);
         monthSeekArc.setTouchInSide(true);
         monthSeekArc.setSweepAngle(300);
         monthSeekArc.setClockwise(false);

@@ -3,6 +3,7 @@ package com.Ntut.utility;
 import android.content.Context;
 import android.net.Uri;
 import android.text.TextUtils;
+import android.webkit.CookieManager;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -14,10 +15,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
+import java.net.*;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.Map;
@@ -319,7 +317,7 @@ public class Connector {
 
     // 取得 Cookie 的方法，Android 5.0 以下的版本會出錯，導致程式崩潰
     public static String getCookieFromAppCookieManager(String url) throws MalformedURLException {
-        android.webkit.CookieManager cookieManager = android.webkit.CookieManager.getInstance();
+        android.webkit.CookieManager cookieManager = CookieManager.getInstance();
         if (cookieManager == null)
             return null;
         // 出錯點 1

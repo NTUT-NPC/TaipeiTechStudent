@@ -10,12 +10,16 @@
     <string name="check_network_available">Please check your network status and try again.</string>
 
     <!-- Activity -->
-    <string name="activity_text">Event</string>
+    <string name="event_text">Event</string>
     <string name="share_using">Share</string>
     <string name="activity_detail">Event detail</string>
-    <string name="activity_date">Date：</string>
+    <string name="event_date">date：</string>
     <string name="activity_startdate">Start date：</string>
     <string name="activity_enddate">End date：</string>
+    <string name="event_location">location：</string>
+    <string name="event_detail">detail：</string>
+    <string name="event_host">host：</string>
+    <string name="event_url">link：</string>
 
     <!-- Calendar -->
     <string name="calendar_text">Calendar</string>
@@ -124,19 +128,19 @@
     <string name="fri">Fri</string>
     <string name="sat">Sat</string>
     <string name="sun">Sun</string>
-    <string name="first">1</string>
-    <string name="second">2</string>
-    <string name="third">3</string>
-    <string name="fourth">4</string>
-    <string name="fifth">5</string>
-    <string name="sixth">6</string>
-    <string name="seventh">7</string>
-    <string name="eighth">8</string>
-    <string name="ninth">9</string>
-    <string name="tenth">A</string>
-    <string name="eleventh">B</string>
-    <string name="twelfth">C</string>
-    <string name="thirteenth">D</string>
+    <string name="first" translatable="false">1</string>
+    <string name="second" translatable="false">2</string>
+    <string name="third" translatable="false">3</string>
+    <string name="fourth" translatable="false">4</string>
+    <string name="fifth" translatable="false">5</string>
+    <string name="sixth" translatable="false">6</string>
+    <string name="seventh" translatable="false">7</string>
+    <string name="eighth" translatable="false">8</string>
+    <string name="ninth" translatable="false">9</string>
+    <string name="tenth" translatable="false">A</string>
+    <string name="eleventh" translatable="false">B</string>
+    <string name="twelfth" translatable="false">C</string>
+    <string name="thirteenth" translatable="false">D</string>
 
     <string name="none_account_error">Please set account at \\\"Account\\\" first.</string>
     <string name="hint">Hint</string>
@@ -149,10 +153,9 @@
     <string name="store_text">Store</string>
     <string name="about_text">About</string>
     <string name="club_text">Club</string>
-    <string name="location">location：</string>
     <string name="aesthetic_dimension">"Aesthetics "</string>
     <string name="literary_history_dimension">"LIT History "</string>
-    <string name="date">Date：</string>
+    <string name="choose_location">Choose locations</string>
 
 
 </resources>
