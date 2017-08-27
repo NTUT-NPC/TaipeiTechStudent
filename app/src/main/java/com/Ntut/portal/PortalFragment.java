@@ -1,12 +1,19 @@
 package com.Ntut.portal;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.app.SearchManager;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -75,7 +82,16 @@ public class PortalFragment extends BaseFragment {
             }
 
         });
-        if (!TextUtils.isEmpty(account) && !TextUtils.isEmpty(password)) {
+
+        if (!isOnline()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setMessage(R.string.portal_no_connection).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                }
+            });
+            builder.create().show();
+        } else if (!TextUtils.isEmpty(account) && !TextUtils.isEmpty(password)) {
             mProgressDialog = ProgressDialog.show(this.getContext(), null,
                     getString(R.string.nportal_loggingin));
             Thread loginThread = new Thread(new LoginNportalRunnable(account, password,
@@ -84,6 +100,13 @@ public class PortalFragment extends BaseFragment {
         }
 
         return fragmentView;
+    }
+
+    public boolean isOnline() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
     private void initWebViewSettings() {
