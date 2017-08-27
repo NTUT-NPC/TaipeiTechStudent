@@ -154,6 +154,7 @@
     <string name="literary_history_dimension">"LIT History "</string>
     <string name="date">Date：</string>
     <string name="portal_no_connection">No network connection available please try again later</string>
+    <string name="ok">OK</string>
 
 
 </resources>

@@ -136,6 +136,8 @@
     <string name="aesthetic_dimension">美學向度</string>
     <string name="literary_history_dimension">文史向度</string>
     <string name="date">日期：</string>
+    <string name="portal_no_connection">目前無可用網路連接\\n請稍後重新嘗試</string>
+    <string name="ok">確定</string>
 
 
 </resources>

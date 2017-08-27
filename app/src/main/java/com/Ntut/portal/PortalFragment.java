@@ -85,7 +85,7 @@ public class PortalFragment extends BaseFragment {
 
         if (!isOnline()) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-            builder.setMessage(R.string.portal_no_connection).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            builder.setMessage(R.string.portal_no_connection).setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                 }

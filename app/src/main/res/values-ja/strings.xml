@@ -113,5 +113,7 @@
     <string name="fri">金</string>
     <string name="sat">土</string>
     <string name="sun">日</string>
+    <string name="portal_no_connection">有効のネットワーク接続がありません\\n後で試してください</string>
+    <string name="ok">了解</string>
 
 </resources>
