@@ -20,10 +20,6 @@ public class ActivityInfo {
     private String url;
     private String location;
 
-    public String getStart() {
-        return sdf.format(start);
-    }
-
     public Date getStartDate() {
         return start;
     }

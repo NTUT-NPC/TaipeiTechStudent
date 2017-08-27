@@ -19,7 +19,6 @@ import com.Ntut.R;
 import com.Ntut.model.CourseInfo;
 import com.Ntut.model.StudentCourse;
 import com.Ntut.utility.Utility;
-import com.bumptech.glide.load.engine.Resource;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -104,7 +103,9 @@ public class CourseTableLayout extends LinearLayout {
                             Locale.US));
                 }
                 table_cell.setId(j != TABLE_COL - 1 ? i : 14);
-                table_cell.setZ(5.0f);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    table_cell.setZ(5.0f);
+                }
                 cell_params.setMargins(5, 5, 5, 5);
 //                    table_cell.setBackgroundResource(R.drawable.shape);
 //                    table_cell.setElevation(20.0f);

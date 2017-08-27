@@ -1,21 +1,24 @@
 package com.Ntut;
 
+import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.Ntut.account.AccountActivity;
@@ -26,19 +29,17 @@ import com.Ntut.event.EventFragment;
 import com.Ntut.model.Model;
 import com.Ntut.other.OtherFragment;
 import com.Ntut.portal.PortalFragment;
+import com.Ntut.utility.WifiUtility;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.Locale;
 
 public class MainActivity extends BaseActivity implements BottomNavigationBar.OnTabSelectedListener {
 
-    private BottomNavigationBar bottomNavigationBar;
     private BaseFragment currentFragment;
-    private FirebaseAnalytics firebaseAnalytics;
-    private BaseFragment fragment;
-    private Toolbar toolbar;
     private CourseFragment courseFragment = new CourseFragment();
     private CalendarFragment calendarFragment = new CalendarFragment();
     private EventFragment eventFragment = new EventFragment();
@@ -50,7 +51,8 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        FirebaseMessaging.getInstance().subscribeToTopic("main");
         if (MainApplication.readSetting("uiLang").isEmpty() || MainApplication.readSetting("courseLang").isEmpty()) {
             MainApplication.writeSetting("uiLang", Locale.getDefault().getLanguage());
             MainApplication.writeSetting("courseLang", Locale.getDefault().getLanguage());
@@ -67,24 +69,23 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
         SharedPreferences firstOpen = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         if ("FirebaseMessaging".equals(getIntent().getStringExtra("from"))) {
             Log.e(getClass().getSimpleName(), "succeed");
-            bottomNavigationBar.selectTab(2);
+            onTabSelected(2);
         } else if (TextUtils.isEmpty(first_func)) {
-            changeFragment(courseFragment);
             MainApplication.writeSetting("first_func", "0");
             Intent intent = new Intent(getApplicationContext(), AccountActivity.class);
             startActivity(intent);
         } else {
-            changeFragment(courseFragment);
+            onTabSelected(0);
         }
     }
 
     private void initToolbar() {
-        toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
     }
 
     private void initNavigation() {
-        bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
+        BottomNavigationBar bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
         bottomNavigationBar.setTabSelectedListener(this);
         bottomNavigationBar
                 .setMode(BottomNavigationBar.MODE_FIXED);
@@ -113,7 +114,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     }
 
     private void switchFragment(int position) {
-        fragment = null;
+        BaseFragment fragment = null;
         switch (position) {
             case 0:
                 fragment = courseFragment;
@@ -128,7 +129,11 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
                 String account = Model.getInstance().getAccount();
                 String password = Model.getInstance().getPassword();
                 if (!TextUtils.isEmpty(account) && !TextUtils.isEmpty(password)) {
-                    fragment = portalFragment;
+                    if (WifiUtility.isNetworkAvailable(this)) {
+                        fragment = portalFragment;
+                    } else {
+                        showAlertMessage(getString(R.string.check_network_available));
+                    }
                 } else {
                     Toast.makeText(getBaseContext(), R.string.none_account_error, Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(this, AccountActivity.class);
@@ -194,7 +199,21 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
             actionBar.setTitle(currentFragment.getTitleStringId());
             actionBar.setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(getBaseContext(), currentFragment.getTitleColorId())));
         }
-        getWindow().setStatusBarColor(ContextCompat.getColor(getBaseContext(), currentFragment.getTitleColorId()));
+        setStatusBarColor(getResources().getColor(currentFragment.getTitleColorId()));
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void setStatusBarColor(int color) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            if (color == Color.BLACK
+                    && window.getNavigationBarColor() == Color.BLACK) {
+                window.clearFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            } else {
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            }
+            window.setStatusBarColor(color);
+        }
     }
 
     //  與 EtcFragment 的方法相似，因 getResources() 問題在此複製一份使用

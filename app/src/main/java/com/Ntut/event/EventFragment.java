@@ -14,6 +14,7 @@ import com.Ntut.BaseFragment;
 import com.Ntut.R;
 import com.Ntut.model.EventInfo;
 
+import com.Ntut.model.EventList;
 import com.Ntut.model.Model;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,7 +23,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,7 +33,6 @@ public class EventFragment extends BaseFragment implements ValueEventListener, V
 
     private View fragmentView;
     private RecyclerView recyclerView;
-    private static List<EventInfo> eventList;
     private EventAdapter adapter;
     private View start_button;
 
@@ -44,8 +43,7 @@ public class EventFragment extends BaseFragment implements ValueEventListener, V
         fragmentView = inflater.inflate(R.layout.fragment_event, container, false);
         recyclerView = (RecyclerView) fragmentView.findViewById(R.id.event_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        start_button = fragmentView.findViewById(R.id.start_button);
-        start_button.setOnClickListener(this);
+
         return fragmentView;
     }
 
@@ -59,14 +57,20 @@ public class EventFragment extends BaseFragment implements ValueEventListener, V
     }
 
     private void setData() {
-        eventList = Model.getInstance().getEventArray();
+        List<EventInfo> eventList = Model.getInstance().getEventArray();
         if (eventList == null) {
-            eventList = new ArrayList<>();
-            start_button.setVisibility(View.VISIBLE);
-        } else {
-            start_button.setVisibility(View.GONE);
+            eventList = new EventList();
         }
         adapter = new EventAdapter(eventList, context);
+        adapter.add(new EventInfo(
+                "https://scontent.ftpe8-3.fna.fbcdn.net/v/t31.0-8/15167491_1378504085527279_2846785398782333863_o.jpg?oh=d4b5e7a736f9a92c9efdb20141aed75a&oe=5A2E7A48",
+                "程式設計研究社",
+                "",
+                "",
+                "北科大",
+                "程式設計研究社",
+                "此 APP 由北科程式設計社開發與維護",
+                "https://www.facebook.com/NPC.OwO"));
         recyclerView.setAdapter(adapter);
     }
 
@@ -117,6 +121,6 @@ public class EventFragment extends BaseFragment implements ValueEventListener, V
 
     @Override
     public int getTitleStringId() {
-        return R.string.activity_text;
+        return R.string.event_text;
     }
 }

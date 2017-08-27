@@ -9,9 +9,9 @@ import java.util.Comparator;
  */
 
 public class StudentCredit {
-    private ArrayList<SemesterCredit> semesters = new ArrayList<SemesterCredit>();
-    private ArrayList<GeneralCredit> generals = new ArrayList<GeneralCredit>();
-    private ArrayList<SemesterRank> ranks = new ArrayList<SemesterRank>();
+    private ArrayList<SemesterCredit> semesters = new ArrayList<>();
+    private ArrayList<GeneralCredit> generals = new ArrayList<>();
+    private ArrayList<SemesterRank> ranks = new ArrayList<>();
 
     public ArrayList<SemesterCredit> getSemesterCredits() {
         return semesters;

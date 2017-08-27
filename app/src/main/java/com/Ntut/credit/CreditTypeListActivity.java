@@ -70,7 +70,7 @@ public class CreditTypeListActivity extends AppCompatActivity {
                             .findViewById(R.id.credit);
                     credit_text.setText(String.valueOf(credit.getCredit()));
                     Spinner type = (Spinner) item.findViewById(R.id.type);
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(
+                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(
                             this, R.layout.credit_type_textview, getResources()
                             .getStringArray(R.array.credit_type));
                     dataAdapter

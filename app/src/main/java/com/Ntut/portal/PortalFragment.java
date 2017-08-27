@@ -1,7 +1,6 @@
 package com.Ntut.portal;
 
 import android.app.ProgressDialog;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;

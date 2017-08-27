@@ -35,7 +35,7 @@
         <item>19:20 &#8211; 20:10</item>
         <item>20:20 &#8211; 21:10</item>
         <item>21:10 &#8211; 22:00</item>
-        <item></item>
+        <item />
     </string-array>
 
 </resources>
