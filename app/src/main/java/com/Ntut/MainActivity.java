@@ -61,7 +61,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
         setContentView(R.layout.activity_main);
         initToolbar();
         initNavigation();
-        switchLanguage(MainApplication.readSetting("uiLang"));
+//        switchLanguage(MainApplication.readSetting("uiLang"));
         if (MainApplication.readSetting("account") == null || MainApplication.readSetting("password") == null) {
             changeFragment(accountSettingFragment);
         }

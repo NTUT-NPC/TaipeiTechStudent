@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.Ntut.MainApplication;
 import com.Ntut.R;
 import com.Ntut.model.StandardCredit;
 import com.Ntut.runnable.BaseRunnable;
@@ -27,8 +28,6 @@ import com.Ntut.utility.Utility;
 import com.Ntut.utility.WifiUtility;
 
 import java.util.ArrayList;
-
-import static com.Ntut.MainApplication.lang;
 
 /**
  * Created by blackmaple on 2017/5/15.
@@ -95,7 +94,7 @@ public class CreditStandardDialog extends AlertDialog implements
                         if (isUser) {
                             progressDialog = ProgressDialog.show(getContext(),
                                     null, getContext().getString(R.string.credit_loading_academic_system), true);
-                            if(lang.equals("zh") || lang.equals("ja"))
+                            if(MainApplication.readSetting("courseLang").equals("zh") || MainApplication.readSetting("courseLang").equals("ja"))
                                 year = years.get(position).split(" ")[1];
                             else
                                 year = years.get(position).split(" ")[2];
