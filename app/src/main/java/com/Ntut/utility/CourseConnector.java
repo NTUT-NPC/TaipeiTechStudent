@@ -2,6 +2,7 @@ package com.Ntut.utility;
 
 
 
+import com.Ntut.MainApplication;
 import com.Ntut.model.CourseInfo;
 import com.Ntut.model.Semester;
 import com.Ntut.model.StudentCourse;
@@ -11,8 +12,6 @@ import org.htmlcleaner.TagNode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import static com.Ntut.MainApplication.lang;
 
 
 /**
@@ -227,13 +226,13 @@ public class CourseConnector {
         params.put("code", sid);
         params.put("year", year);
         params.put("sem", semester);
-        String result = Connector.getDataByPost(getCourseUri(lang), params, "big5");
+        String result = Connector.getDataByPost(getCourseUri(MainApplication.readSetting("courseLang")), params, "big5");
         TagNode tagNode;
         tagNode = new HtmlCleaner().clean(result);
         TagNode[] nodes = tagNode.getElementsByAttValue("border", "1", true,
                 false);
         TagNode[] rows = nodes[0].getElementsByName("tr", true);
-        if (lang.equals("zh")) {
+        if (MainApplication.readSetting("courseLang").equals("zh")) {
             for (int i = 3; i < rows.length - 1; i++) {
                 TagNode[] cols = rows[i].getElementsByName("td", true);
                 if (isWithdraw(cols)){
@@ -289,7 +288,7 @@ public class CourseConnector {
 
     private static boolean isWithdraw(TagNode[] node) throws Exception {
         try{
-            if (lang.equals("zh"))
+            if (MainApplication.readSetting("courseLang").equals("zh"))
                 return node[16].getText().toString().contains("撤選");
             return node[14].getText().toString().contains("Withdraw");
         } catch (Exception e) {
