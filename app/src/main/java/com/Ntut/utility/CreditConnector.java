@@ -2,6 +2,7 @@ package com.Ntut.utility;
 
 import android.os.Handler;
 
+import com.Ntut.MainApplication;
 import com.Ntut.model.CreditInfo;
 import com.Ntut.model.GeneralCredit;
 import com.Ntut.model.GeneralCreditInfo;
@@ -17,8 +18,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static com.Ntut.MainApplication.lang;
 
 /**
  * Created by blackmaple on 2017/5/15.
@@ -256,7 +255,7 @@ public class CreditConnector {
             HashMap<String, String> params = new HashMap<>();
             params.put("format", "-1");
             String result = Connector
-                    .getDataByPost(getStandardUri(lang), params, "big5");
+                    .getDataByPost(getStandardUri(MainApplication.readSetting("courseLang")), params, "big5");
             TagNode tagNode;
             tagNode = new HtmlCleaner().clean(result);
             TagNode[] rows = tagNode.getElementsByName("a", true);
@@ -280,7 +279,7 @@ public class CreditConnector {
             params.put("format", "-2");
             params.put("year", year);
             String result = Connector
-                    .getDataByPost(getStandardUri(lang), params, "big5");
+                    .getDataByPost(getStandardUri(MainApplication.readSetting("courseLang")), params, "big5");
             TagNode tagNode;
             tagNode = new HtmlCleaner().clean(result);
             TagNode[] rows = tagNode.getElementsByName("a", true);
@@ -309,7 +308,7 @@ public class CreditConnector {
             params.put("year", year);
             params.put("matric", matrics.get(index));
             String result = Connector
-                    .getDataByPost(getStandardUri(lang), params, "big5");
+                    .getDataByPost(getStandardUri(MainApplication.readSetting("courseLang")), params, "big5");
             //取出所需資料
             TagNode tagNode;
             tagNode = new HtmlCleaner().clean(result);
@@ -338,7 +337,7 @@ public class CreditConnector {
             params.put("year", year);
             params.put("matric", matrics.get(index));
             String result = Connector
-                    .getDataByPost(getStandardUri(lang), params, "big5");
+                    .getDataByPost(getStandardUri(MainApplication.readSetting("courseLang")), params, "big5");
             result = result.replace("<td", "</td><td");
             result = result.replace("<tr>", "</td><tr>");
             HtmlCleaner cleaner = new HtmlCleaner();

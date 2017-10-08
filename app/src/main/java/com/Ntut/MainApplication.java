@@ -21,7 +21,6 @@ import okhttp3.OkHttpClient;
 public class MainApplication extends Application {
     private static MainApplication singleton;
     public static String SETTING_NAME = "TaipeiTech";
-    public static String lang;
     public static MainApplication getInstance() {
         return singleton;
     }
@@ -29,7 +28,6 @@ public class MainApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        lang = Locale.getDefault().getLanguage();   //取得當前系統語言 <- 作為課表和學分語言的判斷依據
         Glide.get(this).register(GlideUrl.class, InputStream.class, new OkHttpUrlLoader.Factory(new OkHttpClient()));
         CookieHandler.setDefault(new java.net.CookieManager(null, CookiePolicy.ACCEPT_ALL));
         singleton = this;

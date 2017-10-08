@@ -23,9 +23,6 @@ import com.Ntut.utility.Utility;
 
 import java.util.Locale;
 
-import static com.Ntut.MainApplication.lang;
-
-
 /**
  * Created by kamisakihideyoshi on 2017/02/27.
  */
@@ -76,7 +73,7 @@ public class EtcActivity extends BaseActivity {
         courseE_textView.setText(R.string.etc_language_en);
         courseC_textView.setText(R.string.etc_language_zh);
         uiLang_seekBar.setProgress(getCurrentUILang(MainApplication.readSetting("uiLang")));
-        courseLang_seekBar.setProgress(getCurrentCourseLang(lang));
+        courseLang_seekBar.setProgress(getCurrentUILang(MainApplication.readSetting("courseLang")));
         uiLang_seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
@@ -132,14 +129,12 @@ public class EtcActivity extends BaseActivity {
                     seekBar.setProgress(0);
                     if (courseLang != 0) {
                         MainApplication.writeSetting("courseLang", "en");
-                        lang = "en";
                         Toast.makeText(getApplicationContext(), R.string.etc_courselanguage_applied, Toast.LENGTH_LONG).show();
                     }
                 } else {
                     seekBar.setProgress(100);
                     if (courseLang != 100) {
                         MainApplication.writeSetting("courseLang", "zh");
-                        lang = "zh";
                         Toast.makeText(getApplicationContext(), R.string.etc_courselanguage_applied, Toast.LENGTH_LONG).show();
                     }
                 }
