@@ -24,13 +24,13 @@ import java.util.regex.Pattern;
  */
 
 public class CreditConnector {
-    private final static String POST_CREDIT_URI = "http://nportal.ntut.edu.tw/ssoIndex.do?apOu=aa_003&apUrl=http://aps-stu.ntut.edu.tw/StuQuery/LoginSID.jsp";
-    private final static String CREDITS_URI = "http://aps-stu.ntut.edu.tw/StuQuery/LoginSID.jsp";
-    private final static String CREDIT_URI = "http://aps-stu.ntut.edu.tw/StuQuery/QryScore.jsp";
-    private final static String GENERAL_URI = "http://aps-stu.ntut.edu.tw/StuQuery/QryLAECourse.jsp";
-    private final static String STANDARD_URI_TW = "http://aps.ntut.edu.tw/course/tw/Cprog.jsp";
-    private final static String STANDARD_URI_EN = "http://aps.ntut.edu.tw/course/en/Cprog.jsp";
-    private final static String CURRENT_URI = "http://aps-stu.ntut.edu.tw/StuQuery/QrySCWarn.jsp";
+    private final static String POST_CREDIT_URI = "https://nportal.ntut.edu.tw/ssoIndex.do?apOu=aa_003&apUrl=http://aps-stu.ntut.edu.tw/StuQuery/LoginSID.jsp";
+    private final static String CREDITS_URI = "https://aps-stu.ntut.edu.tw/StuQuery/LoginSID.jsp";
+    private final static String CREDIT_URI = "https://aps-stu.ntut.edu.tw/StuQuery/QryScore.jsp";
+    private final static String GENERAL_URI = "https://aps-stu.ntut.edu.tw/StuQuery/QryLAECourse.jsp";
+    private final static String STANDARD_URI_TW = "https://aps.ntut.edu.tw/course/tw/Cprog.jsp";
+    private final static String STANDARD_URI_EN = "https://aps.ntut.edu.tw/course/en/Cprog.jsp";
+    private final static String CURRENT_URI = "https://aps-stu.ntut.edu.tw/StuQuery/QrySCWarn.jsp";
 
     private static String getStandardUri(String lang) {
         if (lang.equals("zh") || lang.equals("ja"))
@@ -75,7 +75,6 @@ public class CreditConnector {
             tagNode = new HtmlCleaner().clean(result);
             TagNode[] nodes = tagNode.getElementsByAttValue("border", "1",
                     true, false);
-
             TagNode[] titles = tagNode.getElementsByName("H3", true);
             int t = titles.length - nodes.length;
             int count = 0;
