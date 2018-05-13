@@ -2,6 +2,11 @@
 README: [English](https://github.com/yaoandy107/TaipeiTechStudent/blob/master/README.md) | [中文](https://github.com/yaoandy107/TaipeiTechStudent/blob/master/README-zh.md)
 
 這是給臺北科技大學學生專用的 Android App
+
+<a href='https://play.google.com/store/apps/details?id=com.Ntut&hl=zh_TW&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+  <img width="180" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/>
+</a>
+
 ## 功能
 1. 查詢北科學生課表
 2. 查詢北科當學年行事曆
