@@ -2,6 +2,11 @@
 README: [English](https://github.com/yaoandy107/TaipeiTechStudent/blob/master/README.md) | [中文](https://github.com/yaoandy107/TaipeiTechStudent/blob/master/README-zh.md)
 
 An App for Taipei Tech students
+
+<a href='https://play.google.com/store/apps/details?id=com.Ntut&hl=zh_TW&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+  <img width="180" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/>
+</a>
+
 ## Features
 1. Search Taipei Tech student's curriculum
 2. Display Taipei Tech calendar
