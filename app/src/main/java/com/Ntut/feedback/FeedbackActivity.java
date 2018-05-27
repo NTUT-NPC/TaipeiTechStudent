@@ -51,7 +51,7 @@ public class FeedbackActivity extends AppCompatActivity {
 
         });
         initWebViewSettings();
-        webview.loadUrl("http://www.ntut.edu.tw/~ntutsu/tts/2.0/feedback.html");
+        webview.loadUrl("https://www.ntut.edu.tw/~ntutsu/tts/2.0/feedback.html");
     }
 
     private void initWebViewSettings() {

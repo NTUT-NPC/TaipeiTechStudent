@@ -20,12 +20,12 @@ import java.util.HashMap;
 
 public class CourseConnector {
     private static boolean isLogin = false;
-    private static final String POST_COURSES_URI_TW = "http://nportal.ntut.edu.tw/ssoIndex.do?apOu=aa_0010-&apUrl=http://aps.ntut.edu.tw/course/tw/courseSID.jsp";
-    private static final String COURSES_URI_TW = "http://aps.ntut.edu.tw/course/tw/courseSID.jsp";
-    private static final String COURSE_URI_TW = "http://aps.ntut.edu.tw/course/tw/Select.jsp";
-    private static final String POST_COURSES_URI_EN = "http://nportal.ntut.edu.tw/ssoIndex.do?apOu=aa_0010-&apUrl=http://aps.ntut.edu.tw/course/en/courseSID.jsp";
-    private static final String COURSES_URI_EN = "http://aps.ntut.edu.tw/course/en/courseSID.jsp";
-    private static final String COURSE_URI_EN = "http://aps.ntut.edu.tw/course/en/Select.jsp";
+    private static final String POST_COURSES_URI_TW = "https://nportal.ntut.edu.tw/ssoIndex.do?apOu=aa_0010-&apUrl=https://aps.ntut.edu.tw/course/tw/courseSID.jsp";
+    private static final String COURSES_URI_TW = "https://aps.ntut.edu.tw/course/tw/courseSID.jsp";
+    private static final String COURSE_URI_TW = "https://aps.ntut.edu.tw/course/tw/Select.jsp";
+    private static final String POST_COURSES_URI_EN = "https://nportal.ntut.edu.tw/ssoIndex.do?apOu=aa_0010-&apUrl=https://aps.ntut.edu.tw/course/en/courseSID.jsp";
+    private static final String COURSES_URI_EN = "https://aps.ntut.edu.tw/course/en/courseSID.jsp";
+    private static final String COURSE_URI_EN = "https://aps.ntut.edu.tw/course/en/Select.jsp";
 
     private static String getPostCoursesUri(String lang) {
         if (lang.equals("zh"))
@@ -49,7 +49,7 @@ public class CourseConnector {
     public static String loginCourse() throws Exception {
         try {
             isLogin = false;
-            String result = Connector.getDataByGet(getPostCoursesUri("zh"), "utf-8", "http://nportal.ntut.edu.tw/aptreeList.do?apDn=ou=aa,ou=aproot,o=ldaproot");
+            String result = Connector.getDataByGet(getPostCoursesUri("zh"), "utf-8", "https://nportal.ntut.edu.tw/aptreeList.do?apDn=ou=aa,ou=aproot,o=ldaproot");
             TagNode tagNode;
             tagNode = new HtmlCleaner().clean(result);
             TagNode[] nodes = tagNode.getElementsByAttValue("name",
