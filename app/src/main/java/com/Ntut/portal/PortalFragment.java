@@ -1,6 +1,8 @@
 package com.Ntut.portal;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,6 +14,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.CookieManager;
+import android.webkit.JsResult;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -39,11 +43,6 @@ public class PortalFragment extends BaseFragment {
     private ProgressDialog mProgressDialog;
     private static final String PORTAL_URL = "https://nportal.ntut.edu.tw/";
     private static WebView webview;
-    private final static String CACHE_DIRNAME = "portal_webview";
-
-    public PortalFragment() {
-
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,10 +55,67 @@ public class PortalFragment extends BaseFragment {
         super.onCreateView(inflater, container, savedInstanceState);
         fragmentView = inflater.inflate(R.layout.fragment_portal, container, false);
         webview = (WebView) fragmentView.findViewById(R.id.portal_webview);
-        webview.setWebViewClient(new WebViewClient());
-        initWebViewSettings();
+        initWebView();
         String account = Model.getInstance().getAccount();
         String password = Model.getInstance().getPassword();
+
+        if (!TextUtils.isEmpty(account) && !TextUtils.isEmpty(password)) {
+            mProgressDialog = ProgressDialog.show(this.getContext(), null,
+                    getString(R.string.nportal_loggingin));
+            Thread loginThread = new Thread(new LoginNportalRunnable(account, password,
+                    new LoginHandler(this)));
+            loginThread.start();
+        }
+
+        return fragmentView;
+    }
+
+    private void initWebView() {
+        WebSettings webSetting = webview.getSettings();
+        webSetting.setJavaScriptEnabled(true);
+        webSetting.setUseWideViewPort(true);
+        webSetting.setLoadWithOverviewMode(true);
+        webSetting.setSupportZoom(true);
+        webSetting.setBuiltInZoomControls(true);
+        webSetting.setDisplayZoomControls(false);
+        webSetting.setAllowFileAccess(true);
+        webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
+        webSetting.setLoadsImagesAutomatically(true);
+        webSetting.setDefaultTextEncodingName("utf-8");
+        webSetting.setCacheMode(WebSettings.LOAD_NO_CACHE);
+        webSetting.setDomStorageEnabled(true);
+        webSetting.setDatabaseEnabled(true);
+        webview.setWebViewClient(new WebViewClient());
+        webview.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
+                if(message!=null){
+                    Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                }
+                result.cancel();
+                return true;
+            }
+
+            @Override
+            public boolean onJsConfirm(WebView view, String url, String message, final JsResult result) {
+                new AlertDialog.Builder(getActivity())
+                        .setMessage(message)
+                        .setPositiveButton("確定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                result.confirm();
+                            }
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                result.cancel();
+                            }
+                        })
+                        .show();
+                return true;
+            }
+        });
         webview.setOnKeyListener(new View.OnKeyListener(){
 
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -74,39 +130,6 @@ public class PortalFragment extends BaseFragment {
             }
 
         });
-        if (!TextUtils.isEmpty(account) && !TextUtils.isEmpty(password)) {
-            mProgressDialog = ProgressDialog.show(this.getContext(), null,
-                    getString(R.string.nportal_loggingin));
-            Thread loginThread = new Thread(new LoginNportalRunnable(account, password,
-                    new LoginHandler(this)));
-            loginThread.start();
-        }
-
-        return fragmentView;
-    }
-
-    private void initWebViewSettings() {
-        WebSettings webSetting = webview.getSettings();
-        webSetting.setJavaScriptEnabled(true);
-        webSetting.setUseWideViewPort(true);
-        webSetting.setLoadWithOverviewMode(true);
-        webSetting.setSupportZoom(true);
-        webSetting.setBuiltInZoomControls(true);
-        webSetting.setDisplayZoomControls(false);
-        webSetting.setAllowFileAccess(true);
-        webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
-        webSetting.setLoadsImagesAutomatically(true);
-        webSetting.setDefaultTextEncodingName("utf-8");
-        if (WifiUtility.isConnected(getContext())) {
-            webSetting.setCacheMode(WebSettings.LOAD_DEFAULT);
-        } else {
-            webSetting.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-        }
-        webSetting.setDomStorageEnabled(true);
-        webSetting.setDatabaseEnabled(true);
-        webSetting.setAppCacheEnabled(true);
-        String cacheDirPath = getActivity().getFilesDir().getAbsolutePath() + CACHE_DIRNAME;
-        webSetting.setAppCachePath(cacheDirPath);
     }
 
     private class LoginHandler extends Handler {

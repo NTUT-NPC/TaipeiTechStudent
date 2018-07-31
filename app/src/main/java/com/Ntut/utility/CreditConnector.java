@@ -1,6 +1,7 @@
 package com.Ntut.utility;
 
 import android.os.Handler;
+import android.util.Log;
 
 import com.Ntut.MainApplication;
 import com.Ntut.model.CreditInfo;
@@ -79,33 +80,35 @@ public class CreditConnector {
             int t = titles.length - nodes.length;
             int count = 0;
             StudentCredit studentCredit = new StudentCredit();
-            //studentCredit = getCurrentCredit(studentCredit);  //當前選課
+//            studentCredit = getCurrentCredit(studentCredit);  //當前選課
             for (TagNode table : nodes) {
                 String[] temp = titles[t].getText().toString().split(" ");
                 TagNode[] rows = table.getElementsByName("tr", true);
                 SemesterCredit semester = new SemesterCredit();
                 semester.setYear(temp[0]);
                 semester.setSemester(temp[3]);
-                for (int i = 1; i < rows.length - 6; i++) {
+                for (int i = 1; i < rows.length; i++) {
                     TagNode[] cols = rows[i].getElementsByName("th", true);
+                    if (cols.length <= 2) {
+                        break;
+                    }
                     CreditInfo credit = new CreditInfo();
                     credit.setCourseNo(cols[0].getText().toString());
                     credit.setCourseName(cols[2].getText().toString());
-                    credit.setCredit((int) Double.parseDouble(cols[5].getText()
-                            .toString()));
+                    credit.setCredit((int) Double.parseDouble(cols[5].getText().toString()));
                     credit.setScore(cols[6].getText().toString());
-                    int type = getCourseType(cols[0].getText().toString(),
-                            cols[6].getText().toString());
+                    int type = getCourseType(cols[0].getText().toString(), cols[6].getText().toString());
                     credit.setType(type);
                     semester.addCreditInfo(credit);
                     count++;
                     progressHandler.obtainMessage(0, count).sendToTarget();
                 }
-                TagNode[] cols = rows[rows.length - 3].getElementsByName("td",
-                        true);
-                semester.setConductScore(cols[0].getText().toString());
-                cols = rows[rows.length - 4].getElementsByName("td", true);
-                semester.setScore(cols[0].getText().toString());
+//                TagNode[] cols = rows[rows.length - 3].getElementsByName("td", true);
+//                String conductScore = cols.length > 0? cols[0].getText().toString() : "";
+//                semester.setConductScore(conductScore);
+//                cols = rows[rows.length - 4].getElementsByName("td", true);
+//                String score = cols.length > 0? cols[0].getText().toString() : "";
+//                semester.setScore(score);
                 studentCredit.addSemesterCredit(semester);
                 t++;
             }
@@ -163,38 +166,38 @@ public class CreditConnector {
         return studentCredit;
     }
 
-    /*private static StudentCredit getCurrentCredit(StudentCredit studentCredit) {
-        try {
-            String result = Connector.getDataByGet(CURRENT_URI, "big5");
-            if (result.contains("查無本學期選課資料")) {
-                return studentCredit;
-            }
-            TagNode tagNode;
-            tagNode = new HtmlCleaner().clean(result);
-            TagNode[] titles = tagNode.getElementsByName("H3", true);
-            SemesterCredit semester = new SemesterCredit();
-            String[] temp = titles[0].getText().toString().split("學年度 第 ");
-            semester.setYear(temp[0]);
-            semester.setSemester(temp[1].substring(0, 1));
-            TagNode[] rows = tagNode.getElementsByName("tr", true);
-            for (int i = 1; i < rows.length; i++) {
-                TagNode[] cols = rows[i].getElementsByName("td", true);
-                CreditInfo credit = new CreditInfo();
-                credit.setCourseNo(cols[0].getText().toString());
-                credit.setCourseName(cols[2].getText().toString());
-                cols = rows[i].getElementsByName("th", true);
-                credit.setCredit((int) Double.parseDouble(cols[0].getText()
-                        .toString()));
-                credit.setScore("XD");
-                credit.setType(0);
-                semester.addCreditInfo(credit);
-            }
-            studentCredit.addSemesterCredit(semester);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return studentCredit;
-    }*/ //當前課表
+//    private static StudentCredit getCurrentCredit(StudentCredit studentCredit) {
+//        try {
+//            String result = Connector.getDataByGet(CURRENT_URI, "big5");
+//            if (result.contains("查無本學期選課資料")) {
+//                return studentCredit;
+//            }
+//            TagNode tagNode;
+//            tagNode = new HtmlCleaner().clean(result);
+//            TagNode[] titles = tagNode.getElementsByName("H3", true);
+//            SemesterCredit semester = new SemesterCredit();
+//            String[] temp = titles[0].getText().toString().split("學年度 第 ");
+//            semester.setYear(temp[0]);
+//            semester.setSemester(temp[1].substring(0, 1));
+//            TagNode[] rows = tagNode.getElementsByName("tr", true);
+//            for (int i = 1; i < rows.length; i++) {
+//                TagNode[] cols = rows[i].getElementsByName("td", true);
+//                CreditInfo credit = new CreditInfo();
+//                credit.setCourseNo(cols[0].getText().toString());
+//                credit.setCourseName(cols[2].getText().toString());
+//                cols = rows[i].getElementsByName("th", true);
+//                credit.setCredit((int) Double.parseDouble(cols[0].getText()
+//                        .toString()));
+//                credit.setScore("XD");
+//                credit.setType(0);
+//                semester.addCreditInfo(credit);
+//            }
+//            studentCredit.addSemesterCredit(semester);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return studentCredit;
+//    }
 
     private static int getCourseCount(String result) {
         TagNode tagNode;

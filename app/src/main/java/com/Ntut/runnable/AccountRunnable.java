@@ -6,6 +6,7 @@ import android.os.Handler;
 
 import com.Ntut.MainActivity;
 import com.Ntut.account.AccountActivity;
+import com.Ntut.model.Model;
 
 /**
  * Created by blackmaple on 2017/5/13.
@@ -21,6 +22,7 @@ public class AccountRunnable extends BaseRunnable {
 
     @Override
     public void run() {
+        Model.getInstance().deleteStudentCourse();
         Intent intent = new Intent(context, MainActivity.class);
         context.startActivity(intent);
     }

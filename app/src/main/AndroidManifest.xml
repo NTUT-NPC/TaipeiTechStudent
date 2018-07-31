@@ -57,8 +57,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".account.AccountActivity" />
-        <activity android:name=".credit.CreditActivity"
-            android:theme="@style/AppTheme"/>
+        <activity android:name=".credit.CreditActivity" />
         <activity android:name=".feedback.FeedbackActivity" />
         <activity android:name=".course.CourseDetailActivity" />
         <activity android:name=".etc.EtcActivity" />

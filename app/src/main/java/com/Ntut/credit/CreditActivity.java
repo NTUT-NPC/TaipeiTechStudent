@@ -309,7 +309,6 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
         }
     };
 
-    @SuppressLint("HandlerLeak")
     private Handler creditHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -331,7 +330,7 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
                     break;
                 case BaseRunnable.ERROR:
                     pd.dismiss();
-                    Utility.showDialog(getString(R.string.hint), (String) msg.obj, getApplicationContext());
+                    showAlertMessage((String) msg.obj);
                     break;
             }
         }

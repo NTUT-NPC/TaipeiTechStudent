@@ -1,6 +1,7 @@
 package com.Ntut.runnable;
 
 import android.os.Handler;
+import android.util.Log;
 
 import com.Ntut.model.StudentCredit;
 import com.Ntut.utility.CreditConnector;

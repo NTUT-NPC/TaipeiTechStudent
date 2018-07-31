@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.Ntut.BaseActivity;
 import com.Ntut.R;
 import com.Ntut.runnable.ClassmateRunnable;
 import com.Ntut.runnable.CourseDetailRunnable;
@@ -33,7 +34,7 @@ import java.util.ArrayList;
  * Created by blackmaple on 2017/5/9.
  */
 
-public class CourseDetailActivity extends AppCompatActivity {
+public class CourseDetailActivity extends BaseActivity {
     Toolbar mToolbar;
     ProgressDialog mProgressDialog;
     String courseNo;
@@ -159,8 +160,7 @@ public class CourseDetailActivity extends AppCompatActivity {
                     break;
                 case CourseDetailRunnable.ERROR:
                     dismissProgressDialog();
-                    Utility.showDialog("提示", "查詢課程詳細資料時發生錯誤，請重新查詢！",
-                            CourseDetailActivity.this);
+                    showAlertMessage("查詢課程詳細資料時發生錯誤，請重新查詢！");
                     break;
             }
         }
@@ -178,8 +178,7 @@ public class CourseDetailActivity extends AppCompatActivity {
                     }
                     break;
                 case ClassmateRunnable.ERROR:
-                    Utility.showDialog("提示", "查詢課程修課學生清單時發生錯誤，請重新查詢！",
-                            CourseDetailActivity.this);
+                    showAlertMessage("查詢課程詳細資料時發生錯誤，請重新查詢！");
                     break;
             }
         }

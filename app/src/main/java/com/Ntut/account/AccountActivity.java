@@ -161,6 +161,7 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
             Handler handler = new Handler();
             Runnable accountRunnable = new AccountRunnable(handler, this);
             handler.postDelayed(accountRunnable, 500);
+            finish();
         }
     }
 }

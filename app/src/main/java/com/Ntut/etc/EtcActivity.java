@@ -5,6 +5,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
@@ -19,6 +20,9 @@ import com.Ntut.BaseActivity;
 import com.Ntut.MainActivity;
 import com.Ntut.MainApplication;
 import com.Ntut.R;
+import com.Ntut.model.Model;
+import com.Ntut.runnable.AccountRunnable;
+import com.Ntut.utility.NportalConnector;
 import com.Ntut.utility.Utility;
 
 import java.util.Locale;
@@ -73,7 +77,7 @@ public class EtcActivity extends BaseActivity {
         courseE_textView.setText(R.string.etc_language_en);
         courseC_textView.setText(R.string.etc_language_zh);
         uiLang_seekBar.setProgress(getCurrentUILang(MainApplication.readSetting("uiLang")));
-        courseLang_seekBar.setProgress(getCurrentUILang(MainApplication.readSetting("courseLang")));
+        courseLang_seekBar.setProgress(getCurrentCourseLang(MainApplication.readSetting("courseLang")));
         uiLang_seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
@@ -129,17 +133,28 @@ public class EtcActivity extends BaseActivity {
                     seekBar.setProgress(0);
                     if (courseLang != 0) {
                         MainApplication.writeSetting("courseLang", "en");
-                        Toast.makeText(getApplicationContext(), R.string.etc_courselanguage_applied, Toast.LENGTH_LONG).show();
+                        updateCourse();
+//                        Toast.makeText(getApplicationContext(), R.string.etc_courselanguage_applied, Toast.LENGTH_LONG).show();
                     }
                 } else {
                     seekBar.setProgress(100);
                     if (courseLang != 100) {
                         MainApplication.writeSetting("courseLang", "zh");
-                        Toast.makeText(getApplicationContext(), R.string.etc_courselanguage_applied, Toast.LENGTH_LONG).show();
+                        updateCourse();
+//                        Toast.makeText(getApplicationContext(), R.string.etc_courselanguage_applied, Toast.LENGTH_LONG).show();
                     }
                 }
             }
         });
+    }
+
+    private void updateCourse() {
+        NportalConnector.reset();
+        Handler handler = new Handler();
+        Model.getInstance().deleteStudentCourse();
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     protected void switchLanguage(String lang) {

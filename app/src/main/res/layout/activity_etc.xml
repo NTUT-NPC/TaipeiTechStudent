@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,152 +10,143 @@
 
     <include layout="@layout/toolbar"/>
 
-    <RelativeLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <SeekBar
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/uiLang_textView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/etc_uilanguage_text"
+            android:textColor="?attr/editTextColor"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/uiLangHint_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/etc_uilanguage_hint"
+            android:textColor="?android:attr/textColorHint"
+            app:layout_constraintStart_toStartOf="@+id/uiLang_textView"
+            app:layout_constraintTop_toBottomOf="@+id/uiLang_textView" />
+
+        <TextView
+            android:id="@+id/uiE_textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/etc_language_en"
+            android:textAlignment="textStart"
+            app:layout_constraintBottom_toBottomOf="@+id/uiLang_textView"
+            app:layout_constraintEnd_toStartOf="@+id/uiC_textView"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/uiLang_seekBar"
+            app:layout_constraintTop_toTopOf="@+id/uiLang_textView" />
+
+        <TextView
+            android:id="@+id/uiC_textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/uiE_textView"
+            android:layout_toEndOf="@+id/uiE_textView"
+            android:layout_toRightOf="@+id/uiE_textView"
+            android:text="@string/etc_language_zh"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toStartOf="@+id/uiJ_textView"
+            app:layout_constraintStart_toEndOf="@id/uiE_textView"
+            app:layout_constraintTop_toTopOf="@+id/uiE_textView" />
+
+        <TextView
+            android:id="@+id/uiJ_textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/etc_language_ja"
+            android:textAlignment="textEnd"
+            app:layout_constraintEnd_toEndOf="@+id/uiLang_seekBar"
+            app:layout_constraintStart_toEndOf="@id/uiC_textView"
+            app:layout_constraintTop_toTopOf="@+id/uiE_textView" />
+
+        <SeekBar
             android:id="@+id/uiLang_seekBar"
-            android:layout_marginStart="230dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:isScrollContainer="false"
             android:max="100"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginLeft="230dp"
-            android:layout_marginRight="20dp" />
+            app:layout_constraintBottom_toBottomOf="@+id/uiLangHint_textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/courseLang_seekBar"
+            app:layout_constraintTop_toTopOf="@+id/uiLangHint_textView" />
+
 
         <TextView
-            android:text="@string/etc_language_en"
-            android:layout_height="wrap_content"
-            android:id="@+id/uiE_textView"
-            android:textAlignment="center"
-            android:layout_width="30dp"
-            android:layout_alignBottom="@+id/uiLang_seekBar"
-            android:layout_alignLeft="@+id/uiLang_seekBar"
-            android:layout_alignStart="@+id/uiLang_seekBar"
-            android:layout_marginBottom="30dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp" />
-
-        <TextView
-            android:text="@string/etc_language_zh"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/uiE_textView"
-            android:layout_toRightOf="@+id/uiE_textView"
-            android:layout_toEndOf="@+id/uiE_textView"
-            android:id="@+id/uiC_textView"
-            android:layout_marginEnd="9dp"
-            android:layout_marginStart="9dp" />
-
-        <TextView
-            android:text="@string/etc_language_ja"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/uiC_textView"
-            android:layout_toRightOf="@+id/uiC_textView"
-            android:layout_toEndOf="@+id/uiC_textView"
-            android:id="@+id/uiJ_textView"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp" />
-
-        <TextView
+            android:id="@+id/courseLang_textView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/uiLangHint_textView"
-            android:text="@string/etc_uilanguage_hint"
-            android:layout_below="@+id/uiLang_textView"
-            android:layout_alignLeft="@+id/uiLang_textView"
-            android:layout_alignStart="@+id/uiLang_textView"
-            android:layout_marginTop="5dp"
-            android:textColor="?android:attr/textColorHint" />
-
-        <TextView
-            android:text="@string/etc_uilanguage_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:id="@+id/uiLang_textView"
-            android:textSize="24sp"
-            android:layout_alignBaseline="@+id/uiE_textView"
-            android:layout_alignBottom="@+id/uiE_textView"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/etc_courselanguage_text"
             android:textColor="?attr/editTextColor"
-            android:layout_marginEnd="38dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="38dp" />
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/uiLangHint_textView" />
 
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/courseLangHint_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/courseLang_textView"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/etc_courselanguage_hint"
+            android:textColor="?android:attr/textColorHint"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/courseLang_textView"
+            app:layout_constraintTop_toBottomOf="@+id/courseLang_textView" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/courseE_textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/etc_language_en"
+            android:textAlignment="textStart"
+            app:layout_constraintBottom_toBottomOf="@+id/courseLang_textView"
+            app:layout_constraintEnd_toStartOf="@+id/courseC_textView"
+            app:layout_constraintStart_toStartOf="@+id/courseLang_seekBar"
+            app:layout_constraintTop_toTopOf="@+id/courseLang_textView" />
+
+        <TextView
+            android:id="@+id/courseC_textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/etc_language_zh"
+            android:textAlignment="textEnd"
+            app:layout_constraintEnd_toEndOf="@+id/courseLang_seekBar"
+            app:layout_constraintStart_toEndOf="@+id/courseE_textView"
+            app:layout_constraintTop_toTopOf="@+id/courseE_textView" />
 
         <SeekBar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/courseLang_seekBar"
-            android:layout_marginStart="230dp"
-            android:layout_marginTop="60dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
             android:max="100"
-            android:layout_marginEnd="20dp"
-            android:layout_marginLeft="230dp"
-            android:layout_marginRight="20dp" />
-
-        <TextView
-            android:text="@string/etc_language_en"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/courseLang_seekBar"
-            android:layout_alignLeft="@+id/courseLang_seekBar"
-            android:layout_alignStart="@+id/courseLang_seekBar"
-            android:layout_marginBottom="30dp"
-            android:id="@+id/courseE_textView"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp" />
-
-        <TextView
-            android:text="@string/etc_language_zh"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/courseC_textView"
-            android:layout_alignBottom="@+id/courseE_textView"
-            android:layout_toRightOf="@+id/courseE_textView"
-            android:layout_toEndOf="@+id/courseE_textView"
-            android:layout_marginStart="48dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginLeft="48dp"
-            android:layout_marginRight="10dp" />
-
-        <TextView
-            android:text="@string/etc_courselanguage_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/courseLang_textView"
-            android:layout_alignBaseline="@+id/courseE_textView"
-            android:layout_alignBottom="@+id/courseE_textView"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="38dp"
-            android:textSize="24sp"
-            android:textColor="?attr/editTextColor"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="38dp" />
-
-        <TextView
-            android:text="@string/etc_courselanguage_hint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/courseLangHint_textView"
-            android:layout_below="@+id/courseLang_textView"
-            android:layout_alignLeft="@+id/courseLang_textView"
-            android:layout_alignStart="@+id/courseLang_textView"
-            android:layout_marginTop="5dp"
-            android:textColor="?android:attr/textColorHint" />
-    </RelativeLayout>
+            app:layout_constraintBottom_toBottomOf="@+id/courseLangHint_textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/courseLangHint_textView"
+            app:layout_constraintTop_toTopOf="@+id/courseLangHint_textView" />
+    </android.support.constraint.ConstraintLayout>
 
 </LinearLayout>
