@@ -16,7 +16,6 @@ jobs:
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
-          command: ls ${HOME}
           command: echo $GOOGLE_SERVICES | base64 --decode > app/google-services.json
       - save_cache:
           paths:
