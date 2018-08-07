@@ -133,6 +133,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
                         fragment = portalFragment;
                     } else {
                         showAlertMessage(getString(R.string.check_network_available));
+                        return;
                     }
                 } else {
                     Toast.makeText(getBaseContext(), R.string.none_account_error, Toast.LENGTH_LONG).show();

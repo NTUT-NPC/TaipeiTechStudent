@@ -268,7 +268,7 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
         if (account.length() > 0 && password.length() > 0) {
             NportalConnector.login(account, password, loginHandler);
         } else {
-            pd.dismiss();
+            dismissProgressDialog();
             showAlertMessage(getString(R.string.none_account_error));
         }
     }
@@ -282,11 +282,11 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
                         nextThread.start();
                         nextThread = null;
                     } else {
-                        pd.dismiss();
+                        dismissProgressDialog();
                     }
                     break;
                 case BaseRunnable.ERROR:
-                    pd.dismiss();
+                    dismissProgressDialog();
                     showAlertMessage(getString(R.string.hint), (String) msg.obj);
             }
         }
@@ -302,7 +302,7 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
                     t.start();
                     break;
                 case BaseRunnable.ERROR:
-                    pd.dismiss();
+                    dismissProgressDialog();
                     showAlertMessage(getString(R.string.hint), (String) msg.obj);
                     break;
             }
@@ -319,7 +319,7 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
                         Model.getInstance().setStudentCredit(result);
                         Model.getInstance().saveStudentCredit();
                         initView();
-                        pd.dismiss();
+                        dismissProgressDialog();
                         if (CreditConnector.isHaveError) {
                             showAlertMessage(getString(R.string.credit_imformation_complete), getString(R.string.credit_final)+"\n"+getString(R.string.credit_error));
 
@@ -329,7 +329,7 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
                     }
                     break;
                 case BaseRunnable.ERROR:
-                    pd.dismiss();
+                    dismissProgressDialog();
                     showAlertMessage((String) msg.obj);
                     break;
             }
@@ -469,5 +469,19 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
                 break;
         }
         return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (pd != null && pd.isShowing()) {
+            dismissProgressDialog();
+        }
+    }
+
+    private void dismissProgressDialog() {
+        if (pd != null && pd.isShowing()) {
+            pd.dismiss();
+        }
     }
 }

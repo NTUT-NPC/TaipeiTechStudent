@@ -3,6 +3,7 @@ package com.Ntut.course.task;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 
+import com.Ntut.MainActivity;
 import com.Ntut.course.CourseFragment;
 import com.Ntut.model.Model;
 import com.Ntut.utility.Constants;
@@ -63,6 +64,7 @@ public class QuerySemesterTask extends AsyncTask<String, Void, Object> {
     @Override
     protected void onPostExecute(Object object) {
         super.onPostExecute(object);
+
         ProgressDialog progressDialog = mProgressDialogWeakReference.get();
         if (progressDialog != null) {
             progressDialog.dismiss();
@@ -71,5 +73,10 @@ public class QuerySemesterTask extends AsyncTask<String, Void, Object> {
         if (fragment != null) {
             fragment.obtainSemesterList(object);
         }
+    }
+
+    @Override
+    protected void onCancelled() {
+        super.onCancelled();
     }
 }

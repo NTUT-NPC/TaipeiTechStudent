@@ -167,10 +167,14 @@ public class PortalFragment extends BaseFragment {
                             e.printStackTrace();
                         }
                     }
-                    webview.loadUrl(PORTAL_URL + "aptreeList.do");
+                    if (webview != null) {
+                        webview.loadUrl(PORTAL_URL + "aptreeList.do");
+                    }
                     break;
                 case BaseRunnable.ERROR:
-                    webview.loadUrl(PORTAL_URL);
+                    if (webview != null) {
+                        webview.loadUrl(PORTAL_URL);
+                    }
                     break;
             }
             fragment.dismissProgressDialog();
