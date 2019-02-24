@@ -25,7 +25,7 @@ import java.util.regex.Pattern;
  */
 
 public class CreditConnector {
-    private final static String POST_CREDIT_URI = "https://nportal.ntut.edu.tw/ssoIndex.do?apOu=aa_003&apUrl=https://aps-stu.ntut.edu.tw/StuQuery/LoginSID.jsp";
+    private final static String POST_CREDIT_URI = "https://app.ntut.edu.tw/ssoIndex.do?apOu=aa_003&apUrl=https://aps-stu.ntut.edu.tw/StuQuery/LoginSID.jsp";
     private final static String CREDITS_URI = "https://aps-stu.ntut.edu.tw/StuQuery/LoginSID.jsp";
     private final static String CREDIT_URI = "https://aps-stu.ntut.edu.tw/StuQuery/QryScore.jsp";
     private final static String GENERAL_URI = "https://aps-stu.ntut.edu.tw/StuQuery/QryLAECourse.jsp";
@@ -43,7 +43,7 @@ public class CreditConnector {
 
     public static String loginCredit() throws Exception {
         try {
-            String result = Connector.getDataByGet(POST_CREDIT_URI, "big5", "https://nportal.ntut.edu.tw/aptreeList.do?apDn=ou=aa,ou=aproot,o=ldaproot");
+            String result = Connector.getDataByGet(POST_CREDIT_URI, "big5", "https://app.ntut.edu.tw/aptreeList.do?apDn=ou=aa,ou=aproot,o=ldaproot");
             TagNode tagNode;
             tagNode = new HtmlCleaner().clean(result);
             TagNode[] nodes = tagNode.getElementsByAttValue("name",

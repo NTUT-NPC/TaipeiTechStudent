@@ -25,9 +25,9 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class NportalConnector {
     private static boolean isLogin = false;
-    private static final String IMAGE_URI = "https://nportal.ntut.edu.tw/authImage.do";
-    private static final String LOGIN_URI = "https://nportal.ntut.edu.tw/login.do";
-    public static final String NPORTAL_URI = "https://nportal.ntut.edu.tw/index.do";
+    private static final String IMAGE_URI = "https://app.ntut.edu.tw/authImage.do";
+    private static final String LOGIN_URI = "https://app.ntut.edu.tw/login.do";
+    public static final String NPORTAL_URI = "https://app.ntut.edu.tw/index.do";
 
     public static void login(String id, String password, Handler handler) {
         Thread login_thread = new Thread(new LoginNportalRunnable(id, password,
@@ -62,8 +62,8 @@ public class NportalConnector {
         String result;
         try {
             result = Connector.getDataByPost(LOGIN_URI, params, "utf-8", NPORTAL_URI+"?thetime=" + String.valueOf(System.currentTimeMillis()));
-            Connector.getDataByGet("https://nportal.ntut.edu.tw/myPortalHeader.do", "utf-8");
-            Connector.getDataByGet("https://nportal.ntut.edu.tw/aptreeBox.do", "utf-8");
+            Connector.getDataByGet("https://app.ntut.edu.tw/myPortalHeader.do", "utf-8");
+            Connector.getDataByGet("https://app.ntut.edu.tw/aptreeBox.do", "utf-8");
         } catch (Exception e) {
             e.printStackTrace();
             throw new Exception("入口網站登入時發生錯誤");

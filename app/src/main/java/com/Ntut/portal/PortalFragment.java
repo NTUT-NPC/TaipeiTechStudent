@@ -41,7 +41,7 @@ public class PortalFragment extends BaseFragment {
 
     private  View fragmentView;
     private ProgressDialog mProgressDialog;
-    private static final String PORTAL_URL = "https://nportal.ntut.edu.tw/";
+    private static final String PORTAL_URL = "https://app.ntut.edu.tw/";
     private static WebView webview;
 
     @Override
