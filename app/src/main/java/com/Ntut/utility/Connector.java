@@ -74,7 +74,7 @@ public class Connector {
         httpURLConnection.setDoInput(true);
         httpURLConnection.setDoOutput(true);
         httpURLConnection.setRequestProperty("Cookie", getCookieFromAppCookieManager(uri));
-        httpURLConnection.setRequestProperty("User-Agent", "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.76 Mobile Safari/537.36");
+        httpURLConnection.setRequestProperty("User-Agent", "Direk Android App");
         httpURLConnection.setRequestProperty("Upgrade-Insecure-Requests", "1");
         if (!TextUtils.isEmpty(referer)) {
             httpURLConnection.setRequestProperty("Referer", referer);
