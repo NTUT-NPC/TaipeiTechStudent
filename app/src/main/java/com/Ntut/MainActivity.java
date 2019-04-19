@@ -126,23 +126,24 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
                 fragment = eventFragment;
                 break;
             case 3:
-                String account = Model.getInstance().getAccount();
-                String password = Model.getInstance().getPassword();
-                if (!TextUtils.isEmpty(account) && !TextUtils.isEmpty(password)) {
-                    if (WifiUtility.isNetworkAvailable(this)) {
-                        fragment = portalFragment;
-                    } else {
-                        showAlertMessage(getString(R.string.check_network_available));
-                        return;
-                    }
-                } else {
-                    Toast.makeText(getBaseContext(), R.string.none_account_error, Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(this, AccountActivity.class);
-                    startActivity(intent);
-                    return;
-                }
+                Toast.makeText(getApplicationContext(), "學校改驗證方式了QwQ", Toast.LENGTH_LONG).show();
+                return;
+//                String account = Model.getInstance().getAccount();
+//                String password = Model.getInstance().getPassword();
+//                if (!TextUtils.isEmpty(account) && !TextUtils.isEmpty(password)) {
+//                    if (WifiUtility.isNetworkAvailable(this)) {
+//                        fragment = portalFragment;
+//                    } else {
+//                        showAlertMessage(getString(R.string.check_network_available));
+//                        return;
+//                    }
+//                } else {
+//                    Toast.makeText(getBaseContext(), R.string.none_account_error, Toast.LENGTH_LONG).show();
+//                    Intent intent = new Intent(this, AccountActivity.class);
+//                    startActivity(intent);
+//                    return;
+//                }
 
-                break;
             case 4:
                 fragment = otherFragment;
                 break;
