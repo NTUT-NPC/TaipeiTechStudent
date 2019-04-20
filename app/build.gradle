@@ -9,8 +9,8 @@ android {
         applicationId "com.Ntut"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 24
-        versionName "2.1.9"
+        versionCode 26
+        versionName "2.1.11"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
