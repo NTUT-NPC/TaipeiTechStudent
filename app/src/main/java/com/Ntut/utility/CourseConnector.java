@@ -231,7 +231,7 @@ public class CourseConnector {
         tagNode = new HtmlCleaner().clean(result);
         TagNode[] nodes = tagNode.getElementsByAttValue("border", "1", true,
                 false);
-        TagNode[] rows = nodes[0].getElementsByName("tr", true);
+        TagNode[] rows = nodes[1].getElementsByName("tr", true);
         if (MainApplication.readSetting("courseLang").equals("zh")) {
             for (int i = 3; i < rows.length - 1; i++) {
                 TagNode[] cols = rows[i].getElementsByName("td", true);
