@@ -35,6 +35,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon"
+        android:usesCleartextTraffic="true"
+
         android:fullBackupContent="@xml/backup_descriptor">
         <receiver
             android:name="com.Ntut.CourseWidgetProvider">
