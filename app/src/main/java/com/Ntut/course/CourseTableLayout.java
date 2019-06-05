@@ -167,34 +167,36 @@ public class CourseTableLayout extends LinearLayout {
 
     public void showCourse(StudentCourse studentCourse) {
         resetCourseTable();
-        int color_index = 0;
-        int[] color_array = getColorArray(studentCourse.getCourseList().size());
-        int count = 0;
-        for (CourseInfo item : studentCourse.getCourseList()) {
-            boolean is_have_time = false;
-            for (int i = 0; i < 7; i++) {
-                String time = item.getCourseTimes()[i];
-                ArrayList<String> s = Utility.splitTime(time);
-                for (String t : s) {
-                    if (t.length() != 0) {
-                        int row = Integer.valueOf(t);
-                        int col = i == 0 ? 7 : i;
-                        isDisplayABCD = isDisplayABCD || row > 9;
-                        isDisplaySun = isDisplaySun || i == 0;
-                        isDisplaySat = isDisplaySat || i == 6;
-                        setTableCell(row, col, color_array[color_index], item);
-                        is_have_time = true;
+        if (studentCourse.getCourseList().size() > 0) {
+            int color_index = 0;
+            int[] color_array = getColorArray(studentCourse.getCourseList().size());
+            int count = 0;
+            for (CourseInfo item : studentCourse.getCourseList()) {
+                boolean is_have_time = false;
+                for (int i = 0; i < 7; i++) {
+                    String time = item.getCourseTimes()[i];
+                    ArrayList<String> s = Utility.splitTime(time);
+                    for (String t : s) {
+                        if (t.length() != 0) {
+                            int row = Integer.valueOf(t);
+                            int col = i == 0 ? 7 : i;
+                            isDisplayABCD = isDisplayABCD || row > 9;
+                            isDisplaySun = isDisplaySun || i == 0;
+                            isDisplaySat = isDisplaySat || i == 6;
+                            setTableCell(row, col, color_array[color_index], item);
+                            is_have_time = true;
+                        }
                     }
                 }
+                if (!is_have_time) {
+                    count++;
+                    isDisplayNoTime = true;
+                    setTableCell(count, 8, color_array[color_index], item);
+                }
+                color_index++;
             }
-            if (!is_have_time) {
-                count++;
-                isDisplayNoTime = true;
-                setTableCell(count, 8, color_array[color_index], item);
-            }
-            color_index++;
+            controlColRowShow();
         }
-        controlColRowShow();
     }
 
     private int[] getColorArray(int color_count) {

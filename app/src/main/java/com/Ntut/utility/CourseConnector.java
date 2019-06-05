@@ -231,8 +231,8 @@ public class CourseConnector {
         tagNode = new HtmlCleaner().clean(result);
         TagNode[] nodes = tagNode.getElementsByAttValue("border", "1", true,
                 false);
-        TagNode[] rows = nodes[1].getElementsByName("tr", true);
         if (MainApplication.readSetting("courseLang").equals("zh")) {
+            TagNode[] rows = nodes[1].getElementsByName("tr", true);
             for (int i = 3; i < rows.length - 1; i++) {
                 TagNode[] cols = rows[i].getElementsByName("td", true);
                 if (isWithdraw(cols)){
@@ -259,6 +259,7 @@ public class CourseConnector {
             }
         }
         else {
+            TagNode[] rows = nodes[0].getElementsByName("tr", true);
             for (int i = 1; i < rows.length - 1; i++) {
                 TagNode[] cols = rows[i].getElementsByName("td", true);
                 if (isWithdraw(cols)){
