@@ -177,7 +177,7 @@ public class CourseTableLayout extends LinearLayout {
                     String time = item.getCourseTimes()[i];
                     ArrayList<String> s = Utility.splitTime(time);
                     for (String t : s) {
-                        if (t.length() != 0) {
+                        if (t.length() != 0 && !t.equals("N")) {
                             int row = Integer.valueOf(t);
                             int col = i == 0 ? 7 : i;
                             isDisplayABCD = isDisplayABCD || row > 9;
