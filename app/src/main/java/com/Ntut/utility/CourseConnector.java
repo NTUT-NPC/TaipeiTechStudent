@@ -233,8 +233,17 @@ public class CourseConnector {
                 false);
         if (MainApplication.readSetting("courseLang").equals("zh")) {
             TagNode[] rows = nodes[1].getElementsByName("tr", true);
-            for (int i = 3; i < rows.length - 1; i++) {
+            for (int i = 0; i < rows.length - 1; i++) {
                 TagNode[] cols = rows[i].getElementsByName("td", true);
+                if(cols.length<2) {
+                    continue;
+                }
+
+                TagNode[] a2 = cols[1].getElementsByName("a", true);
+                if(a2.length<1) {
+                    continue;
+                }
+
                 if (isWithdraw(cols)){
                     continue;
                 }
@@ -260,8 +269,16 @@ public class CourseConnector {
         }
         else {
             TagNode[] rows = nodes[0].getElementsByName("tr", true);
-            for (int i = 1; i < rows.length - 1; i++) {
+            for (int i = 0; i < rows.length - 1; i++) {
                 TagNode[] cols = rows[i].getElementsByName("td", true);
+                if(cols.length<2) {
+                    continue;
+                }
+                TagNode[] a2 = cols[1].getElementsByName("a", true);
+                if(a2.length<1) {
+                    continue;
+                }
+
                 if (isWithdraw(cols)){
                     continue;
                 }
