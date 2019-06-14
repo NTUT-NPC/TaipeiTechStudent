@@ -10,7 +10,6 @@ import com.bumptech.glide.load.model.GlideUrl;
 
 import java.io.InputStream;
 import java.net.*;
-import java.util.Locale;
 
 import okhttp3.OkHttpClient;
 

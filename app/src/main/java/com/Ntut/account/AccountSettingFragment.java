@@ -3,8 +3,6 @@ package com.Ntut.account;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +11,8 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+
 import com.Ntut.BaseFragment;
 import com.Ntut.PortalActivity;
 import com.Ntut.R;
@@ -20,6 +20,7 @@ import com.Ntut.model.Model;
 import com.Ntut.runnable.AccountRunnable;
 import com.Ntut.utility.NportalConnector;
 import com.Ntut.utility.WifiUtility;
+import com.google.android.material.textfield.TextInputLayout;
 
 /**
  * Created by blackmaple on 2017/5/13.

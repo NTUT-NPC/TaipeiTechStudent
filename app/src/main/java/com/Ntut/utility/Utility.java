@@ -9,14 +9,15 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
-import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.TaskStackBuilder;
 
 import com.Ntut.MainActivity;
 import com.Ntut.model.Model;
@@ -208,7 +209,7 @@ public class Utility {
         cal.setTime(date);
         int date_no = cal.get(Calendar.DAY_OF_MONTH);
         if (date_no < 10)
-            return "0" + String.valueOf(date_no);
+            return "0" + date_no;
         return String.valueOf(date_no);
     }
 

@@ -4,17 +4,17 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.Ntut.PortalActivity;
 import com.Ntut.R;
@@ -23,6 +23,7 @@ import com.Ntut.runnable.AccountRunnable;
 import com.Ntut.utility.NportalConnector;
 import com.Ntut.utility.Utility;
 import com.Ntut.utility.WifiUtility;
+import com.google.android.material.textfield.TextInputLayout;
 
 /**
  * Created by blackmaple on 2017/5/21.
