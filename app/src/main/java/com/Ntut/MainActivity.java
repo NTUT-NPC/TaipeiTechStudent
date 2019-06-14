@@ -87,7 +87,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
         BottomNavigationBar bottomNavigationBar = findViewById(R.id.bottom_navigation_bar);
         bottomNavigationBar.setTabSelectedListener(this);
         bottomNavigationBar
-                .setMode(BottomNavigationBar.MODE_FIXED);
+                .setMode(BottomNavigationBar.MODE_FIXED_NO_TITLE);
         bottomNavigationBar.
                 setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
         bottomNavigationBar
