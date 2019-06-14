@@ -76,7 +76,7 @@ public class CreditStandardDialog extends AlertDialog implements
         } else {
             years.add(contentView.getContext().getString(R.string.credit_choose_enter_semester));
         }
-        year_list = (MenuSpinner) contentView.findViewById(R.id.year_list);
+        year_list = contentView.findViewById(R.id.year_list);
         year_adapter = new ArrayAdapter<>(getContext(),
                 android.R.layout.simple_spinner_item, years);
         year_list.setAdapter(year_adapter);
@@ -113,30 +113,25 @@ public class CreditStandardDialog extends AlertDialog implements
                     }
                 });
 
-        year_list.setOnTouchListener(new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    if (WifiUtility.isNetworkAvailable(getContext())) {
-                        progressDialog = ProgressDialog.show(getContext(),
-                                null, getContext().getString(R.string.credit_loading_semester_list), true);
-                        Thread t = new Thread(new StandardYearRunnable(
-                                yearHandler));
-                        t.start();
-                        isUser = false;
-                    } else {
-                        Toast.makeText(getContext(),
-                                R.string.check_network_available,
-                                Toast.LENGTH_LONG).show();
-                    }
+        year_list.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                if (WifiUtility.isNetworkAvailable(getContext())) {
+                    progressDialog = ProgressDialog.show(getContext(),
+                            null, getContext().getString(R.string.credit_loading_semester_list), true);
+                    Thread t = new Thread(new StandardYearRunnable(
+                            yearHandler));
+                    t.start();
+                    isUser = false;
+                } else {
+                    Toast.makeText(getContext(),
+                            R.string.check_network_available,
+                            Toast.LENGTH_LONG).show();
                 }
-                return true;
             }
+            return true;
         });
 
-        division_list = (MenuSpinner) contentView
-                .findViewById(R.id.division_list);
+        division_list = contentView.findViewById(R.id.division_list);
         division_adapter = new ArrayAdapter<>(getContext(),
                 android.R.layout.simple_spinner_item, divisions);
         division_list.setAdapter(division_adapter);
@@ -170,8 +165,7 @@ public class CreditStandardDialog extends AlertDialog implements
 
         lockSpinner(division_list, true);
 
-        department_list = (MenuSpinner) contentView
-                .findViewById(R.id.department_list);
+        department_list = contentView.findViewById(R.id.department_list);
         department_adapter = new ArrayAdapter<>(getContext(),
                 android.R.layout.simple_spinner_item, departments);
         department_list.setAdapter(department_adapter);
@@ -206,13 +200,7 @@ public class CreditStandardDialog extends AlertDialog implements
 
     private void lockSpinner(MenuSpinner spinner, boolean isLock) {
         if (isLock) {
-            spinner.setOnTouchListener(new View.OnTouchListener() {
-
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    return true;
-                }
-            });
+            spinner.setOnTouchListener((v, event) -> true);
         } else {
             spinner.setOnTouchListener(null);
         }
@@ -222,8 +210,7 @@ public class CreditStandardDialog extends AlertDialog implements
         if (standardCredit != null) {
             String types[] = getContext().getResources().getStringArray(
                     R.array.type_name);
-            LinearLayout container = (LinearLayout) contentView
-                    .findViewById(R.id.container);
+            LinearLayout container = contentView.findViewById(R.id.container);
             container.removeAllViews();
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -242,7 +229,7 @@ public class CreditStandardDialog extends AlertDialog implements
                     text.setBackgroundResource(android.R.color.transparent);
                 }
                 text.setText(types[i] + "："
-                        + String.valueOf(standardCredit.getCredits().get(i)));
+                        + standardCredit.getCredits().get(i));
                 container.addView(text);
             }
         }

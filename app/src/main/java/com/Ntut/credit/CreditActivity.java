@@ -1,6 +1,5 @@
 package com.Ntut.credit;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -66,11 +65,11 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
                 .getMetrics(displaymetrics);
         CONTENT_ROW_HEIGHT = Math.round(displaymetrics.widthPixels / 8);
         setContentView(R.layout.activity_credit);
-        credit = (LinearLayout) findViewById(R.id.credit);
+        credit = findViewById(R.id.credit);
         View start_button = findViewById(R.id.start_button);
         start_button.setOnClickListener(this);
         initView();
-        mToolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        mToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mToolbar);
         setActionBar();
     }
@@ -100,7 +99,7 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
             StandardCredit standardCredit = Model.getInstance()
                     .getStandardCredit();
             if (standardCredit != null) {
-                credit_text = String.valueOf(studentCredit.getTotalCredits())
+                credit_text = studentCredit.getTotalCredits()
                         + " / " + standardCredit.getCredits().get(7);
             } else {
                 credit_text = String.valueOf(studentCredit.getTotalCredits());
@@ -113,8 +112,8 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
                         R.layout.credit_textview, null, false);
                 text.setBackgroundResource(R.color.white);
                 if (standardCredit != null) {
-                    credit_text = String.valueOf(studentCredit
-                            .getTypeCredits(i))
+                    credit_text = studentCredit
+                            .getTypeCredits(i)
                             + " / "
                             + standardCredit.getCredits().get(i - 1);
                 } else {
@@ -124,15 +123,11 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
                 text.setText(types[i - 1] + "：" + credit_text);
                 text.setTag(i);
                 if (studentCredit.getTypeCredits(i) > 0) {
-                    text.setOnClickListener(new View.OnClickListener() {
-
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(getApplicationContext(),
-                                    CreditTypeListActivity.class);
-                            intent.putExtra("type", (Integer) view.getTag());
-                            startActivity(intent);
-                        }
+                    text.setOnClickListener(view -> {
+                        Intent intent = new Intent(getApplicationContext(),
+                                CreditTypeListActivity.class);
+                        intent.putExtra("type", (Integer) view.getTag());
+                        startActivity(intent);
                     });
                 }
                 total_group.addView(text);
@@ -183,8 +178,7 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
 
             @Override
             public void onSlidedUp(View v) {
-                RadarChartView radar_chart = (RadarChartView) v
-                        .findViewById(R.id.radar_chart);
+                RadarChartView radar_chart = v.findViewById(R.id.radar_chart);
                 if (radar_chart != null) {
                     radar_chart.resetAnimation();
                 }
@@ -192,8 +186,7 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
 
             @Override
             public void onSlidedDown(View v) {
-                RadarChartView radar_chart = (RadarChartView) v
-                        .findViewById(R.id.radar_chart);
+                RadarChartView radar_chart = v.findViewById(R.id.radar_chart);
                 if (radar_chart != null) {
                     radar_chart.startAnimation();
                 }
@@ -214,27 +207,22 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
                 item.setBackgroundResource(R.color.white);
                 CreditInfo creditInfo = credits.get(i);
 
-                TextView coursNo = (TextView) item.findViewById(R.id.courseNo);
+                TextView coursNo = item.findViewById(R.id.courseNo);
                 coursNo.setText(creditInfo.getCourseNo());
-                TextView coursName = (TextView) item
-                        .findViewById(R.id.courseName);
+                TextView coursName = item.findViewById(R.id.courseName);
                 coursName.setText(creditInfo.getCourseName());
-                coursName.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-                        try {
-                            Toast.makeText(v.getContext(),
-                                    ((TextView) v).getText(),
-                                    Toast.LENGTH_SHORT).show();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                coursName.setOnClickListener(v -> {
+                    try {
+                        Toast.makeText(v.getContext(),
+                                ((TextView) v).getText(),
+                                Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
                 });
-                TextView credit = (TextView) item.findViewById(R.id.credit);
+                TextView credit = item.findViewById(R.id.credit);
                 credit.setText(String.valueOf(creditInfo.getCredit()));
-                Spinner type = (Spinner) item.findViewById(R.id.type);
+                Spinner type = item.findViewById(R.id.type);
                 ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(
                         this, R.layout.credit_type_textview,
                         getResources().getStringArray(R.array.credit_type));
@@ -242,19 +230,15 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
                         .setDropDownViewResource(R.layout.credit_type_textview);
                 type.setAdapter(dataAdapter);
                 type.setOnItemSelectedListener(iSlis);
-                type.setOnTouchListener(new View.OnTouchListener() {
-
-                    @Override
-                    public boolean onTouch(View v, MotionEvent event) {
-                        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                            isUser = true;
-                        }
-                        return false;
+                type.setOnTouchListener((v, event) -> {
+                    if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                        isUser = true;
                     }
+                    return false;
                 });
                 type.setTag(creditInfo);
                 type.setSelection(creditInfo.getType());
-                TextView score = (TextView) item.findViewById(R.id.score);
+                TextView score = item.findViewById(R.id.score);
                 score.setText(String.valueOf(credits.get(i).getScore()));
                 group.addView(item);
             }
@@ -428,12 +412,7 @@ public class CreditActivity extends BaseActivity implements View.OnClickListener
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
+            mToolbar.setNavigationOnClickListener(v -> finish());
             actionBar.setTitle(R.string.credit_text);
             actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.credit_color)));
         }

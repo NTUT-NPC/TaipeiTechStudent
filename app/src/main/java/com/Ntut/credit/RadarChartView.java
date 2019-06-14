@@ -86,30 +86,26 @@ public class RadarChartView extends View {
 
     public void startAnimation() {
         Handler handle = new Handler();
-        handle.postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                if (total_anim_count < max_anim_count) {
-                    total_anim_count++;
-                } else {
-                    if (core_anim_count < max_anim_count) {
-                        core_anim_count++;
-                    }
-                }
-                total_anim_percentage = interpolator
-                        .getInterpolation((float) total_anim_count
-                                / max_anim_count);
-                core_anim_percentage = interpolator
-                        .getInterpolation((float) core_anim_count
-                                / max_anim_count);
-                invalidate();
+        handle.postDelayed(() -> {
+            if (total_anim_count < max_anim_count) {
+                total_anim_count++;
+            } else {
                 if (core_anim_count < max_anim_count) {
-                    startAnimation();
-                } else {
-                    total_anim_count = 0;
-                    core_anim_count = 0;
+                    core_anim_count++;
                 }
+            }
+            total_anim_percentage = interpolator
+                    .getInterpolation((float) total_anim_count
+                            / max_anim_count);
+            core_anim_percentage = interpolator
+                    .getInterpolation((float) core_anim_count
+                            / max_anim_count);
+            invalidate();
+            if (core_anim_count < max_anim_count) {
+                startAnimation();
+            } else {
+                total_anim_count = 0;
+                core_anim_count = 0;
             }
         }, anim_delta);
     }

@@ -48,11 +48,10 @@ public class OtherAdapter extends RecyclerView.Adapter<OtherAdapter.ViewHolder> 
         public TextView otherText;
         public ImageView imageView;
         public  ViewHolderOnClick listener;
-        public  ViewHolderOnClick viewHolderOnClick;
         public ViewHolder(View itemView, ViewHolderOnClick listener){
             super(itemView);
-            otherText = (TextView) itemView.findViewById(R.id.other_text);
-            imageView = (ImageView) itemView.findViewById(R.id.other_image);
+            otherText = itemView.findViewById(R.id.other_text);
+            imageView = itemView.findViewById(R.id.other_image);
             this.listener = listener;
             itemView.setOnClickListener(this);
         }
@@ -70,39 +69,36 @@ public class OtherAdapter extends RecyclerView.Adapter<OtherAdapter.ViewHolder> 
     @Override
     public OtherAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View contactView = LayoutInflater.from(context).inflate(R.layout.other_item, parent, false);
-        ViewHolder viewHolder = new ViewHolder(contactView, new ViewHolder.ViewHolderOnClick() {
-            @Override
-            public void onClick(View v, int position) {
-                Intent intent;
-                switch (position){
-                    case CREDIT_ID:
-                        intent = new Intent(context, CreditActivity.class);
-                        context.startActivity(intent);
-                        break;
-                    case ACCOUNT_ID:
-                        intent = new Intent(context, AccountActivity.class);
-                        context.startActivity(intent);
-                        break;
-                    case MAP_ID:
-                        intent = new Intent(context, MapActivity.class);
-                        context.startActivity(intent);
-                        break;
-                    case STORE_ID:
-                        intent = new Intent(context, StoreActivity.class);
-                        context.startActivity(intent);
-                        break;
-                    case FEEDBACK_ID:
-                        intent = new Intent(context, FeedbackActivity.class);
-                        context.startActivity(intent);
-                        break;
-                    case ETC_ID:
-                        intent = new Intent(context, EtcActivity.class);
-                        context.startActivity(intent);
-                        break;
-                    case ABOUT_ID:
-                        intent = new Intent(context, AboutActivity.class);
-                        context.startActivity(intent);
-                }
+        ViewHolder viewHolder = new ViewHolder(contactView, (v, position) -> {
+            Intent intent;
+            switch (position){
+                case CREDIT_ID:
+                    intent = new Intent(context, CreditActivity.class);
+                    context.startActivity(intent);
+                    break;
+                case ACCOUNT_ID:
+                    intent = new Intent(context, AccountActivity.class);
+                    context.startActivity(intent);
+                    break;
+                case MAP_ID:
+                    intent = new Intent(context, MapActivity.class);
+                    context.startActivity(intent);
+                    break;
+                case STORE_ID:
+                    intent = new Intent(context, StoreActivity.class);
+                    context.startActivity(intent);
+                    break;
+                case FEEDBACK_ID:
+                    intent = new Intent(context, FeedbackActivity.class);
+                    context.startActivity(intent);
+                    break;
+                case ETC_ID:
+                    intent = new Intent(context, EtcActivity.class);
+                    context.startActivity(intent);
+                    break;
+                case ABOUT_ID:
+                    intent = new Intent(context, AboutActivity.class);
+                    context.startActivity(intent);
             }
         });
         return viewHolder;

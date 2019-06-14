@@ -67,12 +67,9 @@ public class SemesterSelector extends AppCompatButton implements View.OnClickLis
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("學期");
-        builder.setItems(mSemesterArray, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (mOnSemesterSelectedListener != null) {
-                    mOnSemesterSelectedListener.onSemesterSelected(mSemesterList.get(which));
-                }
+        builder.setItems(mSemesterArray, (dialog, which) -> {
+            if (mOnSemesterSelectedListener != null) {
+                mOnSemesterSelectedListener.onSemesterSelected(mSemesterList.get(which));
             }
         });
         builder.show();

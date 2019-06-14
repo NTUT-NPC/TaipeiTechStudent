@@ -26,10 +26,8 @@ import com.Ntut.account.AccountSettingFragment;
 import com.Ntut.calendar.CalendarFragment;
 import com.Ntut.course.CourseFragment;
 import com.Ntut.event.EventFragment;
-import com.Ntut.model.Model;
 import com.Ntut.other.OtherFragment;
 import com.Ntut.portal.PortalFragment;
-import com.Ntut.utility.WifiUtility;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -80,12 +78,12 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     }
 
     private void initToolbar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
     }
 
     private void initNavigation() {
-        BottomNavigationBar bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
+        BottomNavigationBar bottomNavigationBar = findViewById(R.id.bottom_navigation_bar);
         bottomNavigationBar.setTabSelectedListener(this);
         bottomNavigationBar
                 .setMode(BottomNavigationBar.MODE_FIXED);

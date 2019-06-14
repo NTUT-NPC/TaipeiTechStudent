@@ -2,7 +2,6 @@ package com.Ntut.portal;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -26,7 +25,6 @@ import com.Ntut.R;
 import com.Ntut.model.Model;
 import com.Ntut.runnable.BaseRunnable;
 import com.Ntut.runnable.LoginNportalRunnable;
-import com.Ntut.utility.WifiUtility;
 
 import java.lang.ref.WeakReference;
 import java.net.CookieHandler;
@@ -54,7 +52,7 @@ public class PortalFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         fragmentView = inflater.inflate(R.layout.fragment_portal, container, false);
-        webview = (WebView) fragmentView.findViewById(R.id.portal_webview);
+        webview = fragmentView.findViewById(R.id.portal_webview);
         initWebView();
         String account = Model.getInstance().getAccount();
         String password = Model.getInstance().getPassword();
@@ -100,35 +98,21 @@ public class PortalFragment extends BaseFragment {
             public boolean onJsConfirm(WebView view, String url, String message, final JsResult result) {
                 new AlertDialog.Builder(getActivity())
                         .setMessage(message)
-                        .setPositiveButton("確定", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                result.confirm();
-                            }
-                        })
-                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                result.cancel();
-                            }
-                        })
+                        .setPositiveButton("確定", (dialogInterface, i) -> result.confirm())
+                        .setNegativeButton("取消", (dialogInterface, i) -> result.cancel())
                         .show();
                 return true;
             }
         });
-        webview.setOnKeyListener(new View.OnKeyListener(){
-
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (keyCode == KeyEvent.KEYCODE_BACK
-                        && event.getAction() == MotionEvent.ACTION_UP
-                        && webview.canGoBack()) {
-                    webview.goBack();
-                    return true;
-                }
-
-                return false;
+        webview.setOnKeyListener((v, keyCode, event) -> {
+            if (keyCode == KeyEvent.KEYCODE_BACK
+                    && event.getAction() == MotionEvent.ACTION_UP
+                    && webview.canGoBack()) {
+                webview.goBack();
+                return true;
             }
 
+            return false;
         });
     }
 
@@ -145,8 +129,7 @@ public class PortalFragment extends BaseFragment {
             if (fragment == null) {
                 return;
             }
-            WebView webview = (WebView) fragmentView
-                    .findViewById(R.id.portal_webview);
+            WebView webview = fragmentView.findViewById(R.id.portal_webview);
             switch (msg.what) {
                 case BaseRunnable.REFRESH:
                     java.net.CookieStore rawCookieStore = ((java.net.CookieManager)

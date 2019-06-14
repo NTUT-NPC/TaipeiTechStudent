@@ -31,24 +31,20 @@ public class ClubActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_club);
-        mToolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        mToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mToolbar);
         setActionBar();
-        webview = (WebView) findViewById(R.id.club_webview);
+        webview = findViewById(R.id.club_webview);
         webview.setWebViewClient(new WebViewClient());
-        webview.setOnKeyListener(new View.OnKeyListener(){
-
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (keyCode == KeyEvent.KEYCODE_BACK
-                        && event.getAction() == MotionEvent.ACTION_UP
-                        && webview.canGoBack()) {
-                    webview.goBack();
-                    return true;
-                }
-
-                return false;
+        webview.setOnKeyListener((v, keyCode, event) -> {
+            if (keyCode == KeyEvent.KEYCODE_BACK
+                    && event.getAction() == MotionEvent.ACTION_UP
+                    && webview.canGoBack()) {
+                webview.goBack();
+                return true;
             }
 
+            return false;
         });
         initWebViewSettings();
         webview.loadUrl("https://www.google.com.tw/search?q=android+webview&rlz=1C1CHZL_zh-TWTW722TW722&oq=android+webview&aqs=chrome..69i57j69i65j35i39l2j0l2.5582j0j7&sourceid=chrome&ie=UTF-8");
@@ -82,12 +78,7 @@ public class ClubActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
+            mToolbar.setNavigationOnClickListener(v -> finish());
             actionBar.setTitle(R.string.club_text);
             actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.blue)));
         }

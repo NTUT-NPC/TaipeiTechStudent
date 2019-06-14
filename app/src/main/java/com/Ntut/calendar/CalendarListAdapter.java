@@ -39,12 +39,9 @@ public class CalendarListAdapter extends ArrayAdapter<CalendarInfo> implements
         if (convertView == null) {
             convertView = inflater.inflate(LAYOUT_ID, parent, false);
             holder = new ViewHolder();
-            holder.date_textview = (TextView) convertView
-                    .findViewById(R.id.calendarDate);
-            holder.day_textview = (TextView) convertView
-                    .findViewById(R.id.calendarDay);
-            holder.event_textview = (TextView) convertView
-                    .findViewById(R.id.calendarEvent);
+            holder.date_textview = convertView.findViewById(R.id.calendarDate);
+            holder.day_textview = convertView.findViewById(R.id.calendarDay);
+            holder.event_textview = convertView.findViewById(R.id.calendarEvent);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();

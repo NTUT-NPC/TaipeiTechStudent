@@ -27,7 +27,7 @@ public class OtherFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.fragment_other, container, false);
-        RecyclerView recyclerView = (RecyclerView) fragmentView.findViewById(R.id.other_list);
+        RecyclerView recyclerView = fragmentView.findViewById(R.id.other_list);
         initListData();
         OtherAdapter adapter = new OtherAdapter(otherInfoList, getContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

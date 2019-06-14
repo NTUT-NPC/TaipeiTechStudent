@@ -10,7 +10,6 @@ import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,7 +19,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.Ntut.BaseFragment;
@@ -90,18 +88,12 @@ public class CourseFragment extends BaseFragment implements View.OnClickListener
         TIME_ARRAY = getResources().getStringArray(R.array.time_array);
         fragmentView = inflater.inflate(R.layout.fragment_course, container,
                 false);
-        fragmentView.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-                closeSoftKeyboard();
-            }
-        });
+        fragmentView.setOnClickListener(arg0 -> closeSoftKeyboard());
         initCourseTable();
-        mSemesterSelector = (SemesterSelector) fragmentView.findViewById(R.id.semester);
+        mSemesterSelector = fragmentView.findViewById(R.id.semester);
         mSemesterSelector.setOnSemesterSelectedListener(semesterSelectedLis);
         lockSemesterSpinner();
-        sidText = (EditText) fragmentView.findViewById(R.id.sidText);
+        sidText = fragmentView.findViewById(R.id.sidText);
         sidText.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before,
@@ -123,18 +115,14 @@ public class CourseFragment extends BaseFragment implements View.OnClickListener
             }
         });
 
-        sidText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId,
-                                          KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    String sid = sidText.getText().toString();
-                    needShowSemesterDialog = false;
-                    searchLatestCourseTable(sid);
-                    return true;
-                }
-                return false;
+        sidText.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                String sid = sidText.getText().toString();
+                needShowSemesterDialog = false;
+                searchLatestCourseTable(sid);
+                return true;
             }
+            return false;
         });
         if (Model.getInstance().getStudentCourse() != null) {
             StudentCourse student_course = Model.getInstance()
@@ -183,32 +171,25 @@ public class CourseFragment extends BaseFragment implements View.OnClickListener
     }
 
     private void lockSemesterSpinner() {
-        mSemesterSelector.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    String sid = sidText.getText().toString();
-                    needShowSemesterDialog = true;
-                    searchLatestCourseTable(sid);
-                }
-                return true;
+        mSemesterSelector.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                String sid = sidText.getText().toString();
+                needShowSemesterDialog = true;
+                searchLatestCourseTable(sid);
             }
+            return true;
         });
     }
 
     private void initCourseTable() {
-        courseTable = (CourseTableLayout) fragmentView
-                .findViewById(R.id.courseTable);
+        courseTable = fragmentView.findViewById(R.id.courseTable);
         courseTable.setTableInitializeListener(this);
         courseTable.setOnCourseClickListener(this);
-        courseTable.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    closeSoftKeyboard();
-                }
-                return false;
+        courseTable.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                closeSoftKeyboard();
             }
+            return false;
         });
     }
 
@@ -250,37 +231,30 @@ public class CourseFragment extends BaseFragment implements View.OnClickListener
             StudentCourse studentCourse = Model.getInstance().getStudentCourse();
             showCourse(studentCourse);
             Snackbar.make(fragmentView.findViewById(R.id.main_layout), "目前課表已設為離線瀏覽！"
-                    , Snackbar.LENGTH_LONG).setAction("儲存", new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    StudentCourse course = Model.getInstance().getStudentCourse();
-                    saveStudentCourse();
-                }
-            }).setActionTextColor(getResources().getColor(R.color.dark_red)).show();
+                    , Snackbar.LENGTH_LONG).setAction("儲存", v -> {
+                        StudentCourse course = Model.getInstance().getStudentCourse();
+                        saveStudentCourse();
+                    }).setActionTextColor(getResources().getColor(R.color.dark_red)).show();
         } else if (object instanceof String) {
             showAlertMessage((String) object);
         }
     }
 
 
-    public DialogInterface.OnClickListener courseDetailDialogLis = new DialogInterface.OnClickListener() {
-
-        @Override
-        public void onClick(DialogInterface arg0, int arg1) {
-            if (selectedCourseNo.equals("0")) {
-                Toast.makeText(getActivity(), "班會課無法查詢瀏覽詳細資訊！",
-                        Toast.LENGTH_LONG).show();
-            } else {
-                if (WifiUtility.isNetworkAvailable(getActivity())) {
-                    if (Utility.checkAccount(getActivity())) {
-                        CourseDetailTask courseDetailTask = new CourseDetailTask(CourseFragment.this);
-                        courseDetailTask.execute(selectedCourseNo);
-                    }
-                } else {
-                    Toast.makeText(getActivity(),
-                            "請檢查您的網路連線狀態，或再試一次！", Toast.LENGTH_LONG)
-                            .show();
+    public DialogInterface.OnClickListener courseDetailDialogLis = (arg0, arg1) -> {
+        if (selectedCourseNo.equals("0")) {
+            Toast.makeText(getActivity(), "班會課無法查詢瀏覽詳細資訊！",
+                    Toast.LENGTH_LONG).show();
+        } else {
+            if (WifiUtility.isNetworkAvailable(getActivity())) {
+                if (Utility.checkAccount(getActivity())) {
+                    CourseDetailTask courseDetailTask = new CourseDetailTask(CourseFragment.this);
+                    courseDetailTask.execute(selectedCourseNo);
                 }
+            } else {
+                Toast.makeText(getActivity(),
+                        "請檢查您的網路連線狀態，或再試一次！", Toast.LENGTH_LONG)
+                        .show();
             }
         }
     };
@@ -336,7 +310,7 @@ public class CourseFragment extends BaseFragment implements View.OnClickListener
         if (studentCourse != null) {
             showCourse(studentCourse);
             Toast.makeText(getActivity(), "點課程瀏覽詳細內容！", Toast.LENGTH_SHORT).show();
-        } else if (studentCourse == null && !MainApplication.readSetting("account").isEmpty()) {
+        } else if (!MainApplication.readSetting("account").isEmpty()) {
             needShowSemesterDialog = false;
             sidText.setText(MainApplication.readSetting("account"));
             searchLatestCourseTable(MainApplication.readSetting("account"));

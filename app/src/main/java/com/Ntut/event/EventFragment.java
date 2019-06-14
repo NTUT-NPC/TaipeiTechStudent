@@ -34,14 +34,12 @@ public class EventFragment extends BaseFragment implements ValueEventListener, V
     private View fragmentView;
     private RecyclerView recyclerView;
     private EventAdapter adapter;
-    private View start_button;
-
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         fragmentView = inflater.inflate(R.layout.fragment_event, container, false);
-        recyclerView = (RecyclerView) fragmentView.findViewById(R.id.event_list);
+        recyclerView = fragmentView.findViewById(R.id.event_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         return fragmentView;

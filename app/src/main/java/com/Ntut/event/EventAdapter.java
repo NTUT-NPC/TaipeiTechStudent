@@ -43,10 +43,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
 
         ViewHolder(View itemView) {
             super(itemView);
-            image = (ImageView) itemView.findViewById(R.id.event_image);
-            title = (TextView) itemView.findViewById(R.id.event_title);
-            date = (TextView) itemView.findViewById(R.id.event_date);
-            location = (TextView) itemView.findViewById(R.id.event_location);
+            image = itemView.findViewById(R.id.event_image);
+            title = itemView.findViewById(R.id.event_title);
+            date = itemView.findViewById(R.id.event_date);
+            location = itemView.findViewById(R.id.event_location);
         }
     }
 
@@ -67,16 +67,13 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         date.setText(event.getStartDate());
         TextView location = holder.location;
         location.setText(event.getLocation());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, EventDetailActivity.class);
-                intent.putExtra("detail", event);
-                Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(context
-                        , new Pair<View, String>(image, "event_image")
-                        , new Pair<View, String>(title, "event_title")).toBundle();
-                context.startActivity(intent, bundle);
-            }
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, EventDetailActivity.class);
+            intent.putExtra("detail", event);
+            Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(context
+                    , new Pair<>(image, "event_image")
+                    , new Pair<>(title, "event_title")).toBundle();
+            context.startActivity(intent, bundle);
         });
     }
 

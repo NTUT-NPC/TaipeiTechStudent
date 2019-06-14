@@ -38,10 +38,10 @@ public class PortalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_portal);
-        mToolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        mToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mToolbar);
         setActionBar();
-        WebView webview = (WebView) findViewById(R.id.webview);
+        WebView webview = findViewById(R.id.webview);
         webview.setWebViewClient(new WebViewClient());
         webview.clearCache(true);
         webview.clearHistory();
@@ -66,7 +66,7 @@ public class PortalActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        WebView webview = (WebView) findViewById(R.id.webview);
+        WebView webview = findViewById(R.id.webview);
         if (webview.canGoBack()) {
             webview.goBack();
         } else {
@@ -87,8 +87,7 @@ public class PortalActivity extends AppCompatActivity {
             if (activity == null || activity.isFinishing()) {
                 return;
             }
-            WebView webview = (WebView) activity
-                    .findViewById(R.id.webview);
+            WebView webview = activity.findViewById(R.id.webview);
             switch (msg.what) {
                 case BaseRunnable.REFRESH:
                     java.net.CookieStore rawCookieStore = ((java.net.CookieManager)
@@ -125,12 +124,7 @@ public class PortalActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
+            mToolbar.setNavigationOnClickListener(v -> finish());
             actionBar.setTitle(R.string.portal_title);
             actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.deep_darken)));
         }

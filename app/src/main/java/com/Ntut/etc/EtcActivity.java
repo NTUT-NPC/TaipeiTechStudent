@@ -10,10 +10,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
-import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.Ntut.BaseActivity;
@@ -49,20 +47,20 @@ public class EtcActivity extends BaseActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_etc);
-        mToolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        mToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mToolbar);
         setActionBar();
-        uiLang_textView = (TextView) findViewById(R.id.uiLang_textView);
-        uiLangHint_textView = (TextView) findViewById(R.id.uiLangHint_textView);
-        uiE_textView = (TextView) findViewById(R.id.uiE_textView);
-        uiC_textView = (TextView) findViewById(R.id.uiC_textView);
-        uiJ_textView = (TextView) findViewById(R.id.uiJ_textView);
-        courseLang_textView = (TextView) findViewById(R.id.courseLang_textView);
-        courseLangHint_textView = (TextView) findViewById(R.id.courseLangHint_textView);
-        courseE_textView = (TextView) findViewById(R.id.courseE_textView);
-        courseC_textView = (TextView) findViewById(R.id.courseC_textView);
-        uiLang_seekBar = (SeekBar) findViewById(R.id.uiLang_seekBar);
-        courseLang_seekBar = (SeekBar) findViewById(R.id.courseLang_seekBar);
+        uiLang_textView = findViewById(R.id.uiLang_textView);
+        uiLangHint_textView = findViewById(R.id.uiLangHint_textView);
+        uiE_textView = findViewById(R.id.uiE_textView);
+        uiC_textView = findViewById(R.id.uiC_textView);
+        uiJ_textView = findViewById(R.id.uiJ_textView);
+        courseLang_textView = findViewById(R.id.courseLang_textView);
+        courseLangHint_textView = findViewById(R.id.courseLangHint_textView);
+        courseE_textView = findViewById(R.id.courseE_textView);
+        courseC_textView = findViewById(R.id.courseC_textView);
+        uiLang_seekBar = findViewById(R.id.uiLang_seekBar);
+        courseLang_seekBar = findViewById(R.id.courseLang_seekBar);
         initView();
     }
 
@@ -150,7 +148,6 @@ public class EtcActivity extends BaseActivity {
 
     private void updateCourse() {
         NportalConnector.reset();
-        Handler handler = new Handler();
         Model.getInstance().deleteStudentCourse();
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
@@ -197,12 +194,7 @@ public class EtcActivity extends BaseActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
+            mToolbar.setNavigationOnClickListener(v -> finish());
             actionBar.setTitle(R.string.etc_text);
             actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.setting_color)));
         }
