@@ -62,7 +62,7 @@ public class EventFragment extends BaseFragment implements ValueEventListener, V
         }
         adapter = new EventAdapter(eventList, context);
         adapter.add(new EventInfo(
-                "https://scontent.ftpe8-3.fna.fbcdn.net/v/t31.0-8/15167491_1378504085527279_2846785398782333863_o.jpg?oh=d4b5e7a736f9a92c9efdb20141aed75a&oe=5A2E7A48",
+                "https://scontent-tpe1-1.xx.fbcdn.net/v/t31.0-8/22424434_1718823984828619_5454788814235147620_o.jpg?_nc_cat=108&_nc_ht=scontent-tpe1-1.xx&oh=e503d4597b54a50d4200f56540fafb70&oe=5D9014FA",
                 "程式設計研究社",
                 "",
                 "",
