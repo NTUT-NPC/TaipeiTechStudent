@@ -231,20 +231,32 @@ public class CourseConnector {
         tagNode = new HtmlCleaner().clean(result);
         TagNode[] nodes = tagNode.getElementsByAttValue("border", "1", true,
                 false);
+
+        TagNode[] rows = nodes[0].getElementsByName("tr", true);
+
+        outerLoop:
+        for(TagNode node: nodes){
+            TagNode[] trs = node.getElementsByName("tr", true);
+            for (TagNode tr: trs){
+                TagNode[] tds = tr.getElementsByName("td", true);
+                for (TagNode td: tds){
+                    TagNode[] as = td.getElementsByName("a", true);
+                    for (TagNode a: as){
+                        String href = a.getAttributeByName("href");
+                        if(href.contains("Select.jsp")){
+                            rows = trs;
+                            break outerLoop;
+                        }
+                    }
+                }
+            }
+        }
+
         if (MainApplication.readSetting("courseLang").equals("zh")) {
-            TagNode[] rows = nodes[1].getElementsByName("tr", true);
             for (int i = 0; i < rows.length - 1; i++) {
                 TagNode[] cols = rows[i].getElementsByName("td", true);
-                if(cols.length<2) {
-                    continue;
-                }
 
-                TagNode[] a2 = cols[1].getElementsByName("a", true);
-                if(a2.length<1) {
-                    continue;
-                }
-
-                if (isWithdraw(cols)){
+                if (cols.length<16 || isWithdraw(cols)){
                     continue;
                 }
                 CourseInfo course = new CourseInfo();
@@ -268,18 +280,10 @@ public class CourseConnector {
             }
         }
         else {
-            TagNode[] rows = nodes[0].getElementsByName("tr", true);
             for (int i = 0; i < rows.length - 1; i++) {
                 TagNode[] cols = rows[i].getElementsByName("td", true);
-                if(cols.length<2) {
-                    continue;
-                }
-                TagNode[] a2 = cols[1].getElementsByName("a", true);
-                if(a2.length<1) {
-                    continue;
-                }
 
-                if (isWithdraw(cols)){
+                if (cols.length<14 || isWithdraw(cols)){
                     continue;
                 }
                 CourseInfo course = new CourseInfo();
