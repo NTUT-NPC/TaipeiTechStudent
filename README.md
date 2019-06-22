@@ -18,15 +18,7 @@ An App for Taipei Tech students
 8. Support Chinese, English and Japanese UI
 9. Support Chinese and English course searching
 10. Push Notification
-## Change log
-### v2.1
-- Add course widget
-## Todo-list
-- New calendar UI
-- Customize the notification
-- More custom options in setting page
-- Enable to add customized course in curriculum
-- Optimize event page
+
 ## Requirements
 - Android Studio 3
 - Android 5.0+
