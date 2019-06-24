@@ -1,11 +1,9 @@
 package com.Ntut.calendar;
 
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.viewpager.widget.ViewPager;
 
 import com.Ntut.BaseFragment;
 import com.Ntut.R;
@@ -56,9 +56,8 @@ public class CalendarFragment extends BaseFragment implements View.OnClickListen
             View button = fragmentView.findViewById(id);
             button.setOnClickListener(this);
         }
-        calendarViewPager = (ViewPager) fragmentView
-                .findViewById(R.id.calendar_viewpager);
-        calendarViewPager.setOnPageChangeListener(this);
+        calendarViewPager = fragmentView.findViewById(R.id.calendar_viewpager);
+        calendarViewPager.addOnPageChangeListener(this);
         calendar.set(Calendar.DAY_OF_MONTH, 15);
         showYearMonth();
         setData();
@@ -72,8 +71,7 @@ public class CalendarFragment extends BaseFragment implements View.OnClickListen
     }
 
     private void showYearMonth() {
-        TextView year_month = (TextView) fragmentView
-                .findViewById(R.id.calendarYearMonthTextView);
+        TextView year_month = fragmentView.findViewById(R.id.calendarYearMonthTextView);
         year_month.setText(String.format(Locale.US, "%tB %tY", calendar,
                 calendar));
     }
@@ -135,19 +133,15 @@ public class CalendarFragment extends BaseFragment implements View.OnClickListen
                             getActivity(), calendar, Model.getInstance()
                             .getYearCalendar().getYear());
                     month_dialog
-                            .setOnNegativeButtonClickListener(new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog,
-                                                    int which) {
-                                    int month = ((MonthPickerDialog) dialog)
-                                            .getMonth();
-                                    int year = ((MonthPickerDialog) dialog)
-                                            .getYear();
-                                    calendar.set(Calendar.YEAR, year);
-                                    calendar.set(Calendar.MONTH, month - 1);
-                                    showYearMonth();
-                                    setData();
-                                }
+                            .setOnNegativeButtonClickListener((dialog, which) -> {
+                                int month = ((MonthPickerDialog) dialog)
+                                        .getMonth();
+                                int year = ((MonthPickerDialog) dialog)
+                                        .getYear();
+                                calendar.set(Calendar.YEAR, year);
+                                calendar.set(Calendar.MONTH, month - 1);
+                                showYearMonth();
+                                setData();
                             });
                     month_dialog.show();
                 } else {

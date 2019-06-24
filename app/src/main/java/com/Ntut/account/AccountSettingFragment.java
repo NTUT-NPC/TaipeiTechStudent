@@ -3,8 +3,6 @@ package com.Ntut.account;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +11,8 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+
 import com.Ntut.BaseFragment;
 import com.Ntut.PortalActivity;
 import com.Ntut.R;
@@ -20,6 +20,7 @@ import com.Ntut.model.Model;
 import com.Ntut.runnable.AccountRunnable;
 import com.Ntut.utility.NportalConnector;
 import com.Ntut.utility.WifiUtility;
+import com.google.android.material.textfield.TextInputLayout;
 
 /**
  * Created by blackmaple on 2017/5/13.
@@ -49,10 +50,8 @@ public class AccountSettingFragment extends BaseFragment implements View.OnClick
     private void refreshView() {
         String account = Model.getInstance().getAccount();
         String password = Model.getInstance().getPassword();
-        EditText account_edittext = (EditText) fragmentView
-                .findViewById(R.id.account_edittext);
-        EditText password_edittext = (EditText) fragmentView
-                .findViewById(R.id.password_edittext);
+        EditText account_edittext = fragmentView.findViewById(R.id.account_edittext);
+        EditText password_edittext = fragmentView.findViewById(R.id.password_edittext);
         account_edittext.setText(account);
         password_edittext.setText(password);
     }
@@ -99,9 +98,8 @@ public class AccountSettingFragment extends BaseFragment implements View.OnClick
     }
 
     private boolean validateAccount() {
-        TextInputLayout accountInputLayout = (TextInputLayout) fragmentView.findViewById(R.id.account_input_layout);
-        EditText accountEditText = (EditText) fragmentView
-                .findViewById(R.id.account_edittext);
+        TextInputLayout accountInputLayout = fragmentView.findViewById(R.id.account_input_layout);
+        EditText accountEditText = fragmentView.findViewById(R.id.account_edittext);
         String accountText = accountEditText.getText().toString();
         if (TextUtils.isEmpty(accountText)) {
             accountInputLayout.setError(getString(R.string.account_empty_error_message));
@@ -114,9 +112,8 @@ public class AccountSettingFragment extends BaseFragment implements View.OnClick
     }
 
     private boolean validatePassword() {
-        TextInputLayout passwordInputLayout = (TextInputLayout) fragmentView.findViewById(R.id.password_input_layout);
-        EditText passwordEditText = (EditText) fragmentView
-                .findViewById(R.id.password_edittext);
+        TextInputLayout passwordInputLayout = fragmentView.findViewById(R.id.password_input_layout);
+        EditText passwordEditText = fragmentView.findViewById(R.id.password_edittext);
         String passwordText = passwordEditText.getText().toString();
         if (TextUtils.isEmpty(passwordText)) {
             passwordInputLayout.setError(getString(R.string.password_empty_error_message));
@@ -135,11 +132,9 @@ public class AccountSettingFragment extends BaseFragment implements View.OnClick
     }
 
     private void writeSettings() {
-        EditText accountEditText = (EditText) fragmentView
-                .findViewById(R.id.account_edittext);
+        EditText accountEditText = fragmentView.findViewById(R.id.account_edittext);
         String accountText = accountEditText.getText().toString();
-        EditText passwordEditText = (EditText) fragmentView
-                .findViewById(R.id.password_edittext);
+        EditText passwordEditText = fragmentView.findViewById(R.id.password_edittext);
         String passwordText = passwordEditText.getText().toString();
         if (accountText.length() > 0 && passwordText.length() > 0) {
             Model.getInstance().saveAccountPassword(accountText, passwordText);

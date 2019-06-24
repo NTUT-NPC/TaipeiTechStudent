@@ -10,10 +10,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -21,15 +17,18 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.Ntut.account.AccountActivity;
 import com.Ntut.account.AccountSettingFragment;
 import com.Ntut.calendar.CalendarFragment;
 import com.Ntut.course.CourseFragment;
 import com.Ntut.event.EventFragment;
-import com.Ntut.model.Model;
 import com.Ntut.other.OtherFragment;
 import com.Ntut.portal.PortalFragment;
-import com.Ntut.utility.WifiUtility;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -80,23 +79,23 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     }
 
     private void initToolbar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
     }
 
     private void initNavigation() {
-        BottomNavigationBar bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
+        BottomNavigationBar bottomNavigationBar = findViewById(R.id.bottom_navigation_bar);
         bottomNavigationBar.setTabSelectedListener(this);
         bottomNavigationBar
-                .setMode(BottomNavigationBar.MODE_FIXED);
+                .setMode(BottomNavigationBar.MODE_FIXED_NO_TITLE);
         bottomNavigationBar.
                 setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
         bottomNavigationBar
-                .addItem(new BottomNavigationItem(R.drawable.course_icon).setActiveColorResource(R.color.course_color))
-                .addItem(new BottomNavigationItem(R.drawable.calendar_icon).setActiveColorResource(R.color.calendar_color))
-                .addItem(new BottomNavigationItem(R.drawable.event_icon).setActiveColorResource(R.color.event_color))
-                .addItem(new BottomNavigationItem(R.drawable.nportal_icon).setActiveColorResource(R.color.portal_color))
-                .addItem(new BottomNavigationItem(R.drawable.other_icon).setActiveColorResource(R.color.other_color))
+                .addItem(new BottomNavigationItem(R.drawable.course_icon,"").setActiveColorResource(R.color.course_color))
+                .addItem(new BottomNavigationItem(R.drawable.calendar_icon,"").setActiveColorResource(R.color.calendar_color))
+                .addItem(new BottomNavigationItem(R.drawable.event_icon,"").setActiveColorResource(R.color.event_color))
+                .addItem(new BottomNavigationItem(R.drawable.nportal_icon,"").setActiveColorResource(R.color.portal_color))
+                .addItem(new BottomNavigationItem(R.drawable.other_icon,"").setActiveColorResource(R.color.other_color))
                 .initialise();
     }
 

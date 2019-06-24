@@ -4,17 +4,17 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.Ntut.PortalActivity;
 import com.Ntut.R;
@@ -23,6 +23,7 @@ import com.Ntut.runnable.AccountRunnable;
 import com.Ntut.utility.NportalConnector;
 import com.Ntut.utility.Utility;
 import com.Ntut.utility.WifiUtility;
+import com.google.android.material.textfield.TextInputLayout;
 
 /**
  * Created by blackmaple on 2017/5/21.
@@ -45,7 +46,7 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
         View right_link = findViewById(R.id.right_link);
         right_link.setOnClickListener(this);
         refreshView();
-        mToolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        mToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mToolbar);
         setActionBar();
     }
@@ -53,8 +54,8 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
     private void refreshView() {
         String account = Model.getInstance().getAccount();
         String password = Model.getInstance().getPassword();
-        EditText account_edittext = (EditText) findViewById(R.id.account_edittext);
-        EditText password_edittext = (EditText) findViewById(R.id.password_edittext);
+        EditText account_edittext = findViewById(R.id.account_edittext);
+        EditText password_edittext = findViewById(R.id.password_edittext);
         account_edittext.setText(account);
         password_edittext.setText(password);
     }
@@ -100,9 +101,8 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private boolean validateAccount() {
-        TextInputLayout accountInputLayout =
-                (TextInputLayout) findViewById(R.id.account_input_layout);
-        EditText accountEditText = (EditText) findViewById(R.id.account_edittext);
+        TextInputLayout accountInputLayout = findViewById(R.id.account_input_layout);
+        EditText accountEditText = findViewById(R.id.account_edittext);
         String accountText = accountEditText.getText().toString();
         if (TextUtils.isEmpty(accountText)) {
             accountInputLayout.setError(getString(R.string.account_empty_error_message));
@@ -115,9 +115,8 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private boolean validatePassword() {
-        TextInputLayout passwordInputLayout =
-                (TextInputLayout) findViewById(R.id.password_input_layout);
-        EditText passwordEditText = (EditText) findViewById(R.id.password_edittext);
+        TextInputLayout passwordInputLayout = findViewById(R.id.password_input_layout);
+        EditText passwordEditText = findViewById(R.id.password_edittext);
         String passwordText = passwordEditText.getText().toString();
         if (TextUtils.isEmpty(passwordText)) {
             passwordInputLayout.setError(getString(R.string.password_empty_error_message));
@@ -139,12 +138,7 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
+            mToolbar.setNavigationOnClickListener(v -> finish());
             actionBar.setTitle(R.string.account_setting_text);
             actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.account_color)));
         }
@@ -152,9 +146,9 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void writeSettings() {
-        EditText accountEditText = (EditText) findViewById(R.id.account_edittext);
+        EditText accountEditText = findViewById(R.id.account_edittext);
         String accountText = accountEditText.getText().toString();
-        EditText passwordEditText = (EditText) findViewById(R.id.password_edittext);
+        EditText passwordEditText = findViewById(R.id.password_edittext);
         String passwordText = passwordEditText.getText().toString();
         if (accountText.length() > 0 && passwordText.length() > 0) {
             Model.getInstance().saveAccountPassword(accountText, passwordText);

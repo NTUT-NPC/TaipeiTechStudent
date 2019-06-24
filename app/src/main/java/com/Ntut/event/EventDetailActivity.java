@@ -3,12 +3,6 @@ package com.Ntut.event;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.transition.Transition;
 import android.util.Log;
 import android.view.MenuItem;
@@ -16,8 +10,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+
 import com.Ntut.R;
 import com.Ntut.model.EventInfo;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 /**
  * Created by Andy on 2017/7/23.
@@ -40,15 +41,15 @@ public class EventDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.e(getPackageName(), "onCreate");
         setContentView(R.layout.activity_event_detail);
-        collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        eventDetailImage = (ImageView) findViewById(R.id.event_detail_image);
+        collapsingToolbar = findViewById(R.id.collapsing_toolbar);
+        eventDetailImage = findViewById(R.id.event_detail_image);
 //        fab = (FloatingActionButton) findViewById(R.id.event_fab);
-        title = (TextView) findViewById(R.id.event_detail_title);
-        location = (TextView) findViewById(R.id.event_detail_location);
-        host = (TextView) findViewById(R.id.event_detail_host);
-        url = (TextView) findViewById(R.id.event_detail_url);
-        date = (TextView) findViewById(R.id.event_detail_date);
-        content = (TextView) findViewById(R.id.event_detail_content);
+        title = findViewById(R.id.event_detail_title);
+        location = findViewById(R.id.event_detail_location);
+        host = findViewById(R.id.event_detail_host);
+        url = findViewById(R.id.event_detail_url);
+        date = findViewById(R.id.event_detail_date);
+        content = findViewById(R.id.event_detail_content);
         setToolbar();
         setData();
         hideElement();
@@ -66,12 +67,7 @@ public class EventDetailActivity extends AppCompatActivity {
         super.onResume();
         Log.e(getPackageName(), "onResume");
         Handler handler = new Handler();
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                showElement();
-            }
-        };
+        Runnable runnable = () -> showElement();
         handler.postDelayed(runnable, 400);
     }
 
@@ -125,7 +121,7 @@ public class EventDetailActivity extends AppCompatActivity {
     }
 
     private void setToolbar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

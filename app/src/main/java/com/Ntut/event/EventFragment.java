@@ -1,14 +1,15 @@
 package com.Ntut.event;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.Ntut.BaseFragment;
 import com.Ntut.R;
@@ -34,14 +35,12 @@ public class EventFragment extends BaseFragment implements ValueEventListener, V
     private View fragmentView;
     private RecyclerView recyclerView;
     private EventAdapter adapter;
-    private View start_button;
-
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         fragmentView = inflater.inflate(R.layout.fragment_event, container, false);
-        recyclerView = (RecyclerView) fragmentView.findViewById(R.id.event_list);
+        recyclerView = fragmentView.findViewById(R.id.event_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         return fragmentView;
@@ -63,7 +62,7 @@ public class EventFragment extends BaseFragment implements ValueEventListener, V
         }
         adapter = new EventAdapter(eventList, context);
         adapter.add(new EventInfo(
-                "https://scontent.ftpe8-3.fna.fbcdn.net/v/t31.0-8/15167491_1378504085527279_2846785398782333863_o.jpg?oh=d4b5e7a736f9a92c9efdb20141aed75a&oe=5A2E7A48",
+                "https://scontent-tpe1-1.xx.fbcdn.net/v/t31.0-8/22424434_1718823984828619_5454788814235147620_o.jpg?_nc_cat=108&_nc_ht=scontent-tpe1-1.xx&oh=e503d4597b54a50d4200f56540fafb70&oe=5D9014FA",
                 "程式設計研究社",
                 "",
                 "",

@@ -2,13 +2,13 @@ package com.Ntut.model;
 
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.Ntut.R;
-import com.bumptech.glide.DrawableRequestBuilder;
 import com.bumptech.glide.Glide;
-
+import com.bumptech.glide.RequestBuilder;
 
 /**
  * Created by blackmaple on 2017/5/15.
@@ -77,7 +77,7 @@ public class EventInfo implements Parcelable {
         this.url = url;
     }
 
-    public DrawableRequestBuilder<String> getImage(Context context) {
+    public RequestBuilder<Drawable> getImage(Context context) {
         return Glide.with(context).load(image).placeholder(R.drawable.placeholder).override(600, 400).centerCrop();
     }
 

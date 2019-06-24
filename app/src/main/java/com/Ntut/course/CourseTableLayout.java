@@ -76,7 +76,7 @@ public class CourseTableLayout extends LinearLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        courseContainer = (LinearLayout) findViewById(R.id.course_container);
+        courseContainer = findViewById(R.id.course_container);
     }
 
     private void initCourseTable() {
@@ -248,13 +248,7 @@ public class CourseTableLayout extends LinearLayout {
             }
         });
         trans_anim.setInterpolator(new OvershootInterpolator());
-        new Handler().postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                textview.startAnimation(trans_anim);
-            }
-        }, (long) ((Math.random() * 500) + 500));
+        new Handler().postDelayed(() -> textview.startAnimation(trans_anim), (long) ((Math.random() * 500) + 500));
     }
 
     private View.OnTouchListener onTouchListener;

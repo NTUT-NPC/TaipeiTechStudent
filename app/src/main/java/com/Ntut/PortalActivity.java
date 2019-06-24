@@ -5,15 +5,15 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.Ntut.model.Model;
 import com.Ntut.runnable.BaseRunnable;
@@ -38,10 +38,10 @@ public class PortalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_portal);
-        mToolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        mToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mToolbar);
         setActionBar();
-        WebView webview = (WebView) findViewById(R.id.webview);
+        WebView webview = findViewById(R.id.webview);
         webview.setWebViewClient(new WebViewClient());
         webview.clearCache(true);
         webview.clearHistory();
@@ -66,7 +66,7 @@ public class PortalActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        WebView webview = (WebView) findViewById(R.id.webview);
+        WebView webview = findViewById(R.id.webview);
         if (webview.canGoBack()) {
             webview.goBack();
         } else {
@@ -87,8 +87,7 @@ public class PortalActivity extends AppCompatActivity {
             if (activity == null || activity.isFinishing()) {
                 return;
             }
-            WebView webview = (WebView) activity
-                    .findViewById(R.id.webview);
+            WebView webview = activity.findViewById(R.id.webview);
             switch (msg.what) {
                 case BaseRunnable.REFRESH:
                     java.net.CookieStore rawCookieStore = ((java.net.CookieManager)
@@ -125,12 +124,7 @@ public class PortalActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
+            mToolbar.setNavigationOnClickListener(v -> finish());
             actionBar.setTitle(R.string.portal_title);
             actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.deep_darken)));
         }
