@@ -48,8 +48,8 @@ public class MonthPickerDialog extends AlertDialog implements SeekArc.OnSeekArcC
         View content = LayoutInflater.from(mContext).inflate(
                 R.layout.month_picker_dialog, null);
         setView(content);
-        month_text = (TextView) content.findViewById(R.id.month_text);
-        SeekArc monthSeekArc = (SeekArc) content.findViewById(R.id.month_seekarc);
+        month_text = content.findViewById(R.id.month_text);
+        SeekArc monthSeekArc = content.findViewById(R.id.month_seekarc);
         monthSeekArc.setTouchInSide(true);
         monthSeekArc.setSweepAngle(300);
         monthSeekArc.setClockwise(false);

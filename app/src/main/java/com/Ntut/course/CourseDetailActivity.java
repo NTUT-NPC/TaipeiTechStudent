@@ -10,17 +10,16 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import com.Ntut.BaseActivity;
 import com.Ntut.R;
@@ -49,7 +48,7 @@ public class CourseDetailActivity extends BaseActivity {
             finish();
             return;
         }
-        mToolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        mToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mToolbar);
         setActionBar();
         mProgressDialog = ProgressDialog.show(this, null, "課程資料讀取中~", true);
@@ -62,12 +61,7 @@ public class CourseDetailActivity extends BaseActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onBackPressed();
-                }
-            });
+            mToolbar.setNavigationOnClickListener(v -> onBackPressed());
             actionBar.setTitle("課程資訊");
             actionBar.setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(getBaseContext(), R.color.course_color)));
         }
@@ -90,7 +84,7 @@ public class CourseDetailActivity extends BaseActivity {
 
     private void showCourseDetail(ArrayList<String> courseDetail) {
         LayoutInflater li = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        LinearLayout courseInfo = (LinearLayout) findViewById(R.id.courseInfo);
+        LinearLayout courseInfo = findViewById(R.id.courseInfo);
         for (int i = 0; i < courseDetail.size(); i++) {
             if (i == 1 || i == 2 || i == 4 || i == 6 || i == 13 || i == 14
                     || i == 15 || i == 16 || i == 17) {
@@ -98,7 +92,7 @@ public class CourseDetailActivity extends BaseActivity {
             } else {
                 LinearLayout item = (LinearLayout) li.inflate(
                         R.layout.course_item, courseInfo, false);
-                TextView text = (TextView) item.findViewById(R.id.text);
+                TextView text = item.findViewById(R.id.text);
                 text.setTextColor(getResources().getColor(R.color.darken));
                 text.setText(courseDetail.get(i));
                 courseInfo.addView(item);
@@ -108,36 +102,31 @@ public class CourseDetailActivity extends BaseActivity {
 
     private void showClassmates(ArrayList<String> classmateList) {
         LayoutInflater li = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        LinearLayout classmates = (LinearLayout) findViewById(R.id.classmates);
+        LinearLayout classmates = findViewById(R.id.classmates);
         for (int i = 0; i < classmateList.size(); i++) {
             LinearLayout classmate = (LinearLayout) li.inflate(
                     R.layout.classmate_item, classmates, false);
-            LinearLayout item = (LinearLayout) classmate
-                    .findViewById(R.id.classmate_item);
+            LinearLayout item = classmate.findViewById(R.id.classmate_item);
             if (i % 2 == 1) {
                 item.setBackgroundResource(R.color.cloud);
             } else {
                 item.setBackgroundResource(R.color.white);
             }
             String[] temp = classmateList.get(i).split(",");
-            TextView text = (TextView) classmate.findViewById(R.id.sclass);
+            TextView text = classmate.findViewById(R.id.sclass);
             text.setText(temp[0]);
-            text = (TextView) classmate.findViewById(R.id.sid);
+            text = classmate.findViewById(R.id.sid);
             text.setText(temp[1]);
-            text = (TextView) classmate.findViewById(R.id.sname);
+            text = classmate.findViewById(R.id.sname);
             text.setText(temp[2]);
-            Button submit = (Button) classmate.findViewById(R.id.submit);
+            Button submit = classmate.findViewById(R.id.submit);
             submit.setTag(temp[1]);
-            submit.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    String sid = (String) v.getTag();
-                    Intent intent = new Intent();
-                    intent.putExtra("sid", sid);
-                    setResult(RESULT_OK, intent);
-                    finish();
-                }
+            submit.setOnClickListener(v -> {
+                String sid = (String) v.getTag();
+                Intent intent = new Intent();
+                intent.putExtra("sid", sid);
+                setResult(RESULT_OK, intent);
+                finish();
             });
             classmates.addView(classmate);
 

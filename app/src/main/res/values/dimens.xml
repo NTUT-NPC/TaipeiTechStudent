@@ -8,4 +8,6 @@
     <dimen name="buttonHeight">40dp</dimen>
     <dimen name="settingPadding">20dp</dimen>
 
+    <dimen name="fixed_no_title_icon_height">24dp</dimen>
+    <dimen name="fixed_no_title_icon_width">24dp</dimen>
 </resources>

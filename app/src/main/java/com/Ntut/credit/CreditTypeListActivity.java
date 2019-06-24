@@ -3,15 +3,16 @@ package com.Ntut.credit;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.Ntut.R;
 import com.Ntut.model.CreditInfo;
@@ -34,14 +35,14 @@ public class CreditTypeListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.credit_type_list);
-        mToolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        mToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mToolbar);
         Intent i = getIntent();
         type = i.getIntExtra("type", 0);
         String type_text = getResources().getStringArray(R.array.type_name)[type - 1];
         setActionBar(type_text + "  "+getString(R.string.credit_sum)
                 + Model.getInstance().getStudentCredit().getTypeCredits(type));
-        credit = (LinearLayout) findViewById(R.id.credit);
+        credit = findViewById(R.id.credit);
         createSemesterGroups();
     }
 
@@ -60,16 +61,13 @@ public class CreditTypeListActivity extends AppCompatActivity {
                     View item = inflater.inflate(R.layout.credit_item, null,
                             false);
                     item.setBackgroundResource(R.color.white);
-                    TextView courseNo = (TextView) item
-                            .findViewById(R.id.courseNo);
+                    TextView courseNo = item.findViewById(R.id.courseNo);
                     courseNo.setText(credit.getCourseNo());
-                    TextView courseName = (TextView) item
-                            .findViewById(R.id.courseName);
+                    TextView courseName = item.findViewById(R.id.courseName);
                     courseName.setText(credit.getCourseName());
-                    TextView credit_text = (TextView) item
-                            .findViewById(R.id.credit);
+                    TextView credit_text = item.findViewById(R.id.credit);
                     credit_text.setText(String.valueOf(credit.getCredit()));
-                    Spinner type = (Spinner) item.findViewById(R.id.type);
+                    Spinner type = item.findViewById(R.id.type);
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(
                             this, R.layout.credit_type_textview, getResources()
                             .getStringArray(R.array.credit_type));
@@ -79,7 +77,7 @@ public class CreditTypeListActivity extends AppCompatActivity {
                     type.setSelection(credit.getType());
                     type.setClickable(false);
                     type.setEnabled(false);
-                    TextView score = (TextView) item.findViewById(R.id.score);
+                    TextView score = item.findViewById(R.id.score);
                     score.setText(credit.getScore());
                     group.addView(item);
                     i++;
@@ -95,12 +93,7 @@ public class CreditTypeListActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onBackPressed();
-                }
-            });
+            mToolbar.setNavigationOnClickListener(v -> onBackPressed());
             actionBar.setTitle(title);
             actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.credit_color)));
         }

@@ -5,15 +5,14 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+
+import androidx.core.app.NotificationCompat;
 
 import com.Ntut.MainActivity;
 import com.Ntut.R;
 import com.google.firebase.messaging.RemoteMessage;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 import static android.content.ContentValues.TAG;

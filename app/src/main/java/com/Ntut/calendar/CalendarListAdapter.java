@@ -3,13 +3,14 @@ package com.Ntut.calendar;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.Ntut.R;
 import com.Ntut.model.CalendarInfo;
@@ -39,12 +40,9 @@ public class CalendarListAdapter extends ArrayAdapter<CalendarInfo> implements
         if (convertView == null) {
             convertView = inflater.inflate(LAYOUT_ID, parent, false);
             holder = new ViewHolder();
-            holder.date_textview = (TextView) convertView
-                    .findViewById(R.id.calendarDate);
-            holder.day_textview = (TextView) convertView
-                    .findViewById(R.id.calendarDay);
-            holder.event_textview = (TextView) convertView
-                    .findViewById(R.id.calendarEvent);
+            holder.date_textview = convertView.findViewById(R.id.calendarDate);
+            holder.day_textview = convertView.findViewById(R.id.calendarDay);
+            holder.event_textview = convertView.findViewById(R.id.calendarEvent);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();

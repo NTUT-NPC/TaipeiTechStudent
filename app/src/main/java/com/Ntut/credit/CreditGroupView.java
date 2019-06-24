@@ -20,7 +20,7 @@ public class CreditGroupView extends LinearLayout implements View.OnClickListene
         inflate(context, R.layout.credit_group, this);
         View title_background = findViewById(R.id.title_background);
         title_background.setOnClickListener(this);
-        LinearLayout container = (LinearLayout) findViewById(R.id.container);
+        LinearLayout container = findViewById(R.id.container);
         container.setVisibility(View.GONE);
         animator = new SlideAnimator(context, container);
     }
@@ -30,24 +30,24 @@ public class CreditGroupView extends LinearLayout implements View.OnClickListene
     }
 
     public void setGroupTitle(String title) {
-        TextView group_title = (TextView) findViewById(R.id.group_title);
+        TextView group_title = findViewById(R.id.group_title);
         group_title.setText(title);
     }
 
     public void setGroupPS(String ps) {
-        TextView group_ps = (TextView) findViewById(R.id.group_ps);
+        TextView group_ps = findViewById(R.id.group_ps);
         group_ps.setText(ps);
     }
 
     @Override
     public void addView(View v) {
-        LinearLayout container = (LinearLayout) findViewById(R.id.container);
+        LinearLayout container = findViewById(R.id.container);
         container.addView(v);
     }
 
     @Override
     public void removeAllViews() {
-        LinearLayout container = (LinearLayout) findViewById(R.id.container);
+        LinearLayout container = findViewById(R.id.container);
         container.removeAllViews();
     }
 

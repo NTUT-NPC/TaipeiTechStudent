@@ -1,11 +1,11 @@
 package com.Ntut.course;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
 import android.view.View;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.Ntut.model.Semester;
 
@@ -21,7 +21,7 @@ public class SemesterSelector extends AppCompatButton implements View.OnClickLis
     private String[] mSemesterArray;
 
     public SemesterSelector(Context context, AttributeSet attrs) {
-        super(context, attrs, android.support.v7.appcompat.R.attr.spinnerStyle);
+        super(context, attrs, androidx.appcompat.R.attr.spinnerStyle);
     }
 
     public SemesterSelector(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -67,12 +67,9 @@ public class SemesterSelector extends AppCompatButton implements View.OnClickLis
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("學期");
-        builder.setItems(mSemesterArray, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (mOnSemesterSelectedListener != null) {
-                    mOnSemesterSelectedListener.onSemesterSelected(mSemesterList.get(which));
-                }
+        builder.setItems(mSemesterArray, (dialog, which) -> {
+            if (mOnSemesterSelectedListener != null) {
+                mOnSemesterSelectedListener.onSemesterSelected(mSemesterList.get(which));
             }
         });
         builder.show();

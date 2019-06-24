@@ -2,16 +2,16 @@ package com.Ntut.feedback;
 
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
-import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.Ntut.R;
 import com.Ntut.utility.Utility;
@@ -31,24 +31,20 @@ public class FeedbackActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
-        mToolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        mToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mToolbar);
         setActionBar();
-        webview = (WebView) findViewById(R.id.feedback_webview);
+        webview = findViewById(R.id.feedback_webview);
         webview.setWebViewClient(new WebViewClient());
-        webview.setOnKeyListener(new View.OnKeyListener(){
-
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (keyCode == KeyEvent.KEYCODE_BACK
-                        && event.getAction() == MotionEvent.ACTION_UP
-                        && webview.canGoBack()) {
-                    webview.goBack();
-                    return true;
-                }
-
-                return false;
+        webview.setOnKeyListener((v, keyCode, event) -> {
+            if (keyCode == KeyEvent.KEYCODE_BACK
+                    && event.getAction() == MotionEvent.ACTION_UP
+                    && webview.canGoBack()) {
+                webview.goBack();
+                return true;
             }
 
+            return false;
         });
         initWebViewSettings();
         webview.loadUrl("https://www.ntut.edu.tw/~ntutsu/tts/2.0/feedback.html");
@@ -82,12 +78,7 @@ public class FeedbackActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
+            mToolbar.setNavigationOnClickListener(v -> finish());
             actionBar.setTitle(R.string.feedback_text);
             actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.feedback_color)));
         }

@@ -1,12 +1,13 @@
 package com.Ntut.other;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.Ntut.BaseFragment;
 import com.Ntut.R;
@@ -27,7 +28,7 @@ public class OtherFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.fragment_other, container, false);
-        RecyclerView recyclerView = (RecyclerView) fragmentView.findViewById(R.id.other_list);
+        RecyclerView recyclerView = fragmentView.findViewById(R.id.other_list);
         initListData();
         OtherAdapter adapter = new OtherAdapter(otherInfoList, getContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

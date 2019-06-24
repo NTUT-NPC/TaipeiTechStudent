@@ -1,14 +1,12 @@
 package com.Ntut.schoolmap;
 
-import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.Ntut.R;
 import com.Ntut.utility.Utility;
@@ -19,6 +17,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,8 +42,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        mToolbar = (Toolbar) findViewById(R.id.main_toolbar);
-        fab = (FloatingActionButton) findViewById(R.id.fab_mapsearch);
+        mToolbar = findViewById(R.id.main_toolbar);
+        fab = findViewById(R.id.fab_mapsearch);
         setSupportActionBar(mToolbar);
         setActionBar();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -67,12 +66,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
             }
         });
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showChooser();
-            }
-        });
+        fab.setOnClickListener(v -> showChooser());
     }
 
     public void showChooser() {
@@ -83,13 +77,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         final String[] locations = new String[locationList.size()];
         locationList.keySet().toArray(locations);
         // add a list
-        builder.setItems(locations, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String location = locations[which];
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(locationList.get(location).getPosition(), 17));
-                locationList.get(location).showInfoWindow();
-            }
+        builder.setItems(locations, (dialog, which) -> {
+            String location = locations[which];
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(locationList.get(location).getPosition(), 17));
+            locationList.get(location).showInfoWindow();
         });
 
         // create and show the alert dialog
@@ -120,12 +111,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
+            mToolbar.setNavigationOnClickListener(v -> finish());
             actionBar.setTitle(R.string.school_map_text);
             actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.map_color)));
         }
