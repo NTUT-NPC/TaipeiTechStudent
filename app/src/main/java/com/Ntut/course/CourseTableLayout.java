@@ -31,6 +31,7 @@ public class CourseTableLayout extends LinearLayout {
     private static final int TABLE_COL = 9;
     private static final int TABLE_ROW = 14;
     private boolean isInitialized = false;
+    private boolean isDisplayN = false;
     private boolean isDisplayABCD = false;
     private boolean isDisplaySat = false;
     private boolean isDisplaySun = false;
@@ -99,8 +100,14 @@ public class CourseTableLayout extends LinearLayout {
             for (int j = 0; j < TABLE_COL; j++) {
                 CourseBlock table_cell = new CourseBlock(getContext());
                 if (j == 0 && i > 0) {
-                    table_cell.setText(Integer.toHexString(i).toUpperCase(
-                            Locale.US));
+                    if(i < 5)
+                        table_cell.setText(Integer.toHexString(i)
+                                .toUpperCase(Locale.US));
+                    else if(i == 5)
+                        table_cell.setText("N");
+                    else
+                        table_cell.setText(Integer.toHexString(i-1)
+                                .toUpperCase(Locale.US));
                 }
                 table_cell.setId(j != TABLE_COL - 1 ? i : 14);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -140,6 +147,8 @@ public class CourseTableLayout extends LinearLayout {
                 text.resetBlock();
             }
         }
+
+        isDisplayN = false;
         isDisplayABCD = false;
         isDisplaySat = false;
         isDisplaySun = false;
@@ -158,7 +167,10 @@ public class CourseTableLayout extends LinearLayout {
             CourseBlock notime_text = (CourseBlock) table_row.getChildAt(8);
             notime_text.setVisibility(isDisplayNoTime ? View.INVISIBLE
                     : View.GONE);
-            if (i > 9) {
+            if(i==5){
+                table_row.setVisibility(isDisplayN ? View.VISIBLE
+                        : View.GONE);
+            } else if (i > 9) {
                 table_row.setVisibility(isDisplayABCD ? View.VISIBLE
                         : View.GONE);
             }
@@ -171,16 +183,27 @@ public class CourseTableLayout extends LinearLayout {
             int color_index = 0;
             int[] color_array = getColorArray(studentCourse.getCourseList().size());
             int count = 0;
+
             for (CourseInfo item : studentCourse.getCourseList()) {
                 boolean is_have_time = false;
                 for (int i = 0; i < 7; i++) {
                     String time = item.getCourseTimes()[i];
                     ArrayList<String> s = Utility.splitTime(time);
                     for (String t : s) {
-                        if (t.length() != 0 && !t.equals("N")) {
-                            int row = Integer.valueOf(t);
+                        if (t.length() != 0) {
+                            int row;
+                            if(t.equals("N")){
+                                row = 5;
+                            }else {
+                                row = Integer.valueOf(t);
+                                if(row>4){
+                                    row += 1;
+                                }
+                            }
+
                             int col = i == 0 ? 7 : i;
-                            isDisplayABCD = isDisplayABCD || row > 9;
+                            isDisplayN = isDisplayN || t.equals("N");
+                            isDisplayABCD = isDisplayABCD || row > 10;
                             isDisplaySun = isDisplaySun || i == 0;
                             isDisplaySat = isDisplaySat || i == 6;
                             setTableCell(row, col, color_array[color_index], item);
@@ -220,7 +243,6 @@ public class CourseTableLayout extends LinearLayout {
         table_cell.setOnClickListener(onClickListener);
         setAnimation(table_cell);
     }
-
 
     private void setAnimation(final CourseBlock textview) {
         DisplayMetrics displaymetrics = new DisplayMetrics();
