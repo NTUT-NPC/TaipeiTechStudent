@@ -170,7 +170,7 @@ public class CourseTableLayout extends LinearLayout {
             if(i==5){
                 table_row.setVisibility(isDisplayN ? View.VISIBLE
                         : View.GONE);
-            } else if (i > 9) {
+            } else if (i > 10) {
                 table_row.setVisibility(isDisplayABCD ? View.VISIBLE
                         : View.GONE);
             }
