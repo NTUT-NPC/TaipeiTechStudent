@@ -235,13 +235,17 @@ public class CourseTableLayout extends LinearLayout {
 
     private void setTableCell(int row, int col, int color, CourseInfo course) {
         LinearLayout table_row = (LinearLayout) courseContainer.getChildAt(row);
-        CourseBlock table_cell = (CourseBlock) table_row.getChildAt(col);
-        table_cell.setVisibility(View.INVISIBLE);
-        table_cell.setText(course.getCourseName().trim());
-        table_cell.setTag(course);
-        table_cell.setBackgroundColor(color);
-        table_cell.setOnClickListener(onClickListener);
-        setAnimation(table_cell);
+        if (table_row != null) {
+            CourseBlock table_cell = (CourseBlock) table_row.getChildAt(col);
+            if (table_cell != null) {
+                table_cell.setVisibility(View.INVISIBLE);
+                table_cell.setText(course.getCourseName().trim());
+                table_cell.setTag(course);
+                table_cell.setBackgroundColor(color);
+                table_cell.setOnClickListener(onClickListener);
+                setAnimation(table_cell);
+            }
+        }
     }
 
     private void setAnimation(final CourseBlock textview) {
