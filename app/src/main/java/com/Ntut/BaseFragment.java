@@ -39,11 +39,14 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected void showAlertMessage(String message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setPositiveButton("返回", null);
-        builder.setTitle("提示");
-        builder.setMessage(message);
-        builder.create().show();
+        Activity activity = getActivity();
+        if (activity != null) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+            builder.setPositiveButton("返回", null);
+            builder.setTitle("提示");
+            builder.setMessage(message);
+            builder.create().show();
+        }
     }
 
 
