@@ -65,7 +65,7 @@ public class QuerySemesterTask extends AsyncTask<String, Void, Object> {
         super.onPostExecute(object);
 
         ProgressDialog progressDialog = mProgressDialogWeakReference.get();
-        if (progressDialog != null) {
+        if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
         CourseFragment fragment = mCourseFragmentWeakReference.get();
